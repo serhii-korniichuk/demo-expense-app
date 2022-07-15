@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel ./src/index.html --open"
+    "start": "parcel ./src/index.html --open",
+    "build": "rm -rf dist && parcel build ./src/index.html --public-url ./ --no-content-hash",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -27,7 +30,10 @@
     "concurrently": "^7.2.2",
     "eslint": "^8.19.0",
     "eslint-plugin-react": "^7.30.1",
+    "gh-pages": "^4.0.0",
+    "husky": "^8.0.1",
     "parcel": "^1.12.3",
+    "sass": "^1.53.0",
     "stylelint": "^14.9.1",
     "stylelint-config-standard-scss": "^5.0.0"
   }

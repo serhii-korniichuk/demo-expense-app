@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.sign {
+  width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1D283A;
+    margin: 0 auto;
+    height: 900px;
+    width: 440px;
+    border: 2px solid firebrick;
+  }
+
+  &__logobox {
+    position: absolute;
+    left:48px;
+    top:48px;
+  }
+  
+  &__logomain {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 54px;
+    color: #fff;
+  }
+
+  &__title {
+    position: absolute;
+    left: 48px;
+    top: 199px;
+    letter-spacing: 113%;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 84px;
+    color: #fff;
+  }
+
+  &__logounder {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #539713;
+  }
+
+  &__form {
+   position: absolute;
+   left: 45px;
+   top: 326px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+  }
+
+  [type="email"], [type="password"] {
+    position: relative;
+    line-height: 25px;
+    background-color: #1D283A;
+    outline: none;
+    border-style: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    top: -6px;
+  }
+  
+  &__inputpassword {
+    margin-bottom: 29px;
+  }
+  
+  &__labelemail {
+    position: relative;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #fff;
+    top: 6px;
+  }
+
+  &__labelpassword {
+    position: relative;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #fff;
+    top: 8px;
+  }
+
+  &__button {
+    width: 330px;
+    height: 44px;
+    background-color: #539713;
+    border-style: none;
+    margin-bottom: 8px;
+  }
+
+  &__buttonname {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  
+  &__undernotice {
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    color: #fff;
+  }
+
+  &__newaccount {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    color: #7FAAF0;
+    text-decoration: none ;
+  }
+  
+  &__eye {
+   position: absolute;
+   right: 63px;
+  }
+  
+  &__line {
+    position: absolute;
+    right: 62px;
+    bottom: 437px;
+
+  }
+}

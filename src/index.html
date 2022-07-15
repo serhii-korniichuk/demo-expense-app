@@ -4,10 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style.scss">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 		<script defer type="module" src="index.js"></script>
-    <title>FE Template</title>
+    <title>Auth</title>
   </head>
   <body>
-    FE Template
+    <section class="sign">
+      <div class="sign__container">
+        <div class="sign__logobox">
+          <p class="sign__logomain">InCode</p>
+          <p class="sign__logounder">Finance</p>
+        </div>
+        <p class="sign__title">SIGN IN</p>
+        <form action="" class="sign__form">
+          <label for="email" class="sign__labelemail">Email Address</label>
+            <input 
+              id="email" 
+              type="email" 
+              class="sign__inputemail"
+              placeholder="example@gmail.com"
+            >
+          <label for="password" class="sign__labelpassword">Password</label>
+            <input 
+              id="password" 
+              type="password" 
+              class="sign__inputpassword"
+              placeholder="***************"
+            >      
+          <button type="button" class="sign__button">
+           <span class="sign__buttonname">Sign in</span>
+          </button>
+          <p class="sign__undernotice">Don’t have account yet? <a href="#" class="sign__newaccount">New Account</a></p>
+        </form>
+        <img class="sign__eye" src="./images/eye.svg"></img>
+        <img class="sign__line"src="./images/line.svg"></img>     
+      </div>
+    </section>
+   
   </body>
 </html>
