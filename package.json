@@ -12,13 +12,23 @@
     "url": "git+https://github.com/vlasiuk-anatolii/demo-expense-app.git"
   },
   "keywords": [],
+  "lint": "concurrently \"npm run lint:html\" \"npm run lint:css\" \"npm run lint:js\"",
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vlasiuk-anatolii/demo-expense-app/issues"
   },
   "homepage": "https://github.com/vlasiuk-anatolii/demo-expense-app#readme",
+  "lint:html": "linthtml ./src/index.html",
   "devDependencies": {
-    "parcel": "^1.12.3"
+    "@linthtml/linthtml": "^0.8.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "concurrently": "^7.2.2",
+    "eslint": "^8.19.0",
+    "eslint-plugin-react": "^7.30.1",
+    "parcel": "^1.12.3",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard-scss": "^5.0.0"
   }
 }
