@@ -1,0 +1,20 @@
+{
+  "name": "demo-expense-app",
+  "version": "1.0.0",
+  "description": "Головним завданням є створення демо додатку, де користувач мав би змогу зареєструвати свій аккаунт за допомогою **Sign Up** форми та згодом увійти в нього через **Sign In** форму. Після успішного входу, користувача повинно автоматично перенаправити на сторінку **Home**, де в мабутньому він мав би змогу зкористатись кнопкою *Logout* для виходу зі свого аккаунту.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vlasiuk-anatolii/demo-expense-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vlasiuk-anatolii/demo-expense-app/issues"
+  },
+  "homepage": "https://github.com/vlasiuk-anatolii/demo-expense-app#readme"
+}
