@@ -60,7 +60,7 @@
    gap: 15px;
   }
 
-  [type="email"], [type="password"] {
+  [type="email"], [type="password"], [type="text"] {
     position: relative;
     line-height: 25px;
     background-color: #1D283A;
@@ -131,12 +131,19 @@
   &__eye {
    position: absolute;
    right: 63px;
+   
+   &--up {
+    bottom: 270px;
+   }
   }
   
   &__line {
     position: absolute;
     right: 62px;
     bottom: 437px;
-
+    
+    &--up {
+      bottom: 267px;
+    }
   }
 }
