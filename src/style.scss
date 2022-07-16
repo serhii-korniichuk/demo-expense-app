@@ -6,6 +6,34 @@
 .sign {
   width: 100vw;
   font-family: 'Montserrat', sans-serif;
+  
+  &__congratmainimg {
+    position: absolute;
+    top: 121px;
+    left: 464px; 
+  }
+  &__congratpeopleimg {
+    position: relative;
+    bottom: -214px;
+    left: -7px;
+  }  
+
+  &__congrattext {
+    position: relative;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #fff;
+    width: 466px;
+    height: 50px;
+    text-align: center;
+    left: -7px;
+    top: 102px;
+  }
+  
+  &--congrat {
+    background-color: #1D283A;
+  }
 
   &__container {
     position: relative;
@@ -17,13 +45,21 @@
     margin: 0 auto;
     height: 900px;
     width: 440px;
-    border: 2px solid firebrick;
+    
+    &--congrat {
+      position: absolute;
+      width: 100vw;
+    }
   }
 
   &__logobox {
     position: absolute;
     left:48px;
     top:48px;
+    
+    &--congrat {
+      left:58px;
+    }
   }
   
   &__logomain {
@@ -42,6 +78,13 @@
     font-size: 58px;
     line-height: 84px;
     color: #fff;
+    
+    &--congrat {
+      position: relative;
+      justify-content: center;
+      top:-100px;
+      left: 10px;
+    }
   }
 
   &__logounder {
@@ -102,6 +145,14 @@
     background-color: #539713;
     border-style: none;
     margin-bottom: 8px;
+    &--congrat {
+      position: relative;
+      background-color: #B2D0AD;
+      width: 98px;
+      height: 44px;
+      left: -17px;
+      top: 150px;
+    }
   }
 
   &__buttonname {
@@ -118,6 +169,10 @@
     font-size: 12px;
     line-height: 19px;
     color: #fff;
+    &--up {
+      position: relative;
+      left: -17px;
+    }
   }
 
   &__newaccount {
