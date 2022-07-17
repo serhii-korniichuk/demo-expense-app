@@ -1,40 +1,40 @@
 {
   "name": "demo-expense-app",
-  "version": "1.0.0",
-  "description": "Головним завданням є створення демо додатку, де користувач мав би змогу зареєструвати свій аккаунт за допомогою **Sign Up** форми та згодом увійти в нього через **Sign In** форму. Після успішного входу, користувача повинно автоматично перенаправити на сторінку **Home**, де в мабутньому він мав би змогу зкористатись кнопкою *Logout* для виходу зі свого аккаунту.",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "node-sass": "^7.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel ./src/index.html --open",
-    "build": "rm -rf dist && parcel build ./src/index.html --public-url ./ --no-content-hash",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vlasiuk-anatolii/demo-expense-app.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "keywords": [],
-  "lint": "concurrently \"npm run lint:html\" \"npm run lint:css\" \"npm run lint:js\"",
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vlasiuk-anatolii/demo-expense-app/issues"
-  },
-  "homepage": "https://github.com/vlasiuk-anatolii/demo-expense-app#readme",
-  "lint:html": "linthtml ./src/index.html",
-  "devDependencies": {
-    "@linthtml/linthtml": "^0.8.6",
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "@typescript-eslint/parser": "^5.30.6",
-    "concurrently": "^7.2.2",
-    "eslint": "^8.19.0",
-    "eslint-plugin-react": "^7.30.1",
-    "gh-pages": "^4.0.0",
-    "husky": "^8.0.1",
-    "parcel": "^1.12.3",
-    "sass": "^1.53.0",
-    "stylelint": "^14.9.1",
-    "stylelint-config-standard-scss": "^5.0.0"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

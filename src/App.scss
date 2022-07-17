@@ -8,14 +8,14 @@
   font-family: 'Montserrat', sans-serif;
   
   &__congratmainimg {
-    position: absolute;
-    top: 121px;
-    left: 464px; 
+    position: relative;
+    top: -40px;
+    left: 90px; 
   }
   &__congratpeopleimg {
     position: relative;
-    bottom: -214px;
-    left: -7px;
+    bottom: -119px;
+    left: 31px;
   }  
 
   &__congrattext {
@@ -27,8 +27,8 @@
     width: 466px;
     height: 50px;
     text-align: center;
-    left: -7px;
-    top: 102px;
+    left: 31px;
+    top: 8px;
   }
   
   &--congrat {
@@ -145,13 +145,21 @@
     background-color: #539713;
     border-style: none;
     margin-bottom: 8px;
+    &:hover {
+      cursor: pointer;
+      background-color: #B2D0AD;
+    }
     &--congrat {
       position: relative;
-      background-color: #B2D0AD;
+      background-color: #539713;
       width: 98px;
       height: 44px;
-      left: -17px;
-      top: 150px;
+      left: 20px;
+      top: 56px;
+      &:hover {
+        cursor: pointer;
+        background-color: #B2D0AD;
+      }
     }
   }
 
@@ -181,6 +189,9 @@
     line-height: 19px;
     color: #7FAAF0;
     text-decoration: none ;
+    &:hover {
+      cursor: pointer;
+    }
   }
   
   &__eye {
