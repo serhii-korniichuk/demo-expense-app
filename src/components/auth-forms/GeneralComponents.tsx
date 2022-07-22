@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import getSharedFontStyles from '../../sharedFont';
 
 export const FormTitle = styled.h1`
   font-style: normal;
@@ -17,16 +18,13 @@ export const InputLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
-  font-family: 'Montserrat';
   background: #1d283a;
   border: none;
   padding: 0.25rem 0rem;
   width: 328px;
   height: 30px;
-  font-size: 16px;
+  ${getSharedFontStyles(16)}
   line-height: 20px;
-  font-style: normal;
-  font-weight: 400;
   color: #fff;
 
   -webkit-text-security: star;
@@ -43,8 +41,7 @@ export const StyledInput = styled.input`
   }
 
   &:-webkit-autofill:focus {
-    font-family: 'Montserrat';
-    font-size: 16px;
+    ${getSharedFontStyles(16)}
   }
 
   &:-webkit-autofill,
@@ -76,9 +73,7 @@ export const Button = styled.button`
   background: #539713;
   width: 330px;
   height: 44px;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  font-size: 16px;
+  ${getSharedFontStyles(16, 600)}
   border: none;
   margin-top: 24px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -192,10 +187,7 @@ export const Footer = styled.div`
 `;
 
 export const FooterText = styled.span`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
+  ${getSharedFontStyles()}
   color: white;
 `;
 
@@ -212,9 +204,6 @@ export const AuthForm = styled.form`
 export const ErrorMessage = styled.h4`
   margin: 16px 0;
   text-align: center;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
+  ${getSharedFontStyles(16)}
   color: #ee4444;
 `;

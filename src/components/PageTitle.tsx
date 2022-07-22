@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import getSharedFontStyles from '../sharedFont';
 
 export default function PageTitle(): JSX.Element {
   return (
@@ -14,10 +15,7 @@ const HeaderBlock = styled.div`
 `;
 
 export const Header = styled.h3`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
+  ${getSharedFontStyles(36, 700)}
   line-height: 50px;
   margin: 0;
   color: #ffffff;

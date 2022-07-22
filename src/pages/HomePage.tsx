@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import PageTitle from '../components/PageTitle';
+import getSharedFontStyles from '../sharedFont';
 import PageProps from './PageProps.interface';
 
 export default function HomePage({
@@ -68,10 +69,7 @@ const HomeHeader = styled.div`
 `;
 
 const HeaderText = styled.h2`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
+  ${getSharedFontStyles(48, 700)}
   line-height: 150%;
   text-transform: uppercase;
   color: #ffffff;
@@ -80,10 +78,7 @@ const HeaderText = styled.h2`
 `;
 
 const StyledText = styled.h5`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
+  ${getSharedFontStyles(16, 600)}
   line-height: 155%;
   text-align: center;
   color: #ffffff;
@@ -96,10 +91,7 @@ const LogOutButton = styled.button`
   width: 98px;
   height: 44px;
   border: none;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
+  ${getSharedFontStyles(16, 600)}
   color: #ffffff;
   background: #b2d0ad;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
