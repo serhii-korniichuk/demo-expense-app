@@ -208,3 +208,13 @@ export const AuthForm = styled.form`
   margin: 0 48px;
   width: 340px;
 `;
+
+export const ErrorMessage = styled.h4`
+  margin: 16px 0;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #ee4444;
+`;

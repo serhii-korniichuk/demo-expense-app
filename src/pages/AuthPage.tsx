@@ -1,23 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import LoginForm from '../components/auth-forms/LoginForm';
 import RegisterForm from '../components/auth-forms/RegisterForm';
-import PageTitle from '../components/page-title/PageTitle';
+import PageTitle from '../components/PageTitle';
+import PageProps from './PageProps.interface';
 
 enum AuthMode {
   Login = 'login',
   Register = 'register',
 }
 
-export default function AuthPage(): JSX.Element {
+export default function AuthPage({
+  authorized,
+  setTokens,
+}: PageProps): JSX.Element {
   const [mode, setMode] = useState(AuthMode.Login);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authorized) {
+      navigate('/home');
+    }
+  }, [authorized, navigate]);
 
   const pageByMode: Record<AuthMode, JSX.Element> = {
     [AuthMode.Login]: (
-      <LoginForm onModeChange={(): void => setMode(AuthMode.Register)} />
+      <LoginForm
+        setTokens={setTokens}
+        onModeChange={(): void => setMode(AuthMode.Register)}
+      />
     ),
     [AuthMode.Register]: (
-      <RegisterForm onModeChange={(): void => setMode(AuthMode.Login)} />
+      <RegisterForm
+        setTokens={setTokens}
+        onModeChange={(): void => setMode(AuthMode.Login)}
+      />
     ),
   };
 

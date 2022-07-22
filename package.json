@@ -2,6 +2,7 @@
   "name": "demo-expense-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ValeryDrozd.github.io/demo-expense-app",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

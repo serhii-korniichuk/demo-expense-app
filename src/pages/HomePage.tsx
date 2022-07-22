@@ -1,7 +1,24 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import PageTitle from '../components/page-title/PageTitle';
+import PageTitle from '../components/PageTitle';
+import PageProps from './PageProps.interface';
 
-export default function HomePage(): JSX.Element {
+export default function HomePage({
+  authorized,
+  setTokens,
+}: PageProps): JSX.Element {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authorized) {
+      navigate('/auth');
+    }
+  }, [authorized, navigate]);
+
+  const handleLogout = (): void => {
+    setTokens(null);
+  };
   return (
     <HomeWrapper>
       <PageTitle />
@@ -9,15 +26,17 @@ export default function HomePage(): JSX.Element {
         <TextBlock>
           <HomeHeader>
             <HeaderText>Congratulations</HeaderText>
-            <StyledImage src="/home-page-picture.png" />
+            <StyledImage
+              src={process.env.PUBLIC_URL + `/home-page-picture.png`}
+            />
           </HomeHeader>
           <StyledText>
             Now you are on the main page. Soon we will provide you with detailed
             feedback on the result of your work
           </StyledText>
         </TextBlock>
-        <LogOutButton>See You</LogOutButton>
-        <FooterPicture src="/footer-picture.png" />
+        <LogOutButton onClick={handleLogout}>See You</LogOutButton>
+        <FooterPicture src={process.env.PUBLIC_URL + `/footer-picture.png`} />
       </HomeBlock>
     </HomeWrapper>
   );
@@ -43,12 +62,6 @@ const TextBlock = styled.div`
   flex-direction: column;
 `;
 
-const StyledBlock = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-`;
-
 const HomeHeader = styled.div`
   position: relative;
   margin: 0 auto;
@@ -70,20 +83,12 @@ const StyledText = styled.h5`
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 155%;
   text-align: center;
   color: #ffffff;
   max-width: 465px;
   margin: 48px auto;
-
-  @media screen and (min-device-width: 1000px) {
-    font-size: 16px;
-  }
-
-  @media screen and (max-device-width: 650px) {
-    font-size: 30px;
-  }
 `;
 
 const LogOutButton = styled.button`
@@ -100,6 +105,10 @@ const LogOutButton = styled.button`
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
   margin: 0 auto;
+  transition: background 0.3s ease;
+  &:hover {
+    background: #97c98e;
+  }
 `;
 
 const FooterPicture = styled.img`

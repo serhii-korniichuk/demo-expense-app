@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { TokenPair } from '../../interfaces/User.interface';
+import { login, register } from '../../services/auth.service';
 import {
   Button,
   FormTitle,
@@ -7,21 +9,39 @@ import {
   Footer,
   FooterLink,
   FooterText,
+  ErrorMessage,
 } from './GeneralComponents';
 
 interface Props {
   onModeChange: () => void;
+  setTokens: (tokens: TokenPair | null) => void;
 }
 
-export default function RegisterForm({ onModeChange }: Props): JSX.Element {
-  const [fullName, setFullName] = useState('');
-  const [userName, setUserName] = useState('');
+export default function RegisterForm({
+  onModeChange,
+  setTokens,
+}: Props): JSX.Element {
+  const [displayName, setDisplayName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
+    setError(null);
+
+    try {
+      await register({ displayName, username, password });
+      const tokens = await login({ username, password });
+      setTokens(tokens);
+    } catch (err) {
+      setError((err as Error).message);
+    }
   };
+
   return (
     <>
       <AuthForm onSubmit={handleSubmit}>
@@ -29,14 +49,14 @@ export default function RegisterForm({ onModeChange }: Props): JSX.Element {
         <Input
           label="Full Name"
           placeholder="Example Name"
-          value={fullName}
-          onChange={setFullName}
+          value={displayName}
+          onChange={setDisplayName}
         />
         <Input
           label="User Name"
           placeholder="Example1488"
-          value={userName}
-          onChange={setUserName}
+          value={username}
+          onChange={setUsername}
         />
         <Input
           label="Email Address"
@@ -53,7 +73,8 @@ export default function RegisterForm({ onModeChange }: Props): JSX.Element {
           onChange={setPassword}
           autoComplete="new-password"
         />
-        <Button>Sign Up</Button>
+        {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+        <Button type="submit">Sign Up</Button>
       </AuthForm>
       <Footer>
         <FooterText>I have an account.</FooterText>
