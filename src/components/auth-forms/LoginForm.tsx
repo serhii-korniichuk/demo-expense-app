@@ -16,9 +16,13 @@ interface Props {
 export default function LoginForm({ onModeChange }: Props): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+  };
   return (
     <>
-      <AuthForm>
+      <AuthForm onSubmit={handleSubmit}>
         <FormTitle>Sign In</FormTitle>
         <Input
           label="Email Address"

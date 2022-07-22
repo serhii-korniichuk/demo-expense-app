@@ -18,9 +18,13 @@ export default function RegisterForm({ onModeChange }: Props): JSX.Element {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+  };
   return (
     <>
-      <AuthForm>
+      <AuthForm onSubmit={handleSubmit}>
         <FormTitle>Sign Up</FormTitle>
         <Input
           label="Full Name"

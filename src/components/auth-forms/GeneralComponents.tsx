@@ -1,25 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-export const Header = styled.h3`
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 50px;
-  margin: 0;
-  color: #ffffff;
-`;
-
-export const HeaderUnderText = styled.h5`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 155%;
-  color: #539713;
-  margin: 0rem;
-`;
-
 export const FormTitle = styled.h1`
   font-style: normal;
   font-weight: 700;
@@ -102,7 +83,7 @@ export const Button = styled.button`
   margin-top: 24px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
-
+  cursor: pointer;
   color: #fff;
   transition: 0.3s background ease;
 

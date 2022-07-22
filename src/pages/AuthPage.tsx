@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import {
-  Header,
-  HeaderUnderText,
-} from '../components/auth-forms/GeneralComponents';
 import LoginForm from '../components/auth-forms/LoginForm';
 import RegisterForm from '../components/auth-forms/RegisterForm';
+import PageTitle from '../components/page-title/PageTitle';
 
 enum AuthMode {
   Login = 'login',
@@ -28,29 +25,20 @@ export default function AuthPage(): JSX.Element {
   return (
     <AuthWrapper>
       <AuthBlock>
-        <HeaderBlock>
-          <Header>InCode</Header>
-          <HeaderUnderText>Finance</HeaderUnderText>
-        </HeaderBlock>
+        <PageTitle />
         <AuthFormWrapper>{currentPage}</AuthFormWrapper>
       </AuthBlock>
     </AuthWrapper>
   );
 }
 
-const HeaderBlock = styled.div`
-  margin: 48px 0 0 48px;
-`;
-
 const AuthWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
   align-items: stretch;
-
-  @media screen and (min-device-width: 480px) {
+  justify-content: center;
+  @media screen and (min-device-width: 1000px) {
     align-items: center;
   }
 `;

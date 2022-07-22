@@ -1,0 +1,133 @@
+import styled, { keyframes } from 'styled-components';
+import PageTitle from '../components/page-title/PageTitle';
+
+export default function HomePage(): JSX.Element {
+  return (
+    <HomeWrapper>
+      <PageTitle />
+      <HomeBlock>
+        <TextBlock>
+          <HomeHeader>
+            <HeaderText>Congratulations</HeaderText>
+            <StyledImage src="/home-page-picture.png" />
+          </HomeHeader>
+          <StyledText>
+            Now you are on the main page. Soon we will provide you with detailed
+            feedback on the result of your work
+          </StyledText>
+        </TextBlock>
+        <LogOutButton>See You</LogOutButton>
+        <FooterPicture src="/footer-picture.png" />
+      </HomeBlock>
+    </HomeWrapper>
+  );
+}
+
+const HomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #1d283a;
+  min-height: 100vh;
+`;
+
+const HomeBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 109px;
+`;
+
+const TextBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledBlock = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+`;
+
+const HomeHeader = styled.div`
+  position: relative;
+  margin: 0 auto;
+`;
+
+const HeaderText = styled.h2`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+`;
+
+const StyledText = styled.h5`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 155%;
+  text-align: center;
+  color: #ffffff;
+  max-width: 465px;
+  margin: 48px auto;
+
+  @media screen and (min-device-width: 1000px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-device-width: 650px) {
+    font-size: 30px;
+  }
+`;
+
+const LogOutButton = styled.button`
+  padding: 0px;
+  width: 98px;
+  height: 44px;
+  border: none;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+  background: #b2d0ad;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  margin: 0 auto;
+`;
+
+const FooterPicture = styled.img`
+  width: 340.85px;
+  height: 287.86px;
+  margin: 72px auto;
+`;
+
+const animation = keyframes`
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+ `;
+
+const StyledImage = styled.img`
+  position: absolute;
+  width: 237px;
+  height: 188px;
+  top: -115px;
+  right: -115px;
+  animation-name: ${animation};
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier();
+  animation-iteration-count: infinite;
+`;
