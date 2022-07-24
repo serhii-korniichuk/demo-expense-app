@@ -1,2 +1,5 @@
 @import "stylesReset.css";
 
+* {
+  font-family: Montserrat;
+}

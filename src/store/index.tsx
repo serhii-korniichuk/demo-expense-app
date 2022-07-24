@@ -4,12 +4,23 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { AuthResponse } from "../models/AuthModel";
 import { BASE_URL } from "../http";
 
+interface ErrorResponse {
+  message: string;
+  statusCode: number;
+}
+
 export default class Store {
 
   isAuth = false;
+  errorResponse: ErrorResponse | any = {};
+  isNeedRegister = false;
 
   constructor() {
     makeAutoObservable(this)
+  }
+
+  setIsNeedRegister (bool: boolean) {
+    this.isNeedRegister = bool;
   }
 
   setAuth(bool: boolean) {
@@ -24,10 +35,11 @@ export default class Store {
       localStorage.setItem('refreshToken', response.data.refreshToken);
       this.setAuth(true);
     } catch (error) {
-      const err = error as AxiosError
+      const err = error as AxiosError;
+      this.errorResponse = err.response?.data;
       console.log(err.response?.data)
     }
-  } 
+  }
 
   async register(username: string, password: string, displayName: string) {
     try {
@@ -37,6 +49,7 @@ export default class Store {
       this.setAuth(true);
     } catch (error) {
       const err = error as AxiosError
+      this.errorResponse = err.response?.data;
       console.log(err.response?.data)
     }
   }
@@ -46,7 +59,7 @@ export default class Store {
       localStorage.removeItem('token');
       localStorage.removeItem('refreshToken')
       this.setAuth(false);
-      
+
     } catch (error) {
       const err = error as AxiosError
       console.log(err)

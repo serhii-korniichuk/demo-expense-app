@@ -1,31 +1,25 @@
-import React from 'react'
-import SignInForm from "./SignInForm";
-import SignUpForm from "./SignUpForm";
-
-
+import React, { useContext } from 'react'
+import { Context } from '../../..';
+import SignInPage from "./SignInPage";
+import SignUpPage from "./SignUpPage";
+import { observer } from 'mobx-react-lite'
 
 type Props = {}
 
-const AuthPage:React.FC<Props> = (props: Props) => {
-  const [isNeedRegister, setIsNeedRegister]= React.useState<boolean>(false)
-  const pullData = (arg:string):void => {
-    if(arg === 'SignUpForm') {
-      setIsNeedRegister(true);
-    } else if (arg === 'SignInForm') {
-      setIsNeedRegister(false);
-    }
-  }
+const AuthPage: React.FC<Props> = (props: Props) => {
+  const { store } = useContext(Context);
 
-  if (isNeedRegister) {
+
+  if (store.isNeedRegister) {
     return (
-      <SignUpForm props={pullData}/>
+      <SignUpPage />
     )
   }
 
   return (
-    <SignInForm props={pullData}/>
+    <SignInPage />
   )
-  
+
 }
 
-export default AuthPage
+export default observer(AuthPage)
