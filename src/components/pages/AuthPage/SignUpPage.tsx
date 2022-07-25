@@ -1,9 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite'
-import AuthLayout from '../../UIComponents/AuthLayout';
-import Title from '../../UIComponents/Title';
-import FooterRegister from '../../UIComponents/FooterRegister';
-import RegisterFrom from '../../UIComponents/RegisterForm';
+import AuthLayout from '../../UIComponents/AuthPage Components/AuthLayout';
+import Title from '../../UIComponents/AuthPage Components/Title';
+import FooterRegister from '../../UIComponents/AuthPage Components/FooterRegister';
+import RegisterFrom from '../../UIComponents/AuthPage Components/RegisterForm';
 
 const SignUpPage: React.FC = () => {
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import AuthLayout from '../../UIComponents/AuthLayout';
-import Title from '../../UIComponents/Title';
-import LoginFooter from '../../UIComponents/FooterLogin';
-import LoginForm from '../../UIComponents/LoginForm';
+import AuthLayout from '../../UIComponents/AuthPage Components/AuthLayout';
+import Title from '../../UIComponents/AuthPage Components/Title';
+import LoginFooter from '../../UIComponents/AuthPage Components/FooterLogin';
+import LoginForm from '../../UIComponents/AuthPage Components/LoginForm';
 
 const SignInPage: React.FC = () => {
 

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Container, Grid } from '@mui/material'
-import Logo from './Logo';
+import Logo from '../Logo';
 
 
 interface Props {

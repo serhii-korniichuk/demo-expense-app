@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
 import React, { useContext } from 'react'
-import { Context } from '../..';
+import { Context } from '../../..';
 
 
 type Props = {

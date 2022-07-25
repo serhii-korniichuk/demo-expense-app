@@ -14,7 +14,7 @@ const Title = ({children}: Props) => {
       lineHeight: '150%',
       letterSpacing: '0.03em',
       color: '#FFFFFF',
-      mt: '22px'
+      mt: '22px',
 }}> {children} </Typography >
   )
 }

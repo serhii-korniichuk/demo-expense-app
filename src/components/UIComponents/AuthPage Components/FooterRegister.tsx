@@ -1,15 +1,15 @@
-import { Container, Link, Typography } from '@mui/material'
+import { Container, Link, Typography } from '@mui/material';
 import React, { useContext } from 'react'
-import { Context } from '../..';
+import { Context } from '../../..';
 
 
 
-const LoginFooter = () => {
+const FooterRegister:React.FC = () => {
   const { store } = useContext(Context);
 
 
   const handleChange = (): void => {
-    store.setIsNeedRegister(true)
+    store.setIsNeedRegister(false)
   }
 
   return (
@@ -22,16 +22,16 @@ const LoginFooter = () => {
           fontSize: '12px',
           textAlign: 'center',
         }}
-      >Don’t have account yet?
+      >I have an account. 
         <Link
           sx={{ color: '#7FAAF0', cursor: 'pointer', ml: '5px' }}
           onClick={handleChange}
           underline="none"
-        > New Account
+        > Go to Sign in
         </Link>
       </Typography>
     </Container>
   )
 }
 
-export default LoginFooter
+export default FooterRegister
