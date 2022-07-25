@@ -5,7 +5,7 @@ type Props = {
   children: string
 }
 
-const Title = ({children}: Props) => {
+const Title:React.FC<Props> = ({children}: Props) => {
   return (
     <Typography  sx={{
       fontStyle: 'normal',

@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material"
 
 
-const FooterImage = () => {
+const FooterImage:React.FC = () => {
   return (
     <Grid 
     component='img'

@@ -7,9 +7,7 @@ import { Context } from '..';
 import {observer} from 'mobx-react-lite'
 
 
-type Props = {}
-
-  const Router = (props: Props) => {
+  const Router:React.FC = () => {
   const [isLoggedUser, setLoggedUser] = React.useState<boolean>(false);
   const {store} = useContext(Context);
   

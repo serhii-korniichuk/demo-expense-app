@@ -1,9 +1,9 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
 
-type Props = {}
 
-const NotFoundPage:React.FC = (props: Props) => {
+
+const NotFoundPage:React.FC = () => {
   return (
     <Container maxWidth={false} sx={{background: '#5D5D67'}}>
       <Box

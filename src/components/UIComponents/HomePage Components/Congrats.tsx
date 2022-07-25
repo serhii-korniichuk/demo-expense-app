@@ -1,7 +1,7 @@
 import { Grid} from '@mui/material'
 
 
-const Congrats = () => {
+const Congrats:React.FC = () => {
   return (
     <Grid 
     component='img'

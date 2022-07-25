@@ -4,7 +4,7 @@ import { Context } from '../../..';
 
 
 
-const LoginFooter = () => {
+const LoginFooter:React.FC = () => {
   const { store } = useContext(Context);
 
 

@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material'
-import React from 'react'
 
-const Logo = () => {
+const Logo:React.FC = () => {
   
   return (
     <Box >

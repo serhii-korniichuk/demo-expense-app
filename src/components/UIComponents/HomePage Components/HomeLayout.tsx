@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactNode;
 }
 
-const HomeLayout = ({children}: Props) => {
+const HomeLayout:React.FC<Props> = ({children}: Props) => {
   return (
     <Container maxWidth={false} sx={{
       background: '#1D283A',

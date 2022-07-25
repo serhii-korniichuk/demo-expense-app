@@ -8,7 +8,7 @@ type Props = {
   userData: { username: string; password: string; displayName: string};
 }
 
-const SubmitButton = ({ children, userData }: Props) => {
+const SubmitButton:React.FC<Props> = ({ children, userData }: Props) => {
   const { store } = useContext(Context);
 
   const login = async (e: React.MouseEvent<HTMLElement>): Promise<void> => {

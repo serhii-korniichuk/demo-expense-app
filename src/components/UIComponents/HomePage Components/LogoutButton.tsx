@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Context } from "../../..";
 
 
-const LogoutButton = () => {
+const LogoutButton:React.FC = () => {
   const { store } = useContext(Context);
   const logout = (): void => {
     store.logout();
