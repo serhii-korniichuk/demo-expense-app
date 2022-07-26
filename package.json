@@ -2,7 +2,7 @@
   "name": "demo-expense-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vasylpopovych.github.io",
+  "homepage": "https://VasylPopovych.github.io",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
