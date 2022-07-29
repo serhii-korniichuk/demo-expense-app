@@ -17,7 +17,7 @@ type Props = {
 
 export const FormTextFields: FC<Props> = ({ errors, touched }) => (
   // <ThemeProvider theme={theme}>
-  <Form className="form">
+  <Form className="form__fields">
     <FormikField
       label="Your name"
       name="name"

@@ -1,0 +1,24 @@
+@import "../../styles/variables.scss";
+@import "../../styles/utils/extends.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/typography.scss";
+
+.form {
+  @extend %max-width-wrapper;
+  width: fit-content;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: $padding-content-form;
+
+  background-color: $backgroundDark;
+
+  &__title {
+    @extend %desktop-h1;
+    max-width: $form-field-width;
+  }
+
+  &__fields {
+    max-width: $form-field-width;
+  }
+}
