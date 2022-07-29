@@ -4,6 +4,6 @@ import App from "./App";
 
 test("renders components", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Working with POST request/i);
-  expect(linkElement).toBeInTheDocument();
+  const linkElement = screen.getAllByText(/sign/i);
+  expect(linkElement.length).not.toBe(0);
 });
