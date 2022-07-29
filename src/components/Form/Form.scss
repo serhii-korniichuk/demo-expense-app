@@ -1,0 +1,69 @@
+@import "../../styles/variables.scss";
+@import "../../styles/utils/extends.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/typography.scss";
+
+.form {
+  @extend %max-width-wrapper;
+  position: relative;
+
+  width: fit-content;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: $padding-content-form;
+
+  color: $fontLight;
+  background-color: $backgroundDark;
+
+  &__title {
+    @extend %desktop-h1;
+    max-width: $form-field-width;
+    margin-bottom: $padding-content-form;
+  }
+
+  &__fields {
+    max-width: $form-field-width;
+    margin-bottom: 32px;
+  }
+
+  &__toggle {
+    @extend %desktop-p4;
+    margin-top: calc($padding-content-form / 2);
+
+    text-align: center;
+    color: $backgroundLight;
+  }
+
+  &__link {
+    color: $blue;
+    text-decoration: none;
+  }
+
+  &__toggle-password-visibility {
+    display: block;
+    position: absolute;
+    right: 47px;
+    top: 280px;
+
+    width: 22px;
+    height: 22px;
+
+    background-image: url(../../images/eye-off.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+}

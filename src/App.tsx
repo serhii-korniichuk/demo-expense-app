@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.scss";
-import { LogInForm } from "./components/Form";
+import { Form } from "./components/Form";
 
 function App() {
   return (
     <div className="App">
-      <LogInForm />
+      <Form />
     </div>
   );
 }
