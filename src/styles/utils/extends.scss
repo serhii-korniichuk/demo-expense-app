@@ -1,0 +1,9 @@
+@import "./mixins.scss";
+
+%max-width-wrapper {
+  margin: 0 auto;
+
+	@include onDesktopHigh() {
+    max-width: 1440px;
+  }
+}

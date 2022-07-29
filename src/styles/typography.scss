@@ -1,0 +1,53 @@
+@import "./colors.scss";
+@import "./variables.scss";
+
+%desktop-h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 150%;
+
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+	color: $fontLight;
+
+  margin: 0;
+}
+
+%desktop-h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 150%;
+
+  color: $fontLight;
+
+  margin: 0;
+}
+
+%desktop-h5 {
+  @extend %desktop-h3;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 155%;
+}
+
+%desktop-p2 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 155%;
+
+  opacity: 0.7;
+}
+
+%desktop-p3 {
+  @extend %desktop-p2;
+  font-size: 14px;
+  opacity: 1;
+}
+
+%desktop-p4 {
+  @extend %desktop-p3;
+  font-size: 12px;
+}
