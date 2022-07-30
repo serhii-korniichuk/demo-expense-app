@@ -6,6 +6,12 @@
   }
 }
 
+@mixin onMobile() {
+  @media (max-width: 440px) {
+    @content;
+  }
+}
+
 @mixin onDesktopHigh() {
   @media (min-width: 1440px) {
     @content;
