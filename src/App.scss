@@ -9,5 +9,10 @@
   padding: $padding-content-form;
 
   color: $fontLight;
+  text-align: left;
   background-color: $backgroundDark;
+
+  &--user-page {
+    width: 100%;
+  }
 }

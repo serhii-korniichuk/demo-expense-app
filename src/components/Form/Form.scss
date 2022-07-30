@@ -15,7 +15,6 @@
 
   &__fields {
     max-width: $form-field-width;
-    margin-bottom: 32px;
   }
 
   &__toggle {
@@ -35,7 +34,7 @@
     display: block;
     position: absolute;
     right: 0;
-    bottom: 145px;
+    bottom: 135px;
 
     width: 22px;
     height: 22px;
@@ -56,5 +55,22 @@
     &:active {
       transform: scale(1);
     }
+  }
+
+  &__field-password {
+    height: 80px;
+  }
+
+  &__service-message {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    color: $warn;
+    text-align: center;
+  }
+
+  &__submit {
+    margin-top: 20px;
   }
 }

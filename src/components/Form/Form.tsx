@@ -1,62 +1,151 @@
-import React, { FC, useState } from "react";
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Form.scss";
-import {
-  Formik,
-  Form as FormikForm,
-  FormikHelpers,
-} from "formik";
-// import Button from "@mui/material/Button";
-import { ThemeProvider, Button } from "@mui/material";
+import { Formik, FormikHelpers } from "formik";
 import { SignUpSchema, SignInSchema } from "./ValidationSchema";
-// import classNames from "classnames";
-// import { Loader } from "../Loader";
-import { muiButtonTheme, FormTextFields } from "./FormTextFields";
+import { SignUp } from "./SignUp";
+import { SignIn } from "./SignIn";
+import { Submit } from "./Submit";
+import { FormServiceInfo } from "./FormServiceInfo";
+import { FormToggle } from "./FormToggle";
+import { authExistUser, getNewUser } from "../../queries/queries";
 
 export interface FormValues {
   username: string,
   password: string,
-  fullname: string,
+  displayname: string,
+}
+
+export interface Response {
+  statusCode: number,
+  message: string,
+  accessToken: string,
+  username?: string,
 }
 
 const initialValues: FormValues = {
   username: "",
   password: "",
-  fullname: "",
+  displayname: "",
 };
 
 export const Form: FC = () => {
-  // const { data } = useGetTokenQuery();
-  // const [addUser, { isError, isLoading }] = useAddUserMutation();
-  // const dispatch = useAppDispatch();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [isNewUser] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleSubmit = async (
+  const registerNewUser = async (
     values: FormValues,
     actions: FormikHelpers<FormValues>,
   ) => {
-    const formFields = Object.entries(values);
-    const userForm = new FormData();
+    try {
+      setIsLoading(true);
 
-    formFields.forEach((field) => userForm.append(field[0], field[1]));
-    actions.resetForm();
-    // setIsRegistered(true);
+      const data: Response = await getNewUser(values);
+
+      switch (true) {
+        case !!data.username:
+          actions.resetForm();
+          navigate("/signin");
+          break;
+
+        case data.statusCode === 409:
+          setErrorMessage("Username is already used by another user");
+          break;
+
+        default:
+          setErrorMessage(data.message);
+      }
+
+      setIsLoading(false);
+    } catch (error: any) {
+      setErrorMessage(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  const authUser = async (
+    values: FormValues,
+    actions: FormikHelpers<FormValues>,
+  ) => {
+    try {
+      setIsLoading(true);
+
+      const data: Response = await authExistUser(values);
+
+      if (data.accessToken) {
+        localStorage.setItem("accessToken", data.accessToken);
+      }
+
+      switch (true) {
+        case !!data.accessToken:
+          actions.resetForm();
+          navigate("/login");
+          break;
+
+        case data.statusCode === 401:
+          setErrorMessage("Invalid username or password");
+          break;
+
+        case data.statusCode === 404:
+          setErrorMessage("User not found");
+          break;
+
+        default:
+          setErrorMessage(data.message);
+          navigate("/signin");
+      }
+
+      setIsLoading(false);
+    } catch (error: any) {
+      setErrorMessage(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = useCallback(
+    async (
+      values: FormValues,
+      actions: FormikHelpers<FormValues>,
+    ) => {
+      if (location.pathname === "/signin") {
+        authUser(values, actions);
+      }
+
+      if (location.pathname === "/signup") {
+        registerNewUser(values, actions);
+      }
+    },
+    [location],
+  );
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/signin");
+    }
+  }, []);
 
   return (
     <section className="form">
       <h2 className="form__title">
-        {isNewUser ? "Sign Up" : "Sign In"}
+        {location.pathname === "/signup" ? "Sign Up" : "Sign In"}
       </h2>
-
-      {/* <div className="form__loader">
-        {isLoading && <Loader />}
-      </div> */}
 
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => handleSubmit(values, actions)}
-        validationSchema={isNewUser ? SignUpSchema : SignInSchema}
+        validationSchema={location.pathname === "/signin"
+          ? SignInSchema
+          : SignUpSchema}
       >
         {({
           dirty,
@@ -65,50 +154,18 @@ export const Form: FC = () => {
           touched,
         }) => (
           <>
-            <FormTextFields errors={errors} touched={touched} isNewUser={isNewUser} />
+            {location.pathname === "/signup"
+              ? <SignUp errors={errors} touched={touched} />
+              : <SignIn errors={errors} touched={touched} />}
 
-            <FormikForm>
-              <ThemeProvider theme={muiButtonTheme}>
-                <Button
-                  variant="contained"
-                  type="submit"
-                  id="signUp"
-                  disabled={!dirty || !isValid}
-                  className="form__button"
-                >
-                  {isNewUser ? "Sign Up" : "Sign In"}
-                </Button>
-              </ThemeProvider>
-            </FormikForm>
+            <Submit dirty={dirty} isValid={isValid} />
+
+            <FormToggle />
           </>
         )}
       </Formik>
 
-      {isNewUser && (
-        <p className="form__toggle">
-          Don&apos;t have account yet?
-          {" "}
-          <a
-            href="/signin"
-            className="form__link"
-          >
-            New Account
-          </a>
-        </p>
-      )}
-
-      {!isNewUser && (
-        <p className="form__toggle">
-          I have an account.
-          {" "}
-          <a
-            href="/signup"
-            className="form__link"
-          >
-            Go to Sign in
-          </a>
-        </p>
-      )}
+      <FormServiceInfo errorMessage={errorMessage} isLoading={isLoading} />
     </section>
   );
 };
