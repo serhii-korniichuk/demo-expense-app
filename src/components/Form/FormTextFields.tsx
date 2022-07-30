@@ -83,7 +83,7 @@ export const FormTextFields: FC<Props> = ({
 
         <FormikField
           type="text"
-          label="Your name"
+          label="User name"
           name="username"
           errors={errors}
           touched={touched}
