@@ -1,6 +1,7 @@
 {
   "name": "demo-expense-app",
   "version": "0.1.0",
+  "homepage": "https://yegorkochetkov.github.io/demo-expense-app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -24,6 +25,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -55,6 +58,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^4.0.0"
   }
 }
