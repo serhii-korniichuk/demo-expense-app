@@ -117,6 +117,8 @@ export const Form: FC = () => {
       values: FormValues,
       actions: FormikHelpers<FormValues>,
     ) => {
+      setErrorMessage("");
+
       if (location.pathname === "/signin") {
         authUser(values, actions);
       }
