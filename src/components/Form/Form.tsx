@@ -154,6 +154,7 @@ export const Form: FC = () => {
           isValid,
           errors,
           touched,
+          resetForm,
         }) => (
           <>
             {location.pathname === "/signup"
@@ -162,7 +163,7 @@ export const Form: FC = () => {
 
             <Submit dirty={dirty} isValid={isValid} isLoading={isLoading} />
 
-            <FormToggle />
+            <FormToggle resetForm={resetForm} />
           </>
         )}
       </Formik>
