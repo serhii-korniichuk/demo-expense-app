@@ -7,9 +7,10 @@ import { muiButtonTheme } from "../../../styles/mui/themes";
 type Props = {
   isValid: boolean,
   dirty: boolean,
+  isLoading: boolean,
 }
 
-export const Submit: React.FC<Props> = ({ dirty, isValid }) => {
+export const Submit: React.FC<Props> = ({ dirty, isValid, isLoading }) => {
   const location = useLocation();
 
   return (
@@ -19,7 +20,7 @@ export const Submit: React.FC<Props> = ({ dirty, isValid }) => {
           variant="contained"
           type="submit"
           id="signUp"
-          disabled={!dirty || !isValid}
+          disabled={!dirty || !isValid || isLoading}
         >
           {location.pathname === "/signup" ? "Sign Up" : "Sign In"}
         </Button>

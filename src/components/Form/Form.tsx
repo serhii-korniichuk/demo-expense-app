@@ -158,7 +158,7 @@ export const Form: FC = () => {
               ? <SignUp errors={errors} touched={touched} />
               : <SignIn errors={errors} touched={touched} />}
 
-            <Submit dirty={dirty} isValid={isValid} />
+            <Submit dirty={dirty} isValid={isValid} isLoading={isLoading} />
 
             <FormToggle />
           </>
