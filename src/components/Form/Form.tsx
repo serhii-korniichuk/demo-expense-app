@@ -131,8 +131,15 @@ export const Form: FC = () => {
   );
 
   useEffect(() => {
-    if (location.pathname === "/") {
+    const accessToken = localStorage.getItem("accessToken");
+
+    if (location.pathname === "/" && !accessToken) {
       navigate("/signin");
+      return;
+    }
+
+    if (location.pathname === "/" && accessToken) {
+      navigate("/login");
     }
   }, []);
 
