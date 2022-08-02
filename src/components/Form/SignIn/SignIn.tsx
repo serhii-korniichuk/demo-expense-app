@@ -6,6 +6,10 @@ import {
   FormikValues,
 } from "formik";
 import { ThemeProvider } from "@mui/material";
+import {
+  VisibilityOffOutlined,
+  VisibilityOutlined,
+} from "@mui/icons-material";
 import { FormikField } from "../../FormikField";
 import { muiTextFieldTheme } from "../../../styles/mui/themes";
 
@@ -45,13 +49,25 @@ export const SignIn: FC<Props> = ({
           className="form__field-password"
         />
 
-        <button
-          type="button"
-          name="toggle password visibility"
-          aria-label="Toggle password visibility"
-          className="form__toggle-password-visibility"
-          onClick={handlePasswordVisibility}
-        />
+        {showPassword && (
+          <VisibilityOutlined
+            role="button"
+            name="toggle password visibility"
+            aria-label="Toggle password visibility"
+            className="form__toggle-password-visibility"
+            onClick={handlePasswordVisibility}
+          />
+        )}
+
+        {!showPassword && (
+          <VisibilityOffOutlined
+            role="button"
+            name="toggle password visibility"
+            aria-label="Toggle password visibility"
+            className="form__toggle-password-visibility"
+            onClick={handlePasswordVisibility}
+          />
+        )}
       </Form>
     </ThemeProvider>
   );
