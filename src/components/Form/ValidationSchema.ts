@@ -12,7 +12,7 @@ export const SignInSchema = Yup.object().shape({
     .string()
     .matches(
       passwordRegex,
-      `Must contain uppercase/lowercase letters and numbers.
+      `Must contain uppercase/lowercase letters and digits.
       Can contain special characters`,
     )
     .min(8, "Password should be at least 8 characters")
