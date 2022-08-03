@@ -3,10 +3,16 @@ import { Link, useLocation } from "react-router-dom";
 
 type Props = {
   resetForm: () => void,
+  setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
 }
 
-export const FormToggle: React.FC<Props> = ({ resetForm }) => {
+export const FormToggle: React.FC<Props> = ({ resetForm, setErrorMessage }) => {
   const location = useLocation();
+
+  const handleToggle = () => {
+    setErrorMessage("");
+    resetForm();
+  };
 
   return (
     <>
@@ -17,7 +23,7 @@ export const FormToggle: React.FC<Props> = ({ resetForm }) => {
           <Link
             to="/signup"
             className="form__link"
-            onClick={() => resetForm()}
+            onClick={handleToggle}
           >
             New Account
           </Link>
@@ -31,7 +37,7 @@ export const FormToggle: React.FC<Props> = ({ resetForm }) => {
           <Link
             to="/signin"
             className="form__link"
-            onClick={() => resetForm()}
+            onClick={handleToggle}
           >
             Go to Sign in
           </Link>

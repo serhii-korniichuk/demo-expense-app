@@ -170,7 +170,7 @@ export const Form: FC = () => {
 
             <Submit dirty={dirty} isValid={isValid} isLoading={isLoading} />
 
-            <FormToggle resetForm={resetForm} />
+            <FormToggle resetForm={resetForm} setErrorMessage={setErrorMessage} />
           </>
         )}
       </Formik>
