@@ -21,6 +21,9 @@ export const UserPage: React.FC = () => {
       localStorage.removeItem("accessToken");
       navigate("/signin");
       setIsLoading(false);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

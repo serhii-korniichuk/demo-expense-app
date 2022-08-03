@@ -21,7 +21,7 @@ export const SignInSchema = Yup.object().shape({
 });
 
 export const SignUpSchema = SignInSchema.concat(Yup.object().shape({
-  displayname: Yup
+  displayName: Yup
     .string()
     .min(1, "Too short!")
     .max(40, "Too long!")

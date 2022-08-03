@@ -25,7 +25,7 @@ export const SignUp: FC<Props> = ({
         <FormikField
           type="text"
           label="Full name"
-          name="displayname"
+          name="displayName"
           errors={errors}
           touched={touched}
           className="form__field-fullname"

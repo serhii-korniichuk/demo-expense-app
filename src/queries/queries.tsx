@@ -1,46 +1,60 @@
+import axios from "axios";
 import { FormValues } from "../components/Form";
 
-export const urlSignUp = "https://incode-backend-dev.herokuapp.com/auth/register";
-export const urlSignIn = "https://incode-backend-dev.herokuapp.com/auth/login";
-export const urlLogout = "https://incode-backend-dev.herokuapp.com/auth/logout";
+export const urlSignUp = "/register";
+export const urlSignIn = "/login";
+export const urlLogout = "/logout";
+
+const baseURL = "https://incode-backend-dev.herokuapp.com/auth/logout";
+axios.defaults.baseURL = "https://incode-backend-dev.herokuapp.com/auth";
 
 export const getNewUser = async (values: FormValues) => {
-  const response = await fetch(urlSignUp, {
-    method: "POST",
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      password: values.password,
-      username: values.username,
-      displayName: values.displayname,
-    }),
-  });
+  try {
+    const response = await axios.post(urlSignUp, values);
 
-  return response.json();
+    return response.data;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    throw error;
+  }
 };
 
-export const authExistUser = async (values: FormValues) => {
-  const response = await fetch(urlSignIn, {
-    method: "POST",
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      password: values.password,
-      username: values.username,
-    }),
-  });
+export const authExistUser = async (values: Omit<FormValues, "displayName">) => {
+  try {
+    const response = await axios.post(urlSignIn, values);
 
-  return response.json();
+    return response.data;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    throw error;
+  }
 };
+
+// don't work with axios possible due cors
+// export const logoutCurrUser = async () => {
+//   try {
+//     const response = await axios.get(urlLogout);
+
+//     return response.data;
+//   } catch (error) {
+//     // eslint-disable-next-line no-console
+//     console.error(error);
+//     throw error;
+//   }
+// };
 
 export const logoutCurrUser = async () => {
-  const response = await fetch(urlLogout, {
-    method: "GET",
-  });
+  try {
+    const response = await fetch(baseURL, {
+      method: "GET",
+    });
 
-  return response.json();
+    return response.json();
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    throw error;
+  }
 };

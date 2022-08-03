@@ -18,7 +18,7 @@ import { authExistUser, getNewUser } from "../../queries/queries";
 export interface FormValues {
   username: string,
   password: string,
-  displayname: string,
+  displayName?: string,
 }
 
 export interface Response {
@@ -31,7 +31,7 @@ export interface Response {
 const initialValues: FormValues = {
   username: "",
   password: "",
-  displayname: "",
+  displayName: "",
 };
 
 export const Form: FC = () => {
@@ -79,7 +79,10 @@ export const Form: FC = () => {
     try {
       setIsLoading(true);
 
-      const data: Response = await authExistUser(values);
+      const signInValues = { ...values };
+      delete signInValues.displayName;
+
+      const data: Response = await authExistUser(signInValues);
 
       if (data.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
