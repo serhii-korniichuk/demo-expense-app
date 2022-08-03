@@ -133,12 +133,12 @@ export const Form: FC = () => {
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
 
-    if (location.pathname === "/" && !accessToken) {
+    if (location.pathname !== "/signup" && !accessToken) {
       navigate("/signin");
       return;
     }
 
-    if (location.pathname === "/" && accessToken) {
+    if (location.pathname !== "/login" && accessToken) {
       navigate("/login");
     }
   }, []);
