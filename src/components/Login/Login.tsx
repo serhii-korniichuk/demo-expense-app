@@ -3,11 +3,14 @@ import { login } from "../../api";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
+import '../Registration/Registration.scss';
+import './Login.scss';
 
 export const Login: React.FC = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(false);
+  const [inputType, setInputType] = useState('password');
 
   const clearForm = () => {
     setUserName('');
@@ -32,8 +35,16 @@ export const Login: React.FC = () => {
     }
   };
 
+  const showPassword = () => {
+    setInputType('text');
+  };
+
+  const hidePassword = () => {
+    setInputType('password');
+  };
+
   return (
-    <div className="login">
+    <div className="login container">
       <div className="header">
         <div className="header__company">InCode</div>
         <div className="header__spec">Finance</div>
@@ -45,9 +56,9 @@ export const Login: React.FC = () => {
       >
         <div className="form__title">Sign In</div>
 
-        <div className="form__input-block">
+        <div className="form__input">
           <label
-            className="form__input--title"
+            className="form__input-title"
             htmlFor="username"
           >
             User Name
@@ -64,35 +75,49 @@ export const Login: React.FC = () => {
           />
         </div>
 
-        <div className="form__input-block">
+        <div className="form__input">
           <label
-            className="form__input--title"
+            className="form__input-title"
             htmlFor="password"
           >
             Password
           </label>
-          <input
-            id="password"
-            type="password"
-            className="form__input-field"
-            placeholder="**********"
-            name="password"
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-            required
-          />
+          <div className="form__input-block">
+            <input
+              id="password"
+              type={inputType}
+              className="form__input-field form__input-field--password"
+              value={password}
+              placeholder="***************"
+              name="password"
+              onChange={event => setPassword(event.target.value)}
+              required
+            />
+            {inputType === 'password' && <button
+              type="button"
+              onClick={showPassword}
+              className="form__password-button form__password-button--show"
+            >
+            </button>}
+            {inputType === 'text' && <button
+              type="button"
+              onClick={hidePassword}
+              className="form__password-button form__password-button--hide"
+            >
+            </button>}
+          </div>
         </div>
 
-        {loginError && <div className="form__error">Invalid username or password</div>}
+        {loginError && <div className="form__error">Invalid username or password!</div>}
 
         <button className="form__submit" type="submit">Sign In</button>
       </form>
 
       <div className="login__registration">
-        Do not have account yet?
+        Do not have account yet?{' '}
         <NavLink
           to="/auth/register"
-          className="login__registartion--link"
+          className="login__registration--link"
         >
           Sign Up
         </NavLink>

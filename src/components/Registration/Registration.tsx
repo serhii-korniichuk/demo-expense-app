@@ -3,6 +3,7 @@ import { registration } from "../../api";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
+import './Registration.scss';
 
 export const Registration: React.FC = () => {
   const [displayName, setDisplayName] = useState('');
@@ -26,14 +27,16 @@ export const Registration: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (password.length < 8 && password !== confirmPassword) {
+    if (password.length < 8 && password !== confirmPassword && userError === true) {
       setLengthError(true);
       setPasswordError(true);
+      setUserError(false);
       clearForm();
       return;
-    } else if (password.length < 8) {
+    } else if (password.length < 8 && userError === true) {
       setLengthError(true);
       setPasswordError(false);
+      setUserError(false);
       clearForm();
       return;
     } else if (password !== confirmPassword) {
@@ -65,7 +68,7 @@ export const Registration: React.FC = () => {
   };
 
   return (
-    <div className="registration">
+    <div className="registration container">
       <div className="header">
         <div className="header__company">InCode</div>
         <div className="header__spec">Finance</div>
@@ -76,9 +79,9 @@ export const Registration: React.FC = () => {
         onSubmit={handleSubmit}
       >
         <div className="form__title">Sign Up</div>
-        <div className="form__input-block">
+        <div className="form__input">
           <label
-            className="form__input--title"
+            className="form__input-title"
             htmlFor="displayName"
           >
             Full Name
@@ -95,9 +98,9 @@ export const Registration: React.FC = () => {
           />
         </div>
 
-        <div className="form__input-block">
+        <div className="form__input">
           <label
-            className="form__input--title"
+            className="form__input-title"
             htmlFor="username"
           >
             User Name
@@ -114,62 +117,86 @@ export const Registration: React.FC = () => {
           />
         </div>
 
-        <div className="form__input-block">
+        <div className="form__input">
           <label
-            className="form__input--title"
+            className="form__input-title"
             htmlFor="password"
           >
             Password
           </label>
-          <input
-            id="password"
-            type={inputType}
-            className="form__input-field"
-            value={password}
-            placeholder="**********"
-            name="password"
-            onChange={event => setPassword(event.target.value)}
-            required
-          />
-          {inputType === 'password' && <button type="button" onClick={showPassword}>show</button>}
-          {inputType === 'text' && <button type="button" onClick={hidePassword}>hide</button>}
+          <div className="form__input-block">
+            <input
+              id="password"
+              type={inputType}
+              className="form__input-field form__input-field--password"
+              value={password}
+              placeholder="***************"
+              name="password"
+              onChange={event => setPassword(event.target.value)}
+              required
+            />
+            {inputType === 'password' && <button
+              type="button"
+              onClick={showPassword}
+              className="form__password-button form__password-button--show"
+            >
+            </button>}
+            {inputType === 'text' && <button
+              type="button"
+              onClick={hidePassword}
+              className="form__password-button form__password-button--hide"
+            >
+            </button>}
+          </div>
         </div>
 
-        <div className="form__input-block">
+        <div className="form__input form__input--last">
           <label
-            className="form__input--title"
+            className="form__input-title"
             htmlFor="confirmPassword"
           >
             Confirm Password
           </label>
-          <input
-            id="confirmPassword"
-            type={inputType}
-            className="form__input-field"
-            value={confirmPassword}
-            placeholder="**********"
-            name="confirmPassword"
-            onChange={event => setConfirmPassword(event.target.value)}
-            required
-          />
-          {inputType === 'password' && <button type="button" onClick={showPassword}>show</button>}
-          {inputType === 'text' && <button type="button" onClick={hidePassword}>hide</button>}
+          <div className="form__input-block">
+            <input
+              id="confirmPassword"
+              type={inputType}
+              className="form__input-field form__input-field--password"
+              value={confirmPassword}
+              placeholder="***************"
+              name="confirmPassword"
+              onChange={event => setConfirmPassword(event.target.value)}
+              required
+            />
+            {inputType === 'password' && <button
+              type="button"
+              onClick={showPassword}
+              className="form__password-button form__password-button--show"
+            >
+            </button>}
+            {inputType === 'text' && <button
+              type="button"
+              onClick={hidePassword}
+              className="form__password-button form__password-button--hide"
+            >
+            </button>}
+          </div>
         </div>
 
-        {lengthError && <div className="form__error">Password must be at least 8 characters long</div>}
+        {lengthError && <div className="form__error">Password must be at least 8 characters long!</div>}
         {passwordError && <div className="form__error">Passwords are not the same!</div>}
-        {userError && <div className="form__error">Username is already used by another user</div>}
+        {userError && <div className="form__error">Username is already used by another user!</div>}
 
         <button className="form__submit" type="submit">Sign Up</button>
       </form>
 
       <div className="registration__auth">
-        I have an account
+        I have an account.{' '}
         <NavLink
           to="/auth/login"
           className="registration__auth--link"
         >
-          Sign In
+          Go to Sign in
         </NavLink>
       </div>
     </div>

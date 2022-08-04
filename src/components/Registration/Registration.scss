@@ -1,0 +1,153 @@
+.container {
+  max-width: 424px;
+  margin: auto;
+  min-height: 100vh;
+  background-color: #1D283A;
+  padding: 48px;
+  color: #fff;
+}
+
+.registration {
+  height: 100%;
+  min-height: 100vh;
+  font-family: 'Montserrat';
+
+  &__auth {
+    color: #F1F2F1;
+    font-size: 12px;
+    text-align: center;
+    line-height: 155%;
+
+    &--link {
+      text-decoration: none;
+      color: #7FAAF0;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 72px;
+
+  &__company {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 150%;
+  }
+
+  &__spec {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 155%;
+    color: #539713;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+
+  &__title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 150%;
+    letter-spacing: 0.03em;
+    margin-bottom: 48px;
+  }
+
+  &__input-block {
+    display: flex;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #fff;
+
+    &--last {
+      margin-bottom: 20px;
+    }
+
+    &-title {
+      margin-bottom: 5.5px;
+      font-size: 14px;
+      line-height: 155%;
+    }
+
+    &-field {
+      background-color: #1D283A;
+      border: none;
+      margin-bottom: 6.5px;
+      color: #fff;
+      font-family: 'Montserrat';
+
+      &--password {
+        min-width: 90%;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-family: 'Montserrat';
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 200;
+      }
+    }
+  }
+
+  &__password-button {
+    flex-grow: 1;
+    width: 22px;
+    height: 22px;
+    background-color: #1D283A;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--show {
+      background-image: url(../../img/eye-off.png);
+    }
+
+    &--hide {
+      background-image: url(../../img/showed.png);
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  &__error {
+    color: rgb(187, 1, 1);
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  &__submit {
+    background: #539713;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+    border: none;
+    padding: 10px;
+    margin-bottom: 24px;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
