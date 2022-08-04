@@ -1,11 +1,11 @@
 .home {
   background-color: #1D283A;
   min-height: 100vh;
-  padding: 48px 60px;
   color: #fff;
 
   &__header {
     margin-bottom: 110px;
+    padding: 48px 60px 0;
   }
 
   &__content {
@@ -62,5 +62,6 @@
     max-width: 340px;
     max-height: 287px;
     align-self: center;
+    margin-bottom: 40px;
   }
 }

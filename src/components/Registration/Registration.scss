@@ -3,7 +3,6 @@
   margin: auto;
   min-height: 100vh;
   background-color: #1D283A;
-  padding: 48px;
   color: #fff;
 }
 
@@ -25,26 +24,8 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 72px;
-
-  &__company {
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 150%;
-  }
-
-  &__spec {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 155%;
-    color: #539713;
-  }
-}
-
 .form {
+  padding: 0 48px;
   display: flex;
   flex-direction: column;
   color: #fff;

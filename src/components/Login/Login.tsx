@@ -1,8 +1,7 @@
-import React from "react";
-import { login } from "../../api";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { login } from '../../api';
+import { Header } from '../Header/Header';
 import '../Registration/Registration.scss';
 import './Login.scss';
 
@@ -30,8 +29,7 @@ export const Login: React.FC = () => {
     } else {
       setLoginError(false);
       clearForm();
-      navigation("/home", { replace: true });
-      console.log(response);
+      navigation('/home', { replace: true });
     }
   };
 
@@ -45,10 +43,7 @@ export const Login: React.FC = () => {
 
   return (
     <div className="login container">
-      <div className="header">
-        <div className="header__company">InCode</div>
-        <div className="header__spec">Finance</div>
-      </div>
+      <Header />
       <form
         method="post"
         className="form login__form"
@@ -93,18 +88,24 @@ export const Login: React.FC = () => {
               onChange={event => setPassword(event.target.value)}
               required
             />
-            {inputType === 'password' && <button
-              type="button"
-              onClick={showPassword}
-              className="form__password-button form__password-button--show"
-            >
-            </button>}
-            {inputType === 'text' && <button
-              type="button"
-              onClick={hidePassword}
-              className="form__password-button form__password-button--hide"
-            >
-            </button>}
+            {inputType === 'password'
+            && (
+              <button
+                type="button"
+                onClick={showPassword}
+                className="form__password-button form__password-button--show"
+              >
+              </button>
+            )}
+            {inputType === 'text'
+            && (
+              <button
+                type="button"
+                onClick={hidePassword}
+                className="form__password-button form__password-button--hide"
+              >
+              </button>
+            )}
           </div>
         </div>
 
@@ -114,7 +115,8 @@ export const Login: React.FC = () => {
       </form>
 
       <div className="login__registration">
-        Do not have account yet?{' '}
+        Do not have account yet?
+        {' '}
         <NavLink
           to="/auth/register"
           className="login__registration--link"
