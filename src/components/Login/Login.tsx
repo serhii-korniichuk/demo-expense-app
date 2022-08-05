@@ -4,12 +4,14 @@ import { login } from '../../api';
 import { Header } from '../Header/Header';
 import '../Registration/Registration.scss';
 import './Login.scss';
+import classnames from 'classnames';
 
 export const Login: React.FC = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(false);
   const [inputType, setInputType] = useState('password');
+  const [loading, setLoading] = useState(false);
 
   const clearForm = () => {
     setUserName('');
@@ -21,10 +23,13 @@ export const Login: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    setLoading(true);
+
     const response = await login(username, password);
 
     if (!response.ok) {
       setLoginError(true);
+      setLoading(false);
       clearForm();
     } else {
       setLoginError(false);
@@ -111,7 +116,17 @@ export const Login: React.FC = () => {
 
         {loginError && <div className="form__error">Invalid username or password!</div>}
 
-        <button className="form__submit" type="submit">Sign In</button>
+        <button
+          className={classnames('form__submit', { 'form__loading': loading })}
+          type="submit"
+        >
+          {loading ?(
+            <span>Loading...</span>
+          ) : (
+            <span>Sign In</span>
+          )
+        }
+        </button>
       </form>
 
       <div className="login__registration">

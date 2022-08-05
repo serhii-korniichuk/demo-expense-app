@@ -131,4 +131,14 @@
       cursor: pointer;
     }
   }
+
+  @keyframes glowing {
+    0% { background-color: #539713; }
+    50% { background-color: #49e819; }
+    100% { background-color: #539713; }
+    }
+
+  &__loading {
+    animation: glowing 1300ms infinite;
+  }
 }

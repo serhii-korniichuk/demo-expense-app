@@ -3,6 +3,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { registration } from '../../api';
 import { Header } from '../Header/Header';
 import './Registration.scss';
+import classnames from 'classnames';
 
 export const Registration: React.FC = () => {
   const [displayName, setDisplayName] = useState('');
@@ -13,6 +14,7 @@ export const Registration: React.FC = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [userError, setUserError] = useState(false);
   const [inputType, setInputType] = useState('password');
+  const [loading, setLoading] = useState(false);
 
   const clearForm = () => {
     setDisplayName('');
@@ -26,10 +28,13 @@ export const Registration: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    setLoading(true);
+
     if (password.length < 8 && password !== confirmPassword && userError === true) {
       setLengthError(true);
       setPasswordError(true);
       setUserError(false);
+      setLoading(false);
       clearForm();
 
       return;
@@ -39,14 +44,17 @@ export const Registration: React.FC = () => {
       setLengthError(true);
       setPasswordError(false);
       setUserError(false);
+      setLoading(false);
       clearForm();
 
       return;
     }
 
-    if (password !== confirmPassword) {
+    if (password !== confirmPassword && userError === true) {
       setPasswordError(true);
       setLengthError(false);
+      setLoading(false);
+      setUserError(false);
       clearForm();
 
       return;
@@ -58,6 +66,7 @@ export const Registration: React.FC = () => {
       setUserError(true);
       setLengthError(false);
       setPasswordError(false);
+      setLoading(false);
       clearForm();
     } else {
       clearForm();
@@ -202,7 +211,17 @@ export const Registration: React.FC = () => {
         {passwordError && <div className="form__error">Passwords are not the same!</div>}
         {userError && <div className="form__error">Username is already used by another user!</div>}
 
-        <button className="form__submit" type="submit">Sign Up</button>
+        <button
+          className={classnames('form__submit', { 'form__loading': loading })}
+          type="submit"
+        >
+          {loading ?(
+            <span>Loading...</span>
+          ) : (
+            <span>Sign In</span>
+          )
+        }
+        </button>
       </form>
 
       <div className="registration__auth">
