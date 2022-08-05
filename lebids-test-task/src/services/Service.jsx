@@ -31,7 +31,18 @@ const Service = () => {
       return await res.json();
    }
 
-   return {reg, auth}
+   const logout = async () => {
+      let res = await fetch(`${__apibase}auth/logout`,  {
+         method: 'GET'
+      });
+
+      if (!res.ok) {
+         throw new Error(`Could not fetch ${__apibase}, status ${res.status}`);
+      }
+      return await res.json();
+   }
+
+   return {reg, auth, logout}
 }
 
 export default Service

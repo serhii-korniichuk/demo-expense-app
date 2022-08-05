@@ -7,12 +7,16 @@ import AppSignUp from "./SignUp";
 
 function App() {
   return (
-    <div className="App">
-      <AppHeader/>
-      {/* <AppMain/> */}
-      {/* <AppSignIn/> */}
-      <AppSignUp/>
-    </div>
+    <Router>
+        <div className="App">
+          <AppHeader/>
+            <Routes>
+              <Route path="/main" element={<AppMain/>}/>
+              <Route path="/" element={<AppSignIn/>}/>
+              <Route path="/sign-up" element={<AppSignUp/>}/>
+            </Routes>
+        </div>
+    </Router>
   );
 }
 

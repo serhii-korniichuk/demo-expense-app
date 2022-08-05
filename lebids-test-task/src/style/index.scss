@@ -27,6 +27,10 @@ input{
    line-height: 155%;
 }
 
+.rbutton{
+   @include reset-button;
+ 
+}
 
 .container {
    max-width: 1544px;

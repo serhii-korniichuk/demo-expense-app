@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { Formik, Form, Field, ErrorMessage, useField } from "formik";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import Service from "../services/Service";
+import Eye from "./Eye";
 
 import "../style/sign.scss";
 
-const TextInput = ({label, ...props}) => {
+const TextInput = ({label, isLast, ...props}) => {
    const [field, meta] = useField(props);
    return (
        <>
-            <div className="sign__fwrapper">
+            <div className={`sign__fwrapper ${JSON.parse(isLast) ? "sign__fwrapper-lup" : null}`}>
                <h2 className="sign__field">{label}</h2>
                <input {...props} {...field}/>
                {meta.touched && meta.error ? (
@@ -40,11 +41,11 @@ const AppSignUp = () => {
                      SIGN UP
                   </h1>
                   <Formik
-                          initialValues={{
-                           password: "",
-                           username: "",
-                           displayName: "",
-                           rpassword: "",
+                        initialValues={{
+                        password: "",
+                        username: "",
+                        displayName: "",
+                        rpassword: "",
                        }}
                        validationSchema= {Yup.object({
                            displayName: Yup.string()
@@ -64,73 +65,71 @@ const AppSignUp = () => {
                        onSubmit= {values => reg(JSON.stringify(values, ['password', "username", "displayName"], 2))
                        }>
 
-                     <Form className="sign__form">
+                     <Form className="sign__form ">
                         <TextInput
                            label="Full Name"
+                           isLast="false"
                            type="text" 
                            placeholder="Example Name"
                            id="displayName"
                            name="displayName"
-                           autocomplete="off"
+                           autoComplete="off"
+                           size="35"
                            />
 
                         <TextInput
                            label="User Name"
+                           isLast="false"
                            type="text" 
                            placeholder="Example123"
                            id="username"
                            name="username"
-                           autocomplete="off"
-                           width="200"/>
+                           autoComplete="off"
+                           size="35"/>
 
                         <TextInput
                            label="Password"
-                           className={`sign__pass-${passwordEye ? "input-text" : "input-stars"}`} 
+                           isLast="false"
+                           className={`sign__pass sign__pass-${passwordEye ? "input-text" : "input-stars"}`} 
                            type={passwordEye === false ? "password" : "text"} 
-                           placeholder="**********"
+                           placeholder={passwordEye ? null : "**********"}
                            id="password"
                            name="password"
-                           autocomplete="off"/>
+                           autoComplete="off"
+                           size="40"
+                           />
 
                         <Eye props={passwordEye} onClick={onChangeEye} offset={390}/>
 
                         <TextInput
                            label="Confirm Password"
-                           className={`sign__pass-${passwordEye ? "input-text" : "input-stars"}`} 
+                           isLast="true"
+                           className={`sign__pass sign__pass-${passwordEye ? "input-text" : "input-stars"}`} 
                            type={passwordEye === false ? "password" : "text"} 
-                           placeholder="**********"
+                           placeholder={passwordEye ? null : "**********"}
                            id="rpassword"
                            name="rpassword"
-                           autocomplete="off"/>
+                           autoComplete="off"
+                           size="40"
+                           />
 
                         <Eye props={passwordEye} onClick={onChangeEye} offset={472}/>
 
-                        <button className="sign__submit" type="submit">Sign Up</button>
+                        <button className="sign__submit sign__submit-up" type="submit">Sign Up</button>
                      </Form>
                   </Formik>
 
                   <div className="sign__question">
                      <h3 className="sign__question-text">I have an account.</h3>
-                     <button className="sign__question-link">Go to Sign in</button>
+                     <Link  to="/">
+                        <button className="sign__question-link">Go to Sign in</button>
+                     </Link>
                   </div>
                </div>
             </div>
          </div>
       </section>
 
-   )
-}
-
-const Eye = ({props, onClick, offset}) => {
-   const style = {
-      position: "absolute",
-      top: `${offset}px`,
-      left: "320px",
-      transform: "scale(1.4)"
-   }
-   return(
-      props ?  <AiOutlineEye style={style} onClick={onClick} /> : 
-               <AiOutlineEyeInvisible style={style} onClick={onClick}/>
    )
 }
 

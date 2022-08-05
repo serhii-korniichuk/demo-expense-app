@@ -1,24 +1,25 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, useField } from "formik";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import Service from "../services/Service";
 import "../style/sign.scss";
+import Eye from "./Eye";
 
 const AppSignIn = () => {
    const [passwordEye, setPasswordEye] = useState(false);
 
-   const TextInput = ({label, ...props}) => {
+   const TextInput = ({label, isLast, ...props}) => {
       const [field, meta] = useField(props);
       return (
           <>
-            <div className="sign__fwrapper">
-               <h2 className="sign__field">{label}</h2>
-               <input {...props} {...field}/>
-               {meta.touched && meta.error ? (
-                  <div className="sign__field-error">{meta.error}</div>
-               ) : null}
-            </div>
+               <div className={`sign__fwrapper ${JSON.parse(isLast) ? "sign__fwrapper-lin" : null}`}>
+                  <h2 className="sign__field">{label}</h2>
+                  <input {...props} {...field}/>
+                  {meta.touched && meta.error ? (
+                     <div className="sign__field-error">{meta.error}</div>
+                  ) : null}
+               </div>
           </>
       )
    };
@@ -29,9 +30,8 @@ const AppSignIn = () => {
 
    const { auth } = Service();
 
-
    return (
-      <section className="sign">
+      <section className="sign sign-in">
          <div className="container">
             <div className="sign__wrapper">
                <div className="sign__inner">
@@ -54,34 +54,40 @@ const AppSignIn = () => {
                         })}
                     onSubmit= {values => auth(JSON.stringify(values, ['password', "username"], 2))
                     }>
-                        <Form className="sign__form">
+                        <Form className="sign__form ">
 
                            <TextInput
                               label="User Name"
+                              isLast="false"
                               type="text" 
                               placeholder="Example123"
                               id="username"
                               name="username" 
-                              autocomplete="off"/>
+                              autoComplete="off"
+                              size="35"/>
                            
                            <TextInput
                               label="Password"
-                              placeholder="**********"
+                              isLast="true"
+                              placeholder={passwordEye ? null : "**********"}
                               id="password"
                               name="password" 
                               className={`sign__pass-${passwordEye ? "input-text" : "input-stars"}`} 
                               type={passwordEye === false ? "password" : "text"} 
-                              autocomplete="off"/>
+                              autoComplete="off"
+                              size="40"/>
 
-                           <Eye props={passwordEye} onClick={onChangeEye}/>
+                           <Eye props={passwordEye} onClick={onChangeEye} offset={302}/>
 
-                           <button className="sign__submit" type="submit">Sign In</button>
+                           <button className="sign__submit sign__submit-in" type="submit">Sign In</button>
                         </Form>
                      </Formik>
 
-                  <div className="sign__question">
+                  <div className="sign__question sign__question-in">
                      <h3 className="sign__question-text">Don`t have account yet?</h3>
-                     <button className="sign__question-link">New Account</button>
+                     <Link  to="/sign-up">
+                        <button className="sign__question-link">Go to Sign up</button>
+                     </Link>
                   </div>
                </div>
             </div>
@@ -91,17 +97,6 @@ const AppSignIn = () => {
    )
 }
 
-const Eye = ({props, onClick}) => {
-   const style = {
-      position: "absolute",
-      top: "305px",
-      left: "320px",
-      transform: "scale(1.4)"
-   }
-   return(
-      props ?  <AiOutlineEye style={style} onClick={onClick} /> : 
-               <AiOutlineEyeInvisible style={style} onClick={onClick}/>
-   )
-}
+
 
 export default AppSignIn;
