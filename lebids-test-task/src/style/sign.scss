@@ -1,0 +1,124 @@
+@import "fonts.scss";
+@import "_mixins.scss";
+
+.sign{
+   color: #FFFFFF;
+   position:absolute; 
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   
+
+   
+   &__wrapper{
+      min-width: 330px;
+      
+   }
+
+   &__inner{
+      max-width: 330px;
+      height: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      padding-top: 50px;
+   }
+
+   &__title{
+      font-family: Montserrat-Bold;
+      font-size: 56px;
+      line-height: 150%;
+      color: #FFFFFF;
+      @include reset-model
+   }
+
+   &__form{
+      display: flex;
+      flex-direction: column;
+   }
+
+   &__fwrapper{
+      @include reset-model;
+      position: relative;
+   }
+
+   &__field{
+      font-family: Montserrat-Regular;
+      font-size: 14px;
+      line-height: 155%;
+      color: #FFFFFF;
+      position: relative;
+      margin-top: 30px;
+      &::after{
+         content: "";
+         width: 330px;
+         height: 1px;
+         background-color: #FFFFFF;
+         display: block;
+         position: absolute;
+         top: 60px;
+         left: 0px;
+      }
+
+      
+
+      &-error{
+         position: absolute;
+         top: 90px;
+         font-family: Montserrat-SemiBold;
+         font-size: 14px;
+         line-height: 155%;
+         color: #DC143C;
+      }
+   }
+
+
+   &__pass{
+         &-input-stars{
+            font-family: Pass;
+            font-size: 12px;
+         }
+
+         &-input-text{
+            font-family: Montserrat-Regular;
+            font-size: 14px;
+            line-height: 155%;
+            color: #FFFFFF;
+         }
+   }
+
+   &__question{
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+   
+   }
+
+   &__submit{
+      @include reset-button;
+      margin-top: 50px;
+      height: 44px;
+      background-color: #539713;
+      color: #FFFFFF;
+      font-family: Montserrat-SemiBold;
+      font-size: 16px;
+      line-height: 155%;
+   }
+
+   &__question-text{
+      font-family: Montserrat-Regular;
+      font-size: 12px;
+      line-height: 155%;
+      display: inline-block;
+      margin-right: 2px;
+   }
+
+   &__question-link{
+      @include reset-button;
+      color: #7FAAF0;
+      font-family: Montserrat-Regular;
+      font-size: 12px;
+      line-height: 155%;
+      margin-left: 2px;
+   }
+}
