@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 72px;
+  padding: 48px 48px 0;
+
+  &__company {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 150%;
+  }
+
+  &__spec {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 155%;
+    color: #539713;
+  }
+}

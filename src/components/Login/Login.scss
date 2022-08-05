@@ -1,0 +1,13 @@
+.login {
+  &__registration {
+    color: #F1F2F1;
+    font-size: 12px;
+    text-align: center;
+    line-height: 155%;
+
+    &--link {
+      text-decoration: none;
+      color: #7FAAF0;
+    }
+  }
+}
