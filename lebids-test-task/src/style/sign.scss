@@ -77,6 +77,7 @@
 
       &-error{
          position: absolute;
+         width: 330px;
          top: 90px;
          font-family: Montserrat-SemiBold;
          font-size: 14px;
@@ -127,6 +128,23 @@
       &-in{
          top: 230px;
       }
+   }
+
+   &__success{
+      font-family: Montserrat-SemiBold;
+      font-size: 18px;
+      line-height: 155%;
+      color: #32CD32;
+      position: absolute;
+   }
+
+   &__already-reg{
+      font-family: Montserrat-SemiBold;
+      font-size: 18px;
+      line-height: 155%;
+      color: #DC143C;
+      position: absolute;
+      width: 300px;
    }
 
    &__question{

@@ -4,6 +4,7 @@ import AppHeader from "./AppHeader";
 import AppMain from "./Main";
 import AppSignIn from "./SignIn";
 import AppSignUp from "./SignUp";
+import NotFoundPage from "./NotFoundPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Route path="/main" element={<AppMain/>}/>
               <Route path="/" element={<AppSignIn/>}/>
               <Route path="/sign-up" element={<AppSignUp/>}/>
+              <Route path="*" element={<NotFoundPage/>}/>
             </Routes>
         </div>
     </Router>
