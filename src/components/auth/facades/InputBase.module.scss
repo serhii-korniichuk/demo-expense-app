@@ -1,0 +1,47 @@
+.inputBase {
+  margin-top: 24px;
+  position: relative;
+
+  label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 155%;
+    color: #FFF;
+  }
+
+  input {
+    background: #1D283A;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #FFF;
+    padding: 2.5px 0 6.5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 155%;
+    color: #FFF;
+    opacity: 0.7;
+  }
+
+  img {
+    position: absolute;
+    right: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  ::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 155%;
+    color: #FFF;
+    opacity: 0.7;
+  }
+}
+
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
