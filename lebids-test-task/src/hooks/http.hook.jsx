@@ -10,7 +10,7 @@ function useHttp() {
       const timer = setTimeout(() => {
          setBadResponse(null);
          setGlobalError(false);
-      }, 20 -00);
+      }, 2000);
 
       return () => {
          clearTimeout(timer);

@@ -19,7 +19,7 @@ const useFormContent = () => {
       } else if (badResponse == 401) {
          message = ["WRONG PASSWORD", 80]
       } else if (globalError) {
-         message = ["SOMETHINK GOES WRONG", 54]
+         message = ["SOMETHING GOES WRONG", 54]
       }
       return message;
    }

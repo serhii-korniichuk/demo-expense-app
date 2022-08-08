@@ -34,7 +34,7 @@ const AppMain = () => {
    }    
 
    const errorContent = outError ? 
-      <div className="sign__already-reg" style={{top: "260px", left: "140px"}}>SOMETHINK GOES WRONG</div> : null;
+      <div className="sign__already-reg" style={{top: "260px", left: "140px"}}>SOMETHING GOES WRONG</div> : null;
    const spinner = loading ? <Spinner top={"189px"} left={"230px"}/> : null;
    
    return (
