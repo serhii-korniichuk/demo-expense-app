@@ -34,23 +34,48 @@
     &__label {
         margin-bottom: 24px;
         line-height: 21.7px;
+        border-bottom: 1px solid white;
     }
 
     &__input {
-        display: block;
+        width: 90%;
         font-size: 16px;
         background-color: #1D283A;
-        width: 100%;
         border: 0px;
-        border-bottom: 1px solid white;
         line-height: 24.8px;
         padding: 5.5px 0 10px;
         color: white;
+        transition: transform 0.3s;
+
+        &:focus {
+            outline: 0;
+        }
+
+        &:hover {
+            transform: scale(0.97);
+        }
+
+        &:focus::placeholder {
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
 
         &::placeholder { 
             color: white;
             opacity: 0.7; 
           }
+    }
+
+    &__toggler {
+        margin-left: 10px;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 
     &__submit {
@@ -63,6 +88,11 @@
         border: 0;
         box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
         cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #7FAAF0;
+        }
     }
 
     &__footer {

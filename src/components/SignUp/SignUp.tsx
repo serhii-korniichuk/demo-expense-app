@@ -2,6 +2,8 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import { register } from '../../api/api';
 import { Pages } from '../Auth/Auth';
 import '../Auth/Auth.scss';
+import eyeOff from '../../img/eyeOff.svg'
+import eyeOn from '../../img/eyeOn.svg';
 
 type Props = {
     setCurrentPage: Dispatch<SetStateAction<Pages>>;
@@ -12,25 +14,41 @@ const SignUp: React.FC<Props> = ({ setCurrentPage }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirm, setConfirm] = useState('');
+    const [eye, setEye] = useState(eyeOff);
+    const [passwordType, setPasswordType] = useState('password');
 
     const changePage = () => {
         setCurrentPage(Pages.SignIn);
     }
 
+    const changeVisibility = () => {
+        if (eye === eyeOff) {
+            setEye(eyeOn);
+            setPasswordType('text');
+        } else {
+            setEye(eyeOff);
+            setPasswordType('password');
+        }
+    };
+
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        const result = register(password,username,fullName);
+        if (password !== confirm) {
+            alert('Password does not match confirmed password');
+        } else {
+            const result = register(password, username, fullName);
 
-        result.then(response => {
-            if (response.ok) {
-                setCurrentPage(Pages.SignIn);
-            } else {
-                response.json().then(error => {
-                    alert(error.message);
-                })
-            }
-        });
+            result.then(response => {
+                if (response.ok) {
+                    setCurrentPage(Pages.SignIn);
+                } else {
+                    response.json().then(error => {
+                        alert(error.message);
+                    })
+                }
+            });
+        }
     }
 
     return (
@@ -67,7 +85,7 @@ const SignUp: React.FC<Props> = ({ setCurrentPage }) => {
                 <label className='Form__label'>
                     Password
                     <input
-                        type="password"
+                        type={passwordType}
                         name="password"
                         className='Form__input'
                         placeholder='***************'
@@ -75,11 +93,16 @@ const SignUp: React.FC<Props> = ({ setCurrentPage }) => {
                         onChange={event => { setPassword(event.target.value) }}
                         required
                     />
+                    <img
+                        src={eye}
+                        className='Form__toggler'
+                        onClick={changeVisibility}
+                    />
                 </label>
                 <label className='Form__label'>
                     Confirm password
                     <input
-                        type="password"
+                        type={passwordType}
                         name="confirm"
                         className='Form__input'
                         placeholder='***************'
@@ -87,16 +110,21 @@ const SignUp: React.FC<Props> = ({ setCurrentPage }) => {
                         onChange={event => { setConfirm(event.target.value) }}
                         required
                     />
+                    <img
+                        src={eye}
+                        className='Form__toggler'
+                        onClick={changeVisibility}
+                    />
                 </label>
                 <input
                     type="submit"
                     value="Sign Up"
                     className='Form__submit'
                 />
-                <span className='Form__footer'>I have an account.&nbsp;  
-                    <a 
-                      className='Form__link'
-                      onClick={changePage}
+                <span className='Form__footer'>I have an account.&nbsp;
+                    <a
+                        className='Form__link'
+                        onClick={changePage}
                     >
                         Go to Sign in
                     </a>

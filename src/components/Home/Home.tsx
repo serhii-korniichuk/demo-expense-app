@@ -1,25 +1,23 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import title from '../../img/title.svg';
 import footer from '../../img/footer.svg';
 import './Home.scss';
 import { logout } from '../../api/api';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-type ContextType = {
-  setIsAuthorized: Dispatch<SetStateAction<boolean>>;
-};
+// type ContextType = {
+//   setIsAuthorized: Dispatch<SetStateAction<boolean>>;
+// };
 
 // const navigate = useNavigate();
 
 const Home: React.FC = () => {
   // const { setIsAuthorized } = useOutletContext<ContextType>();
 
-  // const handleLogout = () => {
-  //   const response = logout();
-  //   console.log(response);
-  //   setIsAuthorized(false);
-  //   navigate('/auth');
-  // };
+  const handleLogout = () => {
+    // navigate('/auth');
+    console.log('Logout!');
+  };
 
   return (
     <div className='Home'>
@@ -32,7 +30,7 @@ const Home: React.FC = () => {
 
       <button 
         className='Home__button'
-        // onClick={handleLogout}
+        onClick={handleLogout}
       >
         See You
       </button>
