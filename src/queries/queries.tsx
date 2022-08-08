@@ -5,7 +5,6 @@ export const urlSignUp = "/register";
 export const urlSignIn = "/login";
 export const urlLogout = "/logout";
 
-const baseURL = "https://incode-backend-dev.herokuapp.com/auth/logout";
 axios.defaults.baseURL = "https://incode-backend-dev.herokuapp.com/auth";
 
 export const getNewUser = async (values: FormValues) => {
@@ -32,29 +31,10 @@ export const authExistUser = async (values: Omit<FormValues, "displayName">) => 
   }
 };
 
-// don't work with axios possible due cors
-// export const logoutCurrUser = async () => {
-//   try {
-//     const response = await axios.get(urlLogout);
-
-//     return response.data;
-//   } catch (error) {
-//     // eslint-disable-next-line no-console
-//     console.error(error);
-//     throw error;
-//   }
-// };
-
 export const logoutCurrUser = async () => {
-  try {
-    const response = await fetch(baseURL, {
-      method: "GET",
-    });
-
-    return response.json();
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
-    throw error;
-  }
+  await axios.get(urlLogout, {
+    validateStatus(status) {
+      return status === 401;
+    },
+  });
 };
