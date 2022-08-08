@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import './variables/variables.scss';
 
 body {
-  background-color: #1D283A;
-  color: white;
+  background-color: $backgroundColor;
+  color: $fontColor;
   font-family: 'Montserrat', sans-serif;
 }
 
 .App {
   &__logo {
     width: 134px;
-    margin: 40px 0 0 48px;
+    margin: 40px 0 72px 48px;
+
+    @media (min-width: 1024px) {
+      margin-bottom: 0;
+    }
   }
 }
-

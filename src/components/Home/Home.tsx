@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import title from '../../img/title.svg';
 import footer from '../../img/footer.svg';
 import './Home.scss';
 import { logout } from '../../api/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 
-// type ContextType = {
-//   setIsAuthorized: Dispatch<SetStateAction<boolean>>;
-// };
-
-// const navigate = useNavigate();
+type ContextType = {
+  setIsAuthorized: Dispatch<SetStateAction<boolean>>;
+};
 
 const Home: React.FC = () => {
-  // const { setIsAuthorized } = useOutletContext<ContextType>();
+  const navigate = useNavigate();
+
+  const { setIsAuthorized } = useOutletContext<ContextType>();
 
   const handleLogout = () => {
-    // navigate('/auth');
-    console.log('Logout!');
+    logout().then(response => {
+      if (response.ok) {
+        setIsAuthorized(false);
+        navigate('/auth');
+      } else {
+          response.json().then(error => {
+          alert(error.message);
+        })
+      }
+    });
   };
 
   return (
@@ -24,11 +32,11 @@ const Home: React.FC = () => {
       <img src={title} className='Home__title' />
 
       <p className='Home__text'>
-        Now you are on the main page. Soon we will provide <br/>
+        Now you are on the main page. Soon we will provide <br />
         you with detailed feedback on the result of your work
       </p>
 
-      <button 
+      <button
         className='Home__button'
         onClick={handleLogout}
       >

@@ -1,28 +1,57 @@
+@import '../../variables/variables.scss';
+
 .Home {
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    &__title {
+        margin-bottom: 48px;
+        width: 300px;
+        transform: translateX(10%);
+
+        @media (min-width: 1024px) {
+            width: 626px;
+        }
+    }
+
     &__text {
-        width: fit-content;
-        font-size: 16px;
+        margin-bottom: 48px;
+        width: 300px;
+        font-size: 13px;
         font-weight: 600;
+        text-align: center;
+
+        @media (min-width: 1024px) {
+            width: 466px;
+            font-size: 16px;
+        }
     }
 
     &__button {
+        margin-bottom: 72px;
         width: 98px;
         height: 44px;
         font-size: 16px;
         font-weight: 600;
-        color: white;
+        color: $fontColor;
         border: 0;
         background-color: #539713;
-        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+        box-shadow: $boxShadow;
         cursor: pointer;
         transition: background-color 0.3s;
 
         &:hover {
-            background-color: #7FAAF0;
+            background-color: $linkColor;
+        }
+    }
+
+    &__footer {
+        margin-bottom: 40px;
+        width: 300px;
+
+        @media (min-width: 1024px) {
+            width: 340px;
         }
     }
 }
