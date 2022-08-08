@@ -1,7 +1,8 @@
-import { Box, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField } from '@mui/material'
+import { Box, FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLabel, TextField, Typography } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import React from 'react'
 import SubmitButton from './SubmitButton';
+import ErrorAlert from '../ErrorAlert';
 
 
 interface State {
@@ -36,10 +37,18 @@ const RegisterForm: React.FC = () => {
     event.preventDefault();
   };
 
+  const validationPasswordLenght = (): boolean => {
+    return !!values.password && values.password.length <= 7;
+  }
+
+  const validationEmail = (): boolean => {
+    const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return values.email && !regExp.test(values.email) ? true : false
+  }
+
   return (
     <Box component="form" >
       <TextField
-        margin="dense"
         value={values.displayName}
         onChange={handleChange('displayName')}
         required
@@ -51,6 +60,7 @@ const RegisterForm: React.FC = () => {
         name="displayName"
         autoFocus
         sx={{
+          marginBottom: '22px',
           input: {
             color: "white",
           },
@@ -60,7 +70,6 @@ const RegisterForm: React.FC = () => {
         }}
       />
       <TextField
-        margin="dense"
         value={values.username}
         onChange={handleChange('username')}
         required
@@ -72,6 +81,7 @@ const RegisterForm: React.FC = () => {
         name="username"
         autoFocus
         sx={{
+          marginBottom: '22px',
           input: {
             color: "white",
           },
@@ -81,8 +91,9 @@ const RegisterForm: React.FC = () => {
         }}
       />
       <TextField
-        margin="dense"
         value={values.email}
+        error={validationEmail()}
+        helperText={validationEmail() ? "Please, enter correct email" : "."}
         onChange={handleChange('email')}
         required
         fullWidth
@@ -101,7 +112,7 @@ const RegisterForm: React.FC = () => {
           },
         }}
       />
-      <FormControl margin="dense" fullWidth required variant="standard" sx={{
+      <FormControl  fullWidth required variant="standard" sx={{
         color: 'white'
       }} >
         <InputLabel sx={{
@@ -132,8 +143,10 @@ const RegisterForm: React.FC = () => {
             </InputAdornment>
           }
         />
+        {validationPasswordLenght() ? <FormHelperText error id="password-error">{"Password should be at least 8 characters"}</FormHelperText> : <FormHelperText >{"."}</FormHelperText>}
       </FormControl>
       <SubmitButton userData={values}>Sign Up</SubmitButton>
+      <ErrorAlert></ErrorAlert>
     </Box>
   )
 }

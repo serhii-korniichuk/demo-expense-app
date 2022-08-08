@@ -2,6 +2,7 @@ import { Box, FormControl, IconButton, Input, InputAdornment, InputLabel, TextFi
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import React from 'react'
 import SubmitButton from './SubmitButton';
+import ErrorAlert from '../ErrorAlert';
 
 interface State {
   password: string;
@@ -9,7 +10,6 @@ interface State {
   username: string;
   displayName: string;
 }
-
 
 const SignInForm: React.FC = () => {
   const [values, setValues] = React.useState<State>({
@@ -35,10 +35,8 @@ const SignInForm: React.FC = () => {
   };
 
   return (
-
     <Box component="form" >
       <TextField
-        margin="dense"
         value={values.username}
         onChange={handleChange('username')}
         required
@@ -50,6 +48,7 @@ const SignInForm: React.FC = () => {
         name="username"
         autoFocus
         sx={{
+          marginBottom: '20px',
           input: {
             color: "white",
           },
@@ -58,9 +57,7 @@ const SignInForm: React.FC = () => {
           },
         }}
       />
-      <FormControl margin="dense" fullWidth required variant="standard" sx={{
-        color: 'pink'
-      }} >
+      <FormControl fullWidth required variant="standard" sx={{color: 'pink'}} >
         <InputLabel sx={{
           color: 'white'
         }} htmlFor="standart-adornment-password">Password</InputLabel>
@@ -91,6 +88,7 @@ const SignInForm: React.FC = () => {
         />
       </FormControl>
       <SubmitButton userData={values}>Sign In</SubmitButton>
+      <ErrorAlert></ErrorAlert>
     </Box>
   )
 }

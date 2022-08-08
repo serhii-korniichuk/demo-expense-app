@@ -2,14 +2,12 @@ import { Container, Link, Typography } from '@mui/material'
 import React, { useContext } from 'react'
 import { Context } from '../../..';
 
-
-
-const LoginFooter:React.FC = () => {
+const LoginFooter: React.FC = () => {
   const { store } = useContext(Context);
 
-
   const handleChange = (): void => {
-    store.setIsNeedRegister(true)
+    store.setIsNeedRegister(true);
+    store.errorResponse = null;
   }
 
   return (

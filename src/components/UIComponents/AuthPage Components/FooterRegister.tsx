@@ -2,14 +2,11 @@ import { Container, Link, Typography } from '@mui/material';
 import React, { useContext } from 'react'
 import { Context } from '../../..';
 
-
-
 const FooterRegister:React.FC = () => {
   const { store } = useContext(Context);
-
-
   const handleChange = (): void => {
     store.setIsNeedRegister(false)
+    store.errorResponse = null;
   }
 
   return (
@@ -24,7 +21,7 @@ const FooterRegister:React.FC = () => {
         }}
       >I have an account. 
         <Link
-          sx={{ color: '#7FAAF0', cursor: 'pointer', ml: '5px' }}
+          sx={{ color: '#7FAAF0', cursor: 'pointer', ml: '5px', mb: '200px' }}
           onClick={handleChange}
           underline="none"
         > Go to Sign in

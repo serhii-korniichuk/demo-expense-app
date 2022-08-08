@@ -10,9 +10,9 @@ interface ErrorResponse {
 }
 
 export default class Store {
-
+  isLoading = false;
   isAuth = false;
-  errorResponse: ErrorResponse | any = {};
+  errorResponse: ErrorResponse | any = null;
   isNeedRegister = false;
 
   constructor() {
@@ -27,30 +27,40 @@ export default class Store {
     this.isAuth = bool;
   }
 
+  setIsLoading (bool:boolean) {
+    this.isLoading = bool;
+  }
+
   async login(username: string, password: string) {
     try {
+      this.setIsLoading(true);
       const response = await AuthService.login(username, password);
       console.log(response);
       localStorage.setItem('token', response.data.accessToken);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       this.setAuth(true);
+      this.setIsLoading(false)
     } catch (error) {
       const err = error as AxiosError;
       this.errorResponse = err.response?.data;
       console.log(err.response?.data)
+      this.setIsLoading(false)
     }
   }
 
   async register(username: string, password: string, displayName: string) {
     try {
+      this.setIsLoading(true);
       const response = await AuthService.register(username, password, displayName);
       console.log(response);
       localStorage.setItem('token', response.data.accessToken);
       this.setAuth(true);
+      this.setIsLoading(false);
     } catch (error) {
       const err = error as AxiosError
       this.errorResponse = err.response?.data;
       console.log(err.response?.data)
+      this.setIsLoading(false);
     }
   }
 
@@ -59,7 +69,6 @@ export default class Store {
       localStorage.removeItem('token');
       localStorage.removeItem('refreshToken')
       this.setAuth(false);
-
     } catch (error) {
       const err = error as AxiosError
       console.log(err)

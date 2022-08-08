@@ -1,12 +1,15 @@
 import { Button } from "@mui/material"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../..";
+import { useNavigate } from "react-router-dom";
 
 
 const LogoutButton:React.FC = () => {
   const { store } = useContext(Context);
+  let navigate = useNavigate();
   const logout = (): void => {
     store.logout();
+    navigate('/auth')
   }
 
   return (

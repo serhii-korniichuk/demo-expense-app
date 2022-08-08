@@ -12,7 +12,6 @@ import {observer} from 'mobx-react-lite'
   const {store} = useContext(Context);
   
   useEffect(() => {
-    //якщо перезавантажити сторінку, то динаміно не змінюється інтерфейс після логіну або логуату
     if (localStorage.getItem('token') || store.isAuth) {
       setLoggedUser(true)
     } else if (!localStorage.getItem('token') || !store.isAuth) {

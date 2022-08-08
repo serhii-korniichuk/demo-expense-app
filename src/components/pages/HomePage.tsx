@@ -31,4 +31,4 @@ const HomePage:React.FC = () => {
   )
 }
 
-export default observer(HomePage) 
+export default observer(HomePage)
