@@ -1,7 +1,6 @@
 import React, {
   FC,
   useCallback,
-  useEffect,
   useState,
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -91,7 +90,7 @@ export const Form: FC = () => {
       switch (true) {
         case !!data.accessToken:
           actions.resetForm();
-          navigate("/login");
+          navigate("/");
           break;
 
         case data.statusCode === 401:
@@ -104,7 +103,6 @@ export const Form: FC = () => {
 
         default:
           setErrorMessage(data.message);
-          navigate("/signin");
       }
 
       setIsLoading(false);
@@ -132,19 +130,6 @@ export const Form: FC = () => {
     },
     [location],
   );
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    if (location.pathname !== "/signup" && !accessToken) {
-      navigate("/signin");
-      return;
-    }
-
-    if (location.pathname !== "/login" && accessToken) {
-      navigate("/login");
-    }
-  }, []);
 
   return (
     <section className="form">

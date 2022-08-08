@@ -7,8 +7,6 @@ import "./UserPage.scss";
 import image from "../../images/vector.png";
 
 export const UserPage: React.FC = () => {
-  const accessToken = localStorage.getItem("accessToken");
-
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,52 +29,25 @@ export const UserPage: React.FC = () => {
 
   return (
     <section className="page">
-      {accessToken && (
-        <>
-          <h1 className="page__title">
-            Congratulations!
-          </h1>
-          <p className="page__paragraph">
-            Now you are on the main page. Soon we will provide you
-            with detailed feedback on the result of your work
-          </p>
-          <ThemeProvider theme={muiButtonTheme}>
-            <Button
-              variant="contained"
-              type="submit"
-              id="signUp"
-              disabled={isLoading}
-              onClick={() => logout()}
-              sx={{ width: "fit-content" }}
-            >
-              Logout!
-            </Button>
-          </ThemeProvider>
-        </>
-      )}
-
-      {!accessToken && (
-        <>
-          <h1 className="page__title">
-            Access denied!
-          </h1>
-          <p className="page__paragraph">
-            Please log in.
-          </p>
-          <ThemeProvider theme={muiButtonTheme}>
-            <Button
-              variant="contained"
-              type="submit"
-              id="signUp"
-              disabled={isLoading}
-              onClick={() => logout()}
-              sx={{ width: "fit-content" }}
-            >
-              Back to home page
-            </Button>
-          </ThemeProvider>
-        </>
-      )}
+      <h1 className="page__title">
+        Congratulations!
+      </h1>
+      <p className="page__paragraph">
+        Now you are on the main page. Soon we will provide you
+        with detailed feedback on the result of your work
+      </p>
+      <ThemeProvider theme={muiButtonTheme}>
+        <Button
+          variant="contained"
+          type="submit"
+          id="signUp"
+          disabled={isLoading}
+          onClick={() => logout()}
+          sx={{ width: "fit-content" }}
+        >
+          Logout!
+        </Button>
+      </ThemeProvider>
 
       <img
         className="page__image"
