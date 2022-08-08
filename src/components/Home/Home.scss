@@ -1,0 +1,23 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__text {
+        width: fit-content;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    &__button {
+        width: 98px;
+        height: 44px;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        border: 0;
+        background-color: #539713;
+        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+    }
+}

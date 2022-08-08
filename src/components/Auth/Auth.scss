@@ -1,0 +1,79 @@
+// .Auth {
+//     &__signUp {
+//         border: 1px solid white;
+//     }
+// }
+
+// .SignUp {
+//     &__form {
+//         margin: 0 auto;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: flex-end;
+//         gap: 30px;
+//     }
+// }
+
+.Form {
+    margin: 0 auto;
+    padding: 0 48px 48px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 14px;
+    width: 424px;
+    // border: 1px solid white;
+    box-sizing: border-box;
+
+    &__title {
+        font-weight: 700;
+        font-size: 56px;
+        margin: 0 0 48px;
+    }
+
+    &__label {
+        margin-bottom: 24px;
+        line-height: 21.7px;
+    }
+
+    &__input {
+        display: block;
+        font-size: 16px;
+        background-color: #1D283A;
+        width: 100%;
+        border: 0px;
+        border-bottom: 1px solid white;
+        line-height: 24.8px;
+        padding: 5.5px 0 10px;
+        color: white;
+
+        &::placeholder { 
+            color: white;
+            opacity: 0.7; 
+          }
+    }
+
+    &__submit {
+        height: 44px;
+        margin-bottom: 24px;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: #539713;
+        color: white;
+        border: 0;
+        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+    }
+
+    &__footer {
+        font-size: 12px;
+        font-weight: 400;
+        color: #F1F2F1;
+        align-self: center;
+    }
+
+    &__link {
+        color: #7FAAF0;
+        cursor: pointer;
+    }
+}
