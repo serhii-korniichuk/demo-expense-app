@@ -23,7 +23,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-top: 50px;
+      padding-top: 30px;
    }
 
    &__title{
@@ -47,7 +47,7 @@
 
    &__fwrapper-lup{
       position: absolute;
-      top: 405px;
+      top: 395px;
    }
 
    &__fwrapper-lin{
@@ -128,6 +128,10 @@
       &-in{
          top: 230px;
       }
+   }
+
+   &__submit:hover{
+      background-color: #478010;
    }
 
    &__success{

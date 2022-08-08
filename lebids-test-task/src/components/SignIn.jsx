@@ -1,35 +1,34 @@
-import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage, useField } from "formik";
+import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import Service from "../services/Service";
+import TextInput from "./TextInput";
 import "../style/sign.scss";
-import Eye from "./Eye";
+import useFormContent from "../hooks/useFormContent";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const AppSignIn = () => {
-   const [passwordEye, setPasswordEye] = useState(false);
+   const {auth, setEyeParams, setUnderFormUiParams, passwordEye} = useFormContent();
+   const navigate = useNavigate();
+   const {signin} = useAuth();
 
-   const TextInput = ({label, isLast, ...props}) => {
-      const [field, meta] = useField(props);
-      return (
-          <>
-               <div className={`sign__fwrapper ${JSON.parse(isLast) ? "sign__fwrapper-lin" : null}`}>
-                  <h2 className="sign__field">{label}</h2>
-                  <input {...props} {...field}/>
-                  {meta.touched && meta.error ? (
-                     <div className="sign__field-error">{meta.error}</div>
-                  ) : null}
-               </div>
-          </>
-      )
-   };
 
-   const onChangeEye = () => {
-      setPasswordEye(!passwordEye);
-    };
+   const setAccess = (data) => {
+      localStorage.setItem("user", data.accessToken)
+      signin(data.accessToken, () => navigate("/main", {replace: true}))
+   }
 
-   const { auth } = Service();
+   const onLoading = (data) => {
+   auth(JSON.stringify(data, ["username", 'password'], 2))
+            .then(setAccess)
+         }
 
+   const content = setUnderFormUiParams('sign__submit', "Sign In", 355, 140, 370, 370, 125, 235);
+   const eye = setEyeParams(298);
+
+   
    return (
       <section className="sign sign-in">
          <div className="container">
@@ -39,50 +38,46 @@ const AppSignIn = () => {
                      SIGN IN
                   </h1>
                      <Formik
-                     initialValues={{
-                        username: "",
-                        password: "",
-                     }}
-                     validationSchema= {Yup.object({
-                        username: Yup.string()
-                                    .min(3, "minimum 3 characters")
-                                    .required("required field"),
-                                    password: Yup.string()
-                                    .required('no password provided') 
-                                    .min(8, 'password is too short - should be 8 chars min')
-                                    .matches(/[a-zA-Z]/, 'password can only contain latin letters'),
-                        })}
-                    onSubmit= {values => auth(JSON.stringify(values, ['password', "username"], 2))
-                    }>
-                        <Form className="sign__form ">
+                        initialValues={{
+                           username: "",
+                           password: "",
+                        }}
 
+                        validationSchema= {Yup.object({
+                           username: Yup.string()
+                                       .min(3, "minimum 3 characters")
+                                       .required("required field"),
+                                       password: Yup.string()
+                                       .required('required') 
+                                       .min(8, 'password is too short - should be 8 chars min.')
+                                       .matches(/[a-zA-Z]/, 'password should contain latin letters'),
+                           })}
+
+                         onSubmit= {values => onLoading(values)}>
+
+                        <Form className="sign__form ">
                            <TextInput
                               label="User Name"
                               isLast="false"
+                              clz="lin"
                               type="text" 
                               placeholder="Example123"
-                              id="username"
                               name="username" 
-                              autoComplete="off"
                               size="35"/>
                            
                            <TextInput
                               label="Password"
                               isLast="true"
+                              clz="lin"
                               placeholder={passwordEye ? null : "**********"}
-                              id="password"
                               name="password" 
                               className={`sign__pass-${passwordEye ? "input-text" : "input-stars"}`} 
                               type={passwordEye === false ? "password" : "text"} 
-                              autoComplete="off"
                               size="40"/>
-
-                           <Eye props={passwordEye} onClick={onChangeEye} offset={302}/>
-
-                           <button className="sign__submit sign__submit-in" type="submit">Sign In</button>
+                           {eye}
+                           {content}
                         </Form>
                      </Formik>
-
                   <div className="sign__question sign__question-in">
                      <h3 className="sign__question-text">Don`t have account yet?</h3>
                      <Link  to="/sign-up">
@@ -96,7 +91,5 @@ const AppSignIn = () => {
 
    )
 }
-
-
 
 export default AppSignIn;

@@ -5,20 +5,28 @@ import AppMain from "./Main";
 import AppSignIn from "./SignIn";
 import AppSignUp from "./SignUp";
 import NotFoundPage from "./NotFoundPage";
+import RequireAuth from "../hoc/RequireAuth";
+import { AuthProvider } from "../hoc/AuthProvider";
 
 function App() {
   return (
     <Router>
-        <div className="App">
-          <AppHeader/>
+      <div className="App">
+        <AppHeader/>
+          <AuthProvider>
             <Routes>
-              <Route path="/main" element={<AppMain/>}/>
+              <Route path="/main" element={
+                <RequireAuth>
+                  <AppMain/>
+                </RequireAuth>
+              }/>
               <Route path="/" element={<AppSignIn/>}/>
               <Route path="/sign-up" element={<AppSignUp/>}/>
               <Route path="*" element={<NotFoundPage/>}/>
             </Routes>
-        </div>
-    </Router>
+          </AuthProvider>
+      </div>
+     </Router>
   );
 }
 

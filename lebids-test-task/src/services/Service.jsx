@@ -1,48 +1,27 @@
-const Service = () => {
+import useHttp from "../hooks/http.hook";
+
+const useService = () => {
+   const {loading, request, badResponse, successResponse, clearError, globalError} = useHttp();
+
    const __apibase = "https://incode-backend-dev.herokuapp.com/";
 
    const auth = async (body) => {
-      console.log(body)
-      let res = await fetch(`${__apibase}auth/login`,  {
-         method: 'POST',
-         body: `${body}`, 
-         headers: {
-           'Content-Type': 'application/json'
-         }});
-
-      if (!res.ok) {
-         throw new Error(`Could not fetch ${__apibase}, status ${res.status}`);
-      }
-      return await res.json();
+      const res = await request(`${__apibase}auth/login`, "POST", body);
+      return res;
    }
 
    const reg = async (body) => {
-      console.log(body)
-      let res = await fetch(`${__apibase}auth/register`,  {
-         method: 'POST',
-         body: `${body}`, 
-         headers: {
-           'Content-Type': 'application/json'
-         }});
-
-      if (!res.ok) {
-         throw new Error(`Could not fetch ${__apibase}, status ${res.status}`);
-      }
-      return await res.json();
+      const res = await request(`${__apibase}auth/register`, "POST", body);
+      return res;
    }
 
    const logout = async () => {
-      let res = await fetch(`${__apibase}auth/logout`,  {
-         method: 'GET'
-      });
-
-      if (!res.ok) {
-         throw new Error(`Could not fetch ${__apibase}, status ${res.status}`);
-      }
-      return await res.json();
+      console.log("!!!")
+      const res = await request(`${__apibase}auth/logout`, "GET");
+      return res;
    }
 
-   return {reg, auth, logout}
+   return {reg, auth, logout, loading, badResponse, successResponse, clearError, globalError};
 }
 
-export default Service
+export default useService;
