@@ -16,6 +16,7 @@ const AppMain = () => {
    
 
    const cancelAccess = () => {
+      console.log("cancel")
       setLoading(false);
       localStorage.removeItem("name");
       signout(() => navigate("/", {replace: true}))
@@ -27,10 +28,11 @@ const AppMain = () => {
    }
 
    const onLoading= () => {
+      console.log(localStorage.getItem("user"))
       setLoading(true)
-         logout()
+         logout(localStorage.getItem("user"))
             .then(cancelAccess)
-            .catch(onError)
+            .catch(e => console.log(e))
    }    
 
    const errorContent = outError ? 

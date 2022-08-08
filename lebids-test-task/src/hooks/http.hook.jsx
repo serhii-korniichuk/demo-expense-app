@@ -17,7 +17,9 @@ function useHttp() {
       }
    },[badResponse, globalError])
 
-   const request = useCallback(async (url, method, body = null, headers ={ 'Content-Type': 'application/json'}) => {
+   const request = useCallback(async (url, method, body = null, headers = { 
+                              'Content-Type': 'application/json'
+                              }) => {
       setLoading(true);
   
       try {
@@ -28,12 +30,15 @@ function useHttp() {
             throw new Error(`Could not fetch ${url}, status ${response.status}`)
          }
 
-         const data = await response.json();
-
-         setLoading(false);
-         setSuccessResponse(true);
+         if (method === "POST") {
+            const data = await response.json();
+            setLoading(false);
+            setSuccessResponse(true);
          
          return data;
+         }
+
+         
 
       } catch(e) {
          setLoading(false);

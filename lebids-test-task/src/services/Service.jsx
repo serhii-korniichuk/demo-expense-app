@@ -15,9 +15,12 @@ const useService = () => {
       return res;
    }
 
-   const logout = async () => {
+   const logout = async (token) => {
+      console.log(typeof(token))
       console.log("!!!")
-      const res = await request(`${__apibase}auth/logout`, "GET");
+      const res = await request(`${__apibase}auth/logout`, "GET", null, { 
+         'Content-Type': 'application/json',
+         "Authorization": `Bearer ${token}`});
       return res;
    }
 
