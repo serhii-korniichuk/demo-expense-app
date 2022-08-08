@@ -18,7 +18,7 @@ const AppMain = () => {
    const cancelAccess = () => {
       console.log("cancel")
       setLoading(false);
-      localStorage.removeItem("name");
+      localStorage.removeItem("user");
       signout(() => navigate("/", {replace: true}))
    }
 
