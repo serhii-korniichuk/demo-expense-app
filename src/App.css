@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Petit+Formal+Script&display=swap');
+
+.App {
+  background: #1D283A;
+  padding: 48px;
+ 
+
+ 
+}
+
+.logo {
+  width: 134px;
+  height: 79px;
+ 
+
+}
+
+@media (min-width: 768px) {
+  .App {
+      padding: 48px 60px;
+  }
+}
+
+
+
+
