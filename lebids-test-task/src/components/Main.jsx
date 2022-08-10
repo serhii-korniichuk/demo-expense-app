@@ -16,7 +16,6 @@ const AppMain = () => {
 
 
    const cancelAccess = () => {
-      console.log("cancel")
       setLoading(false);
       localStorage.removeItem("user");
       signout(() => navigate("/", { replace: true }))
@@ -28,7 +27,6 @@ const AppMain = () => {
    }
 
    const onLoading = () => {
-      console.log(localStorage.getItem("user"))
       setLoading(true)
       logout(localStorage.getItem("user"))
          .then(cancelAccess)
