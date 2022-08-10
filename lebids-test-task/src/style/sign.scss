@@ -1,0 +1,178 @@
+@import "fonts.scss";
+@import "_mixins.scss";
+
+.sign{
+   color: #FFFFFF;
+   position:absolute; 
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+   &-in{
+      margin-top: 50px;
+   }
+   
+   &__wrapper{
+      min-width: 330px; 
+   }
+
+   &__inner{
+      max-width: 330px;
+      height: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 30px;
+   }
+
+   &__title{
+      font-family: Montserrat-Bold;
+      font-size: 56px;
+      line-height: 150%;
+      color: #FFFFFF;
+      @include reset-model
+   }
+
+   &__form{
+      display: flex;
+      flex-direction: column;
+      height: 432px; 
+   }
+
+   &__fwrapper{
+      @include reset-model;
+      position: relative;
+   }
+
+   &__fwrapper-lup{
+      position: absolute;
+      top: 395px;
+   }
+
+   &__fwrapper-lin{
+      position: absolute;
+      top: 235px;
+   }
+
+   &__field{
+      font-family: Montserrat-Regular;
+      font-size: 14px;
+      line-height: 155%;
+      color: #FFFFFF;
+      position: relative;
+      margin-top: 30px;
+      &::after{
+         content: "";
+         width: 330px;
+         height: 1px;
+         background-color: #FFFFFF;
+         display: block;
+         position: absolute;
+         top: 60px;
+         left: 0px;
+      }
+
+      
+
+      &-error{
+         position: absolute;
+         width: 330px;
+         top: 90px;
+         font-family: Montserrat-SemiBold;
+         font-size: 14px;
+         line-height: 155%;
+         color: #DC143C;
+      }
+   }
+
+
+   &__pass{
+
+         &-input-stars{
+            font-family: Pass;
+            font-size: 12px;
+         }
+
+         &-input-text{
+            font-family: Montserrat-Regular;
+            font-size: 16px;
+            line-height: 155%;
+            color: #FFFFFF;
+         }
+   }
+
+   &__question{
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+   
+   }
+
+   &__submit{
+      @include reset-button;
+      margin-top: 130px;
+      min-height: 44px;
+      background-color: #539713;
+      color: #FFFFFF;
+      font-family: Montserrat-SemiBold;
+      font-size: 16px;
+      line-height: 155%;
+      position: absolute;
+      width: 330px;
+      
+      &-up{
+         top: 395px;
+      }
+
+      &-in{
+         top: 230px;
+      }
+   }
+
+   &__submit:hover{
+      background-color: #478010;
+   }
+
+   &__success{
+      font-family: Montserrat-SemiBold;
+      font-size: 18px;
+      line-height: 155%;
+      color: #32CD32;
+      position: absolute;
+   }
+
+   &__already-reg{
+      font-family: Montserrat-SemiBold;
+      font-size: 18px;
+      line-height: 155%;
+      color: #DC143C;
+      position: absolute;
+      width: 300px;
+   }
+
+   &__question{
+      &-in{
+         position: relative;
+         top: -160px;
+      }
+      &-text{
+         font-family: Montserrat-Regular;
+         font-size: 12px;
+         line-height: 155%;
+         display: inline-block;
+         margin-right: 2px;
+      }
+
+      &-link{
+         @include reset-button;
+         color: #7FAAF0;
+         font-family: Montserrat-Regular;
+         font-size: 13px;
+         line-height: 155%;
+         margin-left: 2px;
+         position: relative;
+         top: 11.1px;
+      }
+   }
+}
