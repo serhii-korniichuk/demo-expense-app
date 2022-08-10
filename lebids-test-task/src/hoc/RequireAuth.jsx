@@ -1,12 +1,12 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth"
 
-const RequireAuth = ({children}) => {
+const RequireAuth = ({ children }) => {
 
-   const {user} = useAuth();
+   const { user } = useAuth();
 
    if (!user) {
-      return <Navigate to="/"/>
+      return <Navigate to="/" />
    }
 
    return children;

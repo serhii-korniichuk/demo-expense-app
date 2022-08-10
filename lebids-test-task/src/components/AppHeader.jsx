@@ -7,7 +7,7 @@ const AppHeader = () => {
          <div className="container">
             <div className="header__inner">
                <div className="header__logo">
-                  <img src={Logo} alt="Logo"/>
+                  <img src={Logo} alt="Logo" />
                </div>
             </div>
          </div>

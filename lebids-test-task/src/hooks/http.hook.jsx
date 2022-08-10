@@ -15,16 +15,16 @@ function useHttp() {
       return () => {
          clearTimeout(timer);
       }
-   },[badResponse, globalError])
+   }, [badResponse, globalError])
 
-   const request = useCallback(async (url, method, body = null, headers = { 
-                              'Content-Type': 'application/json'
-                              }) => {
+   const request = useCallback(async (url, method, body = null, headers = {
+      'Content-Type': 'application/json'
+   }) => {
       setLoading(true);
-  
+
       try {
-         const response = await fetch(url, {method, body, headers});
-         console.log(response)
+         const response = await fetch(url, { method, body, headers });
+
          if (!response.ok) {
             setBadResponse(response.status);
             throw new Error(`Could not fetch ${url}, status ${response.status}`)
@@ -34,13 +34,11 @@ function useHttp() {
             const data = await response.json();
             setLoading(false);
             setSuccessResponse(true);
-         
-         return data;
+
+            return data;
          }
 
-         
-
-      } catch(e) {
+      } catch (e) {
          setLoading(false);
          if (!badResponse) {
             setGlobalError(true)
@@ -48,10 +46,10 @@ function useHttp() {
          throw e;
       }
 
-   }, [])
+   }, [badResponse])
 
    const clearError = useCallback(() => setBadResponse(null), [])
-   return {loading, badResponse, successResponse, clearError, request, globalError}
+   return { loading, badResponse, successResponse, clearError, request, globalError }
 }
 
 export default useHttp;

@@ -1,7 +1,7 @@
 import useHttp from "../hooks/http.hook";
 
 const useService = () => {
-   const {loading, request, badResponse, successResponse, clearError, globalError} = useHttp();
+   const { loading, request, badResponse, successResponse, clearError, globalError } = useHttp();
 
    const __apibase = "https://incode-backend-dev.herokuapp.com/";
 
@@ -16,15 +16,14 @@ const useService = () => {
    }
 
    const logout = async (token) => {
-      console.log(typeof(token))
-      console.log("!!!")
-      const res = await request(`${__apibase}auth/logout`, "GET", null, { 
+      const res = await request(`${__apibase}auth/logout`, "GET", null, {
          'Content-Type': 'application/json',
-         "Authorization": `Bearer ${token}`});
+         "Authorization": `Bearer ${token}`
+      });
       return res;
    }
 
-   return {reg, auth, logout, loading, badResponse, successResponse, clearError, globalError};
+   return { reg, auth, logout, loading, badResponse, successResponse, clearError, globalError };
 }
 
 export default useService;
