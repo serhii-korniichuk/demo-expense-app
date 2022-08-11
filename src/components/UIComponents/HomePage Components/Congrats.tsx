@@ -1,6 +1,5 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import process from "process";
 
 
 const Congrats: React.FC = () => {
@@ -8,6 +7,7 @@ const Congrats: React.FC = () => {
     <Grid
       component='img'
       alt='Congratulations image'
+      // eslint-disable-next-line no-undef
       src={process.env.PUBLIC_URL + "/congratulations_image.png"}
       sx={{
         mt: "-25px",
