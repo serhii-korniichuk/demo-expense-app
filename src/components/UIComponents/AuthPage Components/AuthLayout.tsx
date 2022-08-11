@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
-import CssBaseline from '@mui/material/CssBaseline';
-import { Box, Container, Grid } from '@mui/material'
-import Logo from '../Logo';
+import React, { FC } from "react"
+import CssBaseline from "@mui/material/CssBaseline";
+import { Box, Grid } from "@mui/material"
+import Logo from "../Logo";
 
 
 interface Props {
@@ -15,20 +15,20 @@ const AuthLayout: FC<Props> = ({ children }: Props) => {
     <React.Fragment>
       <CssBaseline />
       <Grid container style={{
-        background: '#F1F2F1', 
-        minHeight: '100vh',
-        display:'flex',
-        justifyContent: 'center'
+        background: "#F1F2F1",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center"
+      }}>
+        <Box sx={{
+          background: "#1D283A",
+          width: "424px",
+          px: "48px",
+          fontFamily: "Montserrat",
         }}>
-          <Box sx={{
-            background: '#1D283A',
-            width: '424px',
-            px: '48px',
-            fontFamily: 'Montserrat',
-          }}>
-            <Logo></Logo>
+          <Logo></Logo>
           {children}
-          </Box>
+        </Box>
       </Grid>
     </React.Fragment>
 

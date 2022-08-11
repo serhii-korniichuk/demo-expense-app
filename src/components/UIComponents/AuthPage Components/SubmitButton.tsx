@@ -1,7 +1,7 @@
-import LoadingButton from '@mui/lab/LoadingButton';
-import { observer } from 'mobx-react-lite';
-import React, { useContext, useEffect } from 'react'
-import { Context } from '../../..';
+import LoadingButton from "@mui/lab/LoadingButton";
+import { observer } from "mobx-react-lite";
+import React, { useContext } from "react"
+import { Context } from "../../..";
 
 
 type Props = {
@@ -23,7 +23,7 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
   }
 
   const validationEmail = (): boolean => {
-    const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regExp = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return userData.email && !regExp.test(userData.email) ? true : false
   }
 
@@ -39,7 +39,7 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
     return !userData.password.trim() || !userData.email || validationEmail() || !userData.username.trim() || validationPasswordLenght()
   }
 
-  if (children === 'Sign Up') {
+  if (children === "Sign Up") {
     return (
       <LoadingButton
         type="submit"
@@ -50,17 +50,17 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
         disabled={getSubmitButtonStateRegister()}
         onClick={register}
         sx={{
-          mt: '38px',
-          background: '#539713',
-          color: 'white',
-          textTransform: 'capitalize',
-          borderRadius: '0px',
-          fontSize: '16px',
+          mt: "38px",
+          background: "#539713",
+          color: "white",
+          textTransform: "capitalize",
+          borderRadius: "0px",
+          fontSize: "16px",
           fontWeight: 600,
-          lineHeight: '155%',
-          ml: '-1px',
-          '&:hover': {
-            backgroundColor: '#97BC62FF'
+          lineHeight: "155%",
+          ml: "-1px",
+          "&:hover": {
+            backgroundColor: "#97BC62FF"
           }
         }}>
         {children}
@@ -78,17 +78,17 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
       loadingPosition="start"
       disabled={getSubmitButtonStateLogin()}
       sx={{
-        mt: '48px',
-        background: '#539713',
-        color: 'white',
-        textTransform: 'capitalize',
-        borderRadius: '0px',
-        fontSize: '16px',
+        mt: "48px",
+        background: "#539713",
+        color: "white",
+        textTransform: "capitalize",
+        borderRadius: "0px",
+        fontSize: "16px",
         fontWeight: 600,
-        lineHeight: '155%',
-        ml: '-1px',
-        '&:hover': {
-          backgroundColor: '#97BC62FF'
+        lineHeight: "155%",
+        ml: "-1px",
+        "&:hover": {
+          backgroundColor: "#97BC62FF"
         }
       }}>
       {children}

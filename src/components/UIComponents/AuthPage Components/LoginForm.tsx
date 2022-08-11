@@ -1,8 +1,8 @@
-import { Box, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField } from '@mui/material'
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import React from 'react'
-import SubmitButton from './SubmitButton';
-import ErrorAlert from '../ErrorAlert';
+import { Box, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField } from "@mui/material"
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import React from "react"
+import SubmitButton from "./SubmitButton";
+import ErrorAlert from "../ErrorAlert";
 
 interface State {
   password: string;
@@ -13,9 +13,9 @@ interface State {
 
 const SignInForm: React.FC = () => {
   const [values, setValues] = React.useState<State>({
-    password: '',
-    username: '',
-    displayName: '',
+    password: "",
+    username: "",
+    displayName: "",
     showPassword: false,
   });
 
@@ -38,7 +38,7 @@ const SignInForm: React.FC = () => {
     <Box component="form" >
       <TextField
         value={values.username}
-        onChange={handleChange('username')}
+        onChange={handleChange("username")}
         required
         fullWidth
         placeholder="John15"
@@ -48,7 +48,7 @@ const SignInForm: React.FC = () => {
         name="username"
         autoFocus
         sx={{
-          marginBottom: '20px',
+          marginBottom: "20px",
           input: {
             color: "white",
           },
@@ -57,24 +57,24 @@ const SignInForm: React.FC = () => {
           },
         }}
       />
-      <FormControl fullWidth required variant="standard" sx={{color: 'pink'}} >
+      <FormControl fullWidth required variant="standard" sx={{ color: "pink" }} >
         <InputLabel sx={{
-          color: 'white'
+          color: "white"
         }} htmlFor="standart-adornment-password">Password</InputLabel>
         <Input
           sx={{
-            color: 'white'
+            color: "white"
           }}
           placeholder="Secret234"
           id="outlined-adornment-password"
-          type={values.showPassword ? 'text' : 'password'}
+          type={values.showPassword ? "text" : "password"}
           value={values.password}
-          onChange={handleChange('password')}
+          onChange={handleChange("password")}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
                 sx={{
-                  color: 'white'
+                  color: "white"
                 }}
                 aria-label="toggle password visibility"
                 onClick={handleClickShowPassword}

@@ -1,8 +1,8 @@
-import { Box, FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLabel, TextField, Typography } from '@mui/material'
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import React from 'react'
-import SubmitButton from './SubmitButton';
-import ErrorAlert from '../ErrorAlert';
+import { Box, FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLabel, TextField } from "@mui/material"
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import React from "react"
+import SubmitButton from "./SubmitButton";
+import ErrorAlert from "../ErrorAlert";
 
 
 interface State {
@@ -15,10 +15,10 @@ interface State {
 
 const RegisterForm: React.FC = () => {
   const [values, setValues] = React.useState<State>({
-    password: '',
-    username: '',
-    displayName: '',
-    email: '',
+    password: "",
+    username: "",
+    displayName: "",
+    email: "",
     showPassword: false,
   });
 
@@ -42,7 +42,7 @@ const RegisterForm: React.FC = () => {
   }
 
   const validationEmail = (): boolean => {
-    const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regExp = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return values.email && !regExp.test(values.email) ? true : false
   }
 
@@ -50,7 +50,7 @@ const RegisterForm: React.FC = () => {
     <Box component="form" >
       <TextField
         value={values.displayName}
-        onChange={handleChange('displayName')}
+        onChange={handleChange("displayName")}
         required
         fullWidth
         placeholder="John Brun"
@@ -60,7 +60,7 @@ const RegisterForm: React.FC = () => {
         name="displayName"
         autoFocus
         sx={{
-          marginBottom: '22px',
+          marginBottom: "22px",
           input: {
             color: "white",
           },
@@ -71,7 +71,7 @@ const RegisterForm: React.FC = () => {
       />
       <TextField
         value={values.username}
-        onChange={handleChange('username')}
+        onChange={handleChange("username")}
         required
         fullWidth
         placeholder="John15"
@@ -81,7 +81,7 @@ const RegisterForm: React.FC = () => {
         name="username"
         autoFocus
         sx={{
-          marginBottom: '22px',
+          marginBottom: "22px",
           input: {
             color: "white",
           },
@@ -94,7 +94,7 @@ const RegisterForm: React.FC = () => {
         value={values.email}
         error={validationEmail()}
         helperText={validationEmail() ? "Please, enter correct email" : "."}
-        onChange={handleChange('email')}
+        onChange={handleChange("email")}
         required
         fullWidth
         placeholder="John152@gmail.com"
@@ -112,26 +112,26 @@ const RegisterForm: React.FC = () => {
           },
         }}
       />
-      <FormControl  fullWidth required variant="standard" sx={{
-        color: 'white'
+      <FormControl fullWidth required variant="standard" sx={{
+        color: "white"
       }} >
         <InputLabel sx={{
-          color: 'white'
+          color: "white"
         }} htmlFor="standart-adornment-password">Password</InputLabel>
         <Input
           sx={{
-            color: 'white'
+            color: "white"
           }}
           placeholder="sercret437"
           id="outlined-adornment-password"
-          type={values.showPassword ? 'text' : 'password'}
+          type={values.showPassword ? "text" : "password"}
           value={values.password}
-          onChange={handleChange('password')}
+          onChange={handleChange("password")}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
                 sx={{
-                  color: 'white'
+                  color: "white"
                 }}
                 aria-label="toggle password visibility"
                 onClick={handleClickShowPassword}

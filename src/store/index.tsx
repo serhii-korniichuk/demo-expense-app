@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import AuthService from "../services/AuthService";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 import { AuthResponse } from "../models/AuthModel";
 import { BASE_URL } from "../http";
 
@@ -36,8 +36,8 @@ export default class Store {
       this.setIsLoading(true);
       const response = await AuthService.login(username, password);
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
-      localStorage.setItem('refreshToken', response.data.refreshToken);
+      localStorage.setItem("token", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
       this.setAuth(true);
       this.setIsLoading(false)
     } catch (error) {
@@ -53,7 +53,7 @@ export default class Store {
       this.setIsLoading(true);
       const response = await AuthService.register(username, password, displayName);
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
+      localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setIsLoading(false);
     } catch (error) {
@@ -66,8 +66,8 @@ export default class Store {
 
   async logout() {
     try {
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken')
+      localStorage.removeItem("token");
+      localStorage.removeItem("refreshToken")
       this.setAuth(false);
     } catch (error) {
       const err = error as AxiosError
@@ -79,7 +79,7 @@ export default class Store {
     try {
       const response = await axios.get<AuthResponse>(`${BASE_URL}/refresh`, { withCredentials: true })
       console.log(response);
-      localStorage.setItem('token', response.data.accessToken);
+      localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
     } catch (error) {
       const err = error as AxiosError

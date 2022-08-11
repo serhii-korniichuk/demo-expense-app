@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { Context } from '../../..';
+import React, { useContext } from "react"
+import { Context } from "../../..";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
-import { observer } from 'mobx-react-lite'
+import { observer } from "mobx-react-lite"
 
 
 const AuthPage: React.FC = () => {
