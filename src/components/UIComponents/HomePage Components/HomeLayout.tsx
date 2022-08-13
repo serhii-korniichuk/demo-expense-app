@@ -1,5 +1,5 @@
-import { Box, Container } from "@mui/material"
-import React from "react"
+import { Box, Container } from "@mui/material";
+import React from "react";
 import Logo from "../Logo";
 
 type Props = {
@@ -23,7 +23,7 @@ const HomeLayout: React.FC<Props> = ({ children }: Props) => {
       </Box>
       {children}
     </Container>
-  )
-}
+  );
+};
 
-export default HomeLayout
+export default HomeLayout;

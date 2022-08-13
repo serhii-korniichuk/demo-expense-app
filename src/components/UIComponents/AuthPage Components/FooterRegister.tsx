@@ -1,13 +1,13 @@
 import { Container, Link, Typography } from "@mui/material";
-import React, { useContext } from "react"
+import React, { useContext } from "react";
 import { Context } from "../../..";
 
 const FooterRegister: React.FC = () => {
   const { store } = useContext(Context);
   const handleChange = (): void => {
-    store.setIsNeedRegister(false)
+    store.setIsNeedRegister(false);
     store.errorResponse = null;
-  }
+  };
 
   return (
     <Container>
@@ -28,7 +28,7 @@ const FooterRegister: React.FC = () => {
         </Link>
       </Typography>
     </Container>
-  )
-}
+  );
+};
 
-export default FooterRegister
+export default FooterRegister;

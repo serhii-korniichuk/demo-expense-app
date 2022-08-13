@@ -1,6 +1,6 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { observer } from "mobx-react-lite";
-import React, { useContext } from "react"
+import React, { useContext } from "react";
 import { Context } from "../../..";
 
 
@@ -14,30 +14,30 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
 
   const login = async (e: React.MouseEvent<HTMLElement>): Promise<void | null> => {
     e.preventDefault();
-    await store.login(userData.username, userData.password)
-  }
+    await store.login(userData.username, userData.password);
+  };
 
   const register = async (e: React.MouseEvent<HTMLElement>): Promise<void> => {
-    e.preventDefault()
-    await store.register(userData.username, userData.password, userData.displayName)
-  }
+    e.preventDefault();
+    await store.register(userData.username, userData.password, userData.displayName);
+  };
 
   const validationEmail = (): boolean => {
     const regExp = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return userData.email && !regExp.test(userData.email) ? true : false
-  }
+    return userData.email && !regExp.test(userData.email) ? true : false;
+  };
 
   const validationPasswordLenght = (): boolean => {
     return !!userData.password && userData.password.length <= 7;
-  }
+  };
 
   const getSubmitButtonStateLogin = (): boolean => {
-    return !userData.password.trim() || !userData.username.trim() || validationPasswordLenght()
-  }
+    return !userData.password.trim() || !userData.username.trim() || validationPasswordLenght();
+  };
 
   const getSubmitButtonStateRegister = (): boolean => {
-    return !userData.password.trim() || !userData.email || validationEmail() || !userData.username.trim() || validationPasswordLenght()
-  }
+    return !userData.password.trim() || !userData.email || validationEmail() || !userData.username.trim() || validationPasswordLenght();
+  };
 
   if (children === "Sign Up") {
     return (
@@ -65,7 +65,7 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
         }}>
         {children}
       </LoadingButton>
-    )
+    );
   }
 
   return (
@@ -93,7 +93,7 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
       }}>
       {children}
     </LoadingButton>
-  )
-}
+  );
+};
 
-export default observer(SubmitButton) 
+export default observer(SubmitButton); 

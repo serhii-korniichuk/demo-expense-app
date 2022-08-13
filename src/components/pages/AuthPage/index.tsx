@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React, { useContext } from "react";
 import { Context } from "../../..";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
-import { observer } from "mobx-react-lite"
+import { observer } from "mobx-react-lite";
 
 
 const AuthPage: React.FC = () => {
@@ -12,13 +12,13 @@ const AuthPage: React.FC = () => {
   if (store.isNeedRegister) {
     return (
       <SignUpPage />
-    )
+    );
   }
 
   return (
     <SignInPage />
-  )
+  );
 
-}
+};
 
-export default observer(AuthPage)
+export default observer(AuthPage);

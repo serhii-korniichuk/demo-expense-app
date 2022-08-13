@@ -20,7 +20,7 @@ const ErrorAlert = () => {
       show: false,
     });
     store.errorResponse = null;
-  }
+  };
 
   useEffect(() => {
     if (store.errorResponse?.statusCode === 409) {
@@ -39,7 +39,7 @@ const ErrorAlert = () => {
         message: store.errorResponse.message
       });
     }
-  }, [store.errorResponse])
+  }, [store.errorResponse]);
 
 
   return (
@@ -48,7 +48,7 @@ const ErrorAlert = () => {
         {alert.message}
       </Alert>
     </Snackbar>
-  )
-}
+  );
+};
 
-export default observer(ErrorAlert) 
+export default observer(ErrorAlert); 

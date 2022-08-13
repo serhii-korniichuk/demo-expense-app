@@ -1,6 +1,6 @@
-import { Box, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField } from "@mui/material"
+import { Box, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import React from "react"
+import React from "react";
 import SubmitButton from "./SubmitButton";
 import ErrorAlert from "../ErrorAlert";
 
@@ -20,7 +20,7 @@ const SignInForm: React.FC = () => {
   });
 
   const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value })
+    setValues({ ...values, [prop]: event.target.value });
   };
 
   const handleClickShowPassword = () => {
@@ -90,7 +90,7 @@ const SignInForm: React.FC = () => {
       <SubmitButton userData={values}>Sign In</SubmitButton>
       <ErrorAlert></ErrorAlert>
     </Box>
-  )
-}
+  );
+};
 
-export default SignInForm
+export default SignInForm;

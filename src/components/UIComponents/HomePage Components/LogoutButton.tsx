@@ -1,5 +1,5 @@
-import { Button } from "@mui/material"
-import React, { useContext} from "react";
+import { Button } from "@mui/material";
+import React, { useContext } from "react";
 import { Context } from "../../..";
 import { useNavigate } from "react-router-dom";
 
@@ -9,8 +9,8 @@ const LogoutButton: React.FC = () => {
   let navigate = useNavigate();
   const logout = (): void => {
     store.logout();
-    navigate("/auth")
-  }
+    navigate("/auth");
+  };
 
   return (
     <Button
@@ -26,10 +26,10 @@ const LogoutButton: React.FC = () => {
         fontWeight: 600,
         fontSize: "16px",
         lineHeight: "155%",
-        textTransform: "capitalize"
+        textTransform: "capitalize",
       }}
     >see you</Button>
-  )
-}
+  );
+};
 
-export default LogoutButton
+export default LogoutButton;

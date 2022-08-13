@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material"
-import React from "react"
+import { Typography } from "@mui/material";
+import React from "react";
 
 type Props = {
   children: string
@@ -16,7 +16,7 @@ const Title: React.FC<Props> = ({ children }: Props) => {
       color: "#FFFFFF",
       mt: "22px",
     }}> {children} </Typography >
-  )
-}
+  );
+};
 
-export default Title
+export default Title;

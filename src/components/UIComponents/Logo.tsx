@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material"
-import React from "react"
+import { Box, Typography } from "@mui/material";
+import React from "react";
 
 const Logo: React.FC = () => {
 
@@ -29,7 +29,7 @@ const Logo: React.FC = () => {
         Finance
       </Typography>;
     </Box >
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;

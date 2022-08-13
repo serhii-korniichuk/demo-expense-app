@@ -16,7 +16,7 @@ export default class Store {
   isNeedRegister = false;
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this);
   }
 
   setIsNeedRegister (bool: boolean) {
@@ -39,12 +39,12 @@ export default class Store {
       localStorage.setItem("token", response.data.accessToken);
       localStorage.setItem("refreshToken", response.data.refreshToken);
       this.setAuth(true);
-      this.setIsLoading(false)
+      this.setIsLoading(false);
     } catch (error) {
       const err = error as AxiosError;
       this.errorResponse = err.response?.data;
-      console.log(err.response?.data)
-      this.setIsLoading(false)
+      console.log(err.response?.data);
+      this.setIsLoading(false);
     }
   }
 
@@ -57,9 +57,9 @@ export default class Store {
       this.setAuth(true);
       this.setIsLoading(false);
     } catch (error) {
-      const err = error as AxiosError
+      const err = error as AxiosError;
       this.errorResponse = err.response?.data;
-      console.log(err.response?.data)
+      console.log(err.response?.data);
       this.setIsLoading(false);
     }
   }
@@ -67,23 +67,23 @@ export default class Store {
   async logout() {
     try {
       localStorage.removeItem("token");
-      localStorage.removeItem("refreshToken")
+      localStorage.removeItem("refreshToken");
       this.setAuth(false);
     } catch (error) {
-      const err = error as AxiosError
-      console.log(err)
+      const err = error as AxiosError;
+      console.log(err);
     }
   }
 
   async getAuth() {
     try {
-      const response = await axios.get<AuthResponse>(`${BASE_URL}/refresh`, { withCredentials: true })
+      const response = await axios.get<AuthResponse>(`${BASE_URL}/refresh`, { withCredentials: true });
       console.log(response);
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
     } catch (error) {
-      const err = error as AxiosError
-      console.log(err.response?.data)
+      const err = error as AxiosError;
+      console.log(err.response?.data);
     }
   }
 

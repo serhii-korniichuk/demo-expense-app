@@ -1,5 +1,5 @@
-import React from "react"
-import { observer } from "mobx-react-lite"
+import React from "react";
+import { observer } from "mobx-react-lite";
 import AuthLayout from "../../UIComponents/AuthPage Components/AuthLayout";
 import Title from "../../UIComponents/AuthPage Components/Title";
 import LoginFooter from "../../UIComponents/AuthPage Components/FooterLogin";
@@ -13,7 +13,7 @@ const SignInPage: React.FC = () => {
       <LoginForm></LoginForm>
       <LoginFooter></LoginFooter>
     </AuthLayout>
-  )
-}
+  );
+};
 
-export default observer(SignInPage) 
+export default observer(SignInPage); 

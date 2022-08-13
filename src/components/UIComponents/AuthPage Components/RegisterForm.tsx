@@ -1,6 +1,6 @@
-import { Box, FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLabel, TextField } from "@mui/material"
+import { Box, FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLabel, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import React from "react"
+import React from "react";
 import SubmitButton from "./SubmitButton";
 import ErrorAlert from "../ErrorAlert";
 
@@ -23,7 +23,7 @@ const RegisterForm: React.FC = () => {
   });
 
   const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value })
+    setValues({ ...values, [prop]: event.target.value });
   };
 
   const handleClickShowPassword = () => {
@@ -39,12 +39,12 @@ const RegisterForm: React.FC = () => {
 
   const validationPasswordLenght = (): boolean => {
     return !!values.password && values.password.length <= 7;
-  }
+  };
 
   const validationEmail = (): boolean => {
     const regExp = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return values.email && !regExp.test(values.email) ? true : false
-  }
+    return values.email && !regExp.test(values.email) ? true : false;
+  };
 
   return (
     <Box component="form" >
@@ -148,7 +148,7 @@ const RegisterForm: React.FC = () => {
       <SubmitButton userData={values}>Sign Up</SubmitButton>
       <ErrorAlert></ErrorAlert>
     </Box>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

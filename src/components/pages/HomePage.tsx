@@ -1,10 +1,10 @@
-import { observer } from "mobx-react-lite"
-import { Typography } from "@mui/material"
-import HomeLayout from "../UIComponents/HomePage Components/HomeLayout"
-import Congrats from "../UIComponents/HomePage Components/Congrats"
-import LogoutButton from "../UIComponents/HomePage Components/LogoutButton"
-import FooterImage from "../UIComponents/HomePage Components/FooterImage"
-import React from "react"
+import { observer } from "mobx-react-lite";
+import { Typography } from "@mui/material";
+import HomeLayout from "../UIComponents/HomePage Components/HomeLayout";
+import Congrats from "../UIComponents/HomePage Components/Congrats";
+import LogoutButton from "../UIComponents/HomePage Components/LogoutButton";
+import FooterImage from "../UIComponents/HomePage Components/FooterImage";
+import React from "react";
 
 const HomePage: React.FC = () => {
 
@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
       <LogoutButton></LogoutButton>
       <FooterImage></FooterImage>
     </HomeLayout >
-  )
-}
+  );
+};
 
-export default observer(HomePage)
+export default observer(HomePage);

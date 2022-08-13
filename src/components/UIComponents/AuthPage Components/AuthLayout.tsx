@@ -1,6 +1,6 @@
-import React, { FC } from "react"
+import React, { FC } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Box, Grid } from "@mui/material"
+import { Box, Grid } from "@mui/material";
 import Logo from "../Logo";
 
 
@@ -32,7 +32,7 @@ const AuthLayout: FC<Props> = ({ children }: Props) => {
       </Grid>
     </React.Fragment>
 
-  )
-}
+  );
+};
 
-export default AuthLayout
+export default AuthLayout;

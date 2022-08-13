@@ -15,7 +15,7 @@ const Congrats: React.FC = () => {
       }}
     >
     </Grid>
-  )
-}
+  );
+};
 
-export default Congrats
+export default Congrats;

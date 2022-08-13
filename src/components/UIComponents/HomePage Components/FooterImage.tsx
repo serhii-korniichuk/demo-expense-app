@@ -1,5 +1,5 @@
-import { Grid } from "@mui/material"
-import React from "react"
+import { Grid } from "@mui/material";
+import React from "react";
 
 
 const FooterImage: React.FC = () => {
@@ -14,7 +14,7 @@ const FooterImage: React.FC = () => {
       }}
     >
     </Grid>
-  )
-}
+  );
+};
 
-export default FooterImage
+export default FooterImage;

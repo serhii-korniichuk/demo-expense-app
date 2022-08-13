@@ -1,5 +1,5 @@
-import { Box, Container, Typography } from "@mui/material"
-import React from "react"
+import { Box, Container, Typography } from "@mui/material";
+import React from "react";
 
 
 
@@ -16,7 +16,7 @@ const NotFoundPage: React.FC = () => {
       </Box>
     </Container>
 
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

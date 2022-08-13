@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Context } from "..";
-import { observer } from "mobx-react-lite"
+import { observer } from "mobx-react-lite";
 
 
 const Router: React.FC = () => {
@@ -13,11 +13,11 @@ const Router: React.FC = () => {
 
   useEffect(() => {
     if (localStorage.getItem("token") || store.isAuth) {
-      setLoggedUser(true)
+      setLoggedUser(true);
     } else if (!localStorage.getItem("token") || !store.isAuth) {
-      setLoggedUser(false)
+      setLoggedUser(false);
     }
-  }, [store.isAuth])
+  }, [store.isAuth]);
 
 
   if (isLoggedUser) {
@@ -27,7 +27,7 @@ const Router: React.FC = () => {
         <Route path='/auth' element={<Navigate to="/" replace={true} />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
-    )
+    );
   }
 
   return (
@@ -36,8 +36,8 @@ const Router: React.FC = () => {
       <Route path='/auth' element={<AuthPage />} />
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
-  )
+  );
 
-}
+};
 
-export default observer(Router) 
+export default observer(Router); 
