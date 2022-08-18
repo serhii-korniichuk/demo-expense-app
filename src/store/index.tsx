@@ -19,7 +19,7 @@ export default class Store {
     makeAutoObservable(this);
   }
 
-  setIsNeedRegister (bool: boolean) {
+  setIsNeedRegister(bool: boolean) {
     this.isNeedRegister = bool;
   }
 
@@ -27,7 +27,7 @@ export default class Store {
     this.isAuth = bool;
   }
 
-  setIsLoading (bool:boolean) {
+  setIsLoading(bool: boolean) {
     this.isLoading = bool;
   }
 
@@ -66,9 +66,11 @@ export default class Store {
 
   async logout() {
     try {
+      await AuthService.logout();
       localStorage.removeItem("token");
       localStorage.removeItem("refreshToken");
       this.setAuth(false);
+      console.log("logout");
     } catch (error) {
       const err = error as AxiosError;
       console.log(err);

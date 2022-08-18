@@ -1,9 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { Typography } from "@mui/material";
-import HomeLayout from "../UIComponents/HomePage Components/HomeLayout";
-import Congrats from "../UIComponents/HomePage Components/Congrats";
-import LogoutButton from "../UIComponents/HomePage Components/LogoutButton";
-import FooterImage from "../UIComponents/HomePage Components/FooterImage";
+import HomeLayout from "../UIComponents/HomePageComponents/HomeLayout";
+import Congrats from "../UIComponents/HomePageComponents/Congrats";
+import LogoutButton from "../UIComponents/HomePageComponents/LogoutButton";
+import FooterImage from "../UIComponents/HomePageComponents/FooterImage";
 import React from "react";
 
 const HomePage: React.FC = () => {

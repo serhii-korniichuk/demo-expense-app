@@ -45,7 +45,7 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
         type="submit"
         fullWidth
         loading={store.isLoading}
-        endIcon={true}
+        startIcon={<div></div>}
         loadingPosition="start"
         disabled={getSubmitButtonStateRegister()}
         onClick={register}
@@ -74,7 +74,7 @@ const SubmitButton: React.FC<Props> = ({ children, userData }: Props) => {
       fullWidth
       onClick={login}
       loading={store.isLoading}
-      endIcon={true}
+      startIcon={<div></div>}
       loadingPosition="start"
       disabled={getSubmitButtonStateLogin()}
       sx={{

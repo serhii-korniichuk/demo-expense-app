@@ -14,8 +14,10 @@ const Router: React.FC = () => {
   useEffect(() => {
     if (localStorage.getItem("token") || store.isAuth) {
       setLoggedUser(true);
+      console.log("router works 1");
     } else if (!localStorage.getItem("token") || !store.isAuth) {
       setLoggedUser(false);
+      console.log("router works 2");
     }
   }, [store.isAuth]);
 

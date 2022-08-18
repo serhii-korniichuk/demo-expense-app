@@ -14,7 +14,7 @@ const FooterRegister: React.FC = () => {
       <Typography
         sx={{
           color: "#F1F2F1",
-          mt: "14px",
+          my: "24px",
           fontWeight: 400,
           fontSize: "12px",
           textAlign: "center",

@@ -14,6 +14,10 @@ export default class AuthService {
   }
 
   static async logout(): Promise<void> {
-    return $api.get("/logout");
+    return $api.get("/logout", {
+      validateStatus(status) {
+        return status === 401;
+      }
+    });
   }
 }
