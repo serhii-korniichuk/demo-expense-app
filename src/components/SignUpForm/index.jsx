@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import TextInput from 'components/TextInput/index';
+import PasswordInput from 'components/PasswordInput/index';
+import Button from 'components/Button/index';
 import styles from './SignUpForm.module.scss';
 
 const SignUpForm = () => {
@@ -106,134 +109,50 @@ const SignUpForm = () => {
                 className={styles.form}
                 onSubmit={(event) => handleRegister(event)}
             >
-                <div className={styles.form__input}>
-                    <small
-                        className={styles.form__input_label}
-                        ref={fullNameEl}
-                        style={fullNameError ? { color: 'red' } : { color: 'white' }}
-                    >
-                        Full Name
-                    </small>
-                    <input
-                        className={styles.form__input_field}
-                        type="text"
-                        value={fullName}
-                        onChange={(event) => setFullName(event.target.value)}
-                        placeholder='Full Name'
-                        style={fullNameError ? { borderColor: 'red', color: 'red' } : { borderColor: 'white', color: 'white' }}
-                        onFocus={() => {
-                            fullNameEl.current.style.opacity = '1'
-                        }}
-                        onBlur={(event) => fullNameHandler(event)}
-                        onInput={(event) => event.target.value = event.target.value.replace(/[^a-zA-Z ]/, '')}
-                    />
-                    {(fullNameDirty && fullNameError) && <small className={styles.error}>{fullNameError}</small>}
-                </div>
-
-                <div className={styles.form__input}>
-                    <small
-                        className={styles.form__input_label}
-                        ref={userNameEl}
-                        style={userNameError ? { color: 'red' } : { color: 'white' }}
-                    >
-                        User Name
-                    </small>
-                    <input
-                        className={styles.form__input_field}
-                        type="text"
-                        value={userName}
-                        onChange={(event) => setUserName(event.target.value)}
-                        placeholder='User Name'
-                        style={userNameError ? { borderColor: 'red', color: 'red' } : { borderColor: 'white', color: 'white' }}
-                        onFocus={() => {
-                            userNameEl.current.style.opacity = '1'
-                        }}
-                        onBlur={(event) => userNameHandler(event)}
-                    />
-                    {(userNameDirty && userNameError) && <small className={styles.error}>{userNameError}</small>}
-                </div>
-
-                <div className={styles.form__input}>
-                    <small
-                        className={styles.form__input_label}
-                        ref={passwordEl}
-                        style={passwordError ? { color: 'red' } : { color: 'white' }}
-                    >
-                        Password
-                    </small>
-                    <div className={styles.password}>
-                        <input
-                            className={styles.form__input_field}
-                            type={passwordVisibility ? "text" : "password"}
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            placeholder='Password'
-                            style={passwordError ? { borderColor: 'red', color: 'red', width: '306px' } : { borderColor: 'white', color: 'white', width: '306px' }}
-                            onFocus={() => {
-                                passwordEl.current.style.opacity = '1'
-                            }}
-                            onBlur={(event) => passwordHandler(event)}
-                        />
-                        <div
-                            className={styles.password__decor}
-                            style={passwordError ? { borderColor: 'red' } : { borderColor: 'white' }}
-                            onClick={() => setPasswordVisibility(!passwordVisibility)}
-                        >
-                            <div className={styles.password__decor_eye}></div>
-                            <div
-                                className={styles.password__decor_line}
-                                style={passwordVisibility ? { display: 'none' } : { display: 'block' }}
-                            >
-                            </div>
-                        </div>
-                    </div>
-                    {(passwordDirty && passwordError) && <small className={styles.error}>{passwordError}</small>}
-                </div>
-
-                <div className={styles.form__input}>
-                    <small
-                        className={styles.form__input_label}
-                        ref={confirmPasswordEl}
-                        style={confirmPasswordError ? { color: 'red' } : { color: 'white' }}
-                    >
-                        Password
-                    </small>
-                    <div className={styles.password}>
-                        <input
-                            className={styles.form__input_field}
-                            type={passwordVisibility ? "text" : "password"}
-                            value={confirmPassword}
-                            onChange={(event) => setConfirmPassword(event.target.value)}
-                            placeholder='Confirm Password'
-                            style={confirmPasswordError ? { borderColor: 'red', color: 'red', width: '306px' } : { borderColor: 'white', color: 'white', width: '306px' }}
-                            onFocus={() => {
-                                confirmPasswordEl.current.style.opacity = '1'
-                            }}
-                            onBlur={(event) => confirmPasswordHandler(event)}
-                        />
-                        <div
-                            className={styles.password__decor}
-                            style={confirmPasswordError ? { borderColor: 'red' } : { borderColor: 'white' }}
-                            onClick={() => setPasswordVisibility(!passwordVisibility)}
-                        >
-                            <div className={styles.password__decor_eye}></div>
-                            <div
-                                className={styles.password__decor_line}
-                                style={passwordVisibility ? { display: 'none' } : { display: 'block' }}
-                            >
-                            </div>
-                        </div>
-                    </div>
-                    {(confirmPasswordDirty && confirmPasswordError) && <small className={styles.error}>{confirmPasswordError}</small>}
-                </div>
-
-                <button
-                    className={styles.form__btn}
+                <TextInput
+                    inputEl={fullNameEl}
+                    error={fullNameError}
+                    value={fullName}
+                    setValue={setFullName}
+                    inputHandler={fullNameHandler}
+                    dirty={fullNameDirty}
+                    placeholder='Full Name'
+                />
+                <TextInput
+                    inputEl={userNameEl}
+                    error={userNameError}
+                    value={userName}
+                    setValue={setUserName}
+                    inputHandler={userNameHandler}
+                    dirty={userNameDirty}
+                    placeholder='User Name'
+                />
+                <PasswordInput
+                    inputEl={passwordEl}
+                    error={passwordError}
+                    value={password}
+                    setValue={setPassword}
+                    inputHandler={passwordHandler}
+                    dirty={passwordDirty}
+                    placeholder='Password'
+                    passwordVisibility={passwordVisibility}
+                    setPasswordVisibility={setPasswordVisibility}
+                />
+                <PasswordInput
+                    inputEl={confirmPasswordEl}
+                    error={confirmPasswordError}
+                    value={confirmPassword}
+                    setValue={setConfirmPassword}
+                    inputHandler={confirmPasswordHandler}
+                    dirty={confirmPasswordDirty}
+                    placeholder='Password'
+                    passwordVisibility={passwordVisibility}
+                    setPasswordVisibility={setPasswordVisibility}
+                />
+                <Button
+                    text='Sigm Up'
                     disabled={disabled}
-                    tupe='submit'
-                >
-                    <span className={styles.form__btn_text}>Sign Up</span>
-                </button>
+                />
             </form>
             <p
                 className={styles.register__redirect}

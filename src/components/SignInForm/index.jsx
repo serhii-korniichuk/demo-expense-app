@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import TextInput from 'components/TextInput/index';
+import PasswordInput from 'components/PasswordInput/index';
+import Button from 'components/Button/index';
 import styles from './SignInForm.module.scss';
 
 const SignInForm = () => {
@@ -78,71 +81,30 @@ const SignInForm = () => {
                 className={styles.form}
                 onSubmit={(event) => handleLogin(event)}
             >
-                <div className={styles.form__input}>
-                    <small
-                        className={styles.form__input_label}
-                        ref={userNameEl}
-                        style={userNameError ? { color: 'red' } : { color: 'white' }}
-                    >
-                        User Name
-                    </small>
-                    <input
-                        className={styles.form__input_field}
-                        type="text"
-                        value={userName}
-                        onChange={(event) => setUserName(event.target.value)}
-                        placeholder='User Name'
-                        style={userNameError ? { borderColor: 'red', color: 'red' } : { borderColor: 'white', color: 'white' }}
-                        onFocus={() => {
-                            userNameEl.current.style.opacity = '1'
-                        }}
-                        onBlur={(event) => userNameHandler(event)}
-                    />
-                    {(userNameDirty && userNameError) && <small className={styles.error}>{userNameError}</small>}
-                </div>
-                <div className={styles.form__input}>
-                    <small
-                        className={styles.form__input_label}
-                        ref={passwordEl}
-                        style={passwordError ? { color: 'red' } : { color: 'white' }}
-                    >
-                        Password
-                    </small>
-                    <div className={styles.password}>
-                        <input
-                            className={styles.form__input_field}
-                            type={passwordVisibility ? "text" : "password"}
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            placeholder='Password'
-                            style={passwordError ? { borderColor: 'red', color: 'red', width: '306px' } : { borderColor: 'white', color: 'white', width: '306px' }}
-                            onFocus={() => {
-                                passwordEl.current.style.opacity = '1'
-                            }}
-                            onBlur={(event) => passwordHandler(event)}
-                        />
-                        <div
-                            className={styles.password__decor}
-                            style={passwordError ? { borderColor: 'red' } : { borderColor: 'white' }}
-                            onClick={() => setPasswordVisibility(!passwordVisibility)}
-                        >
-                            <div className={styles.password__decor_eye}></div>
-                            <div
-                                className={styles.password__decor_line}
-                                style={passwordVisibility ? { display: 'none' } : { display: 'block' }}
-                            >
-                            </div>
-                        </div>
-                    </div>
-                    {(passwordDirty && passwordError) && <small className={styles.error}>{passwordError}</small>}
-                </div>
-                <button
-                    className={styles.form__btn}
+                <TextInput
+                    inputEl={userNameEl}
+                    error={userNameError}
+                    value={userName}
+                    setValue={setUserName}
+                    inputHandler={userNameHandler}
+                    dirty={userNameDirty}
+                    placeholder='User Name'
+                />
+                <PasswordInput
+                    inputEl={passwordEl}
+                    error={passwordError}
+                    value={password}
+                    setValue={setPassword}
+                    inputHandler={passwordHandler}
+                    dirty={passwordDirty}
+                    placeholder='Password'
+                    passwordVisibility={passwordVisibility}
+                    setPasswordVisibility={setPasswordVisibility}
+                />
+                <Button
+                    text='Sigm In'
                     disabled={disabled}
-                    type="submit"
-                >
-                    <span className={styles.form__btn_text}>Sign In</span>
-                </button>
+                />
             </form>
             <p
                 className={styles.login__redirect}
