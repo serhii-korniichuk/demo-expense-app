@@ -16,7 +16,9 @@ const Auth = () => {
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <HeaderAuth />
+                <div className={styles.header}>
+                    <HeaderAuth />
+                </div>
 
                 {isSignIn ? <h1>Sign In</h1> : <h1>Sign Up</h1>}
 

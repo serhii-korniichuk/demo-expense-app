@@ -1,0 +1,70 @@
+.container {
+    min-height: 100%;
+}
+
+.wrapper {
+    background: #1d283a;
+    color: white;
+    padding: 0 48px;
+    min-height: 100vh;
+    .header {
+        padding: 48px 20px 109px 0px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .logoutBtn {
+        color: #7faaf0;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .body {
+        h2 {
+            display: block;
+            margin: 0 auto;
+            width: 410px;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 150%;
+            padding: 0px 0px 48px 0px;
+            position: relative;
+            &::before {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 237px;
+                height: 188px;
+                right: -120px;
+                top: -120px;
+                background: url("../../common/img/decor.svg") center / 100% 100%
+                    no-repeat;
+            }
+        }
+        h5 {
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 155%;
+            padding: 0px 0px 67px 0px;
+        }
+        button {
+            display: block;
+            margin: 0 auto 81px;
+            width: 100px;
+            background: #539713;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 9.5px;
+            &:hover {
+                background: #457b13;
+            }
+        }
+        img {
+            display: block;
+            margin: 0 auto 81px;
+            width: 340px;
+        }
+    }
+}
