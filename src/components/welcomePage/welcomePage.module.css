@@ -1,0 +1,91 @@
+.wrapper{
+    background-color: #1D283A;
+    height: 100vh;
+    color: #fff;
+}
+
+.logo{
+    padding: 40px 0px 0px 60px;
+    margin-bottom:50px;
+}
+
+.logoUp{
+    font-size: 36px;
+    font-weight: 700;
+
+}
+
+.logoDown{
+    font-style: normal;
+    color: #539713;
+}
+
+.mainHeading{
+    display: flex;
+    justify-content: center;
+}
+
+.headingContent{
+    color: #fff;
+    font-size: 40px;
+}
+ 
+.decor{
+    position: absolute;
+    margin: -80px 0px 0px 180px ;
+
+    
+} 
+
+.secondHeadingWrap{
+    display: flex;
+    justify-content: center;
+}
+
+.buttonWrap{
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    border: none;
+    background-color: #539713;
+    color: #fff;
+    padding: 10px 30px 10px 30px ;
+    margin-top: 20px;
+
+}
+
+.mainImage{
+    display: flex;
+    justify-content: center;
+}
+
+.mainImage img{
+    width: 300px;
+    height: 250px;
+}
+
+
+
+@media screen and (max-width:500px) {
+    .headingContent{
+        font-size: 30px;
+    }
+
+    .decor{
+        width: 130px;
+        margin: -50px 0px 0px 150px ;
+
+    }
+
+    
+}
+
+@media screen and (max-width:415px) {
+    .secondHeading{
+        font-size: 12px;
+    }
+
+  
+}
