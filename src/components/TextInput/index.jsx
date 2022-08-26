@@ -1,39 +1,52 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './TextInput.module.scss';
 
 const TextInput = (props) => {
     const {
-        inputEl,
         error,
         value,
-        setValue = Function.prototype,
-        inputHandler = Function.prototype,
+        type,
+        setValue,
+        inputHandler,
         dirty,
-        placeholder
+        name
     } = props;
 
     return (
         <div className={styles.form__input}>
-            <small
-                className={styles.form__input_label}
-                ref={inputEl}
-                style={error ? { color: 'red' } : { color: 'white' }}
+            <label
+                htmlFor={name}
+                className={error ? (styles.form__input_label + ' ' + styles.error) : styles.form__input_label}
             >
-                {placeholder}
-            </small>
+                {name}
+            </label>
             <input
-                className={styles.form__input_field}
-                type="text"
+                id={name}
+                className={error ? (styles.form__input_field + ' ' + styles.error__input) : styles.form__input_field}
+                type={type}
                 value={value}
+                placeholder={name}
                 onChange={(event) => setValue(event.target.value)}
-                placeholder={placeholder}
-                style={error ? { borderColor: 'red', color: 'red' } : { borderColor: 'white', color: 'white' }}
-                onFocus={() => { inputEl.current.style.opacity = '1' }}
-                onBlur={(event) => inputHandler(event)}
+                onInput={(event) => inputHandler(event)}
             />
-            {(dirty && error) && <small className={styles.error}>{error}</small>}
+            {(dirty && error) && <small className={styles.error__message}>{error}</small>}
         </div>
     );
 };
+
+TextInput.propTypes = {
+    error: PropTypes.string,
+    value: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    setValue: PropTypes.func.isRequired,
+    inputHandler: PropTypes.func.isRequired,
+    dirty: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+}
+
+TextInput.defaultProps = {
+    error: ''
+}
 
 export default TextInput;

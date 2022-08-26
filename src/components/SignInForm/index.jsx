@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import TextInput from 'components/TextInput/index';
 import PasswordInput from 'components/PasswordInput/index';
 import Button from 'components/Button/index';
+import { loginRequest } from 'utils/axios_utils';
 import styles from './SignInForm.module.scss';
 
 const SignInForm = () => {
-    const [userName, setUserName] = useState('');
+    const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const [passwordVisibility, setPasswordVisibility] = useState(false);
@@ -18,13 +19,11 @@ const SignInForm = () => {
     const [userNameError, setUserNameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const userNameEl = useRef();
-    const passwordEl = useRef();
+    const errorEl = useRef();
 
     const navigate = useNavigate();
 
     const userNameHandler = (event) => {
-        userName ? userNameEl.current.style.opacity = '1' : userNameEl.current.style.opacity = '0'
         setUserNameDirty(true);
         if (String(event.target.value).length < 5) {
             setUserNameError('User name should be no less than 5 symbols');
@@ -34,7 +33,6 @@ const SignInForm = () => {
     };
 
     const passwordHandler = (event) => {
-        password ? passwordEl.current.style.opacity = '1' : passwordEl.current.style.opacity = '0'
         setPasswordDirty(true);
         if (String(event.target.value).length < 8) {
             setPasswordError('Password should be no less than 8 symbols');
@@ -46,74 +44,80 @@ const SignInForm = () => {
     const handleLogin = (event) => {
         event.preventDefault();
 
-        fetch('https://incode-backend-dev.herokuapp.com/auth/login', {
-            headers: {
-                'accept': 'application/json',
-                'Content-type': 'application/json',
-            },
-            method: 'POST',
-            body: JSON.stringify({
-                'password': password,
-                'username': userName,
-            })
-        })
-            .then(res => res.json())
-            .then(tokens => {
-                sessionStorage.setItem('accessToken', tokens.accessToken);
-                sessionStorage.setItem('refreshToken', tokens.refreshToken);
+        loginRequest(password, username)
+            .then(response => {
+                sessionStorage.setItem('accessToken', response.data.accessToken);
+                sessionStorage.setItem('refreshToken', response.data.refreshToken);
                 navigate('/');
             })
+            .catch(() => {
+                errorEl.current.classList.add(styles.visibility);
+                setTimeout(() => {
+                    errorEl.current.classList.remove(styles.visibility)
+                }, 3000)
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    setUserName('');
+                    setPassword('');
+                }, 3000);
+            });
     }
 
     useEffect(() => {
-        if (!userNameError && !passwordError && userNameDirty) {
+        if (!userNameError && !passwordError && (userNameDirty && passwordDirty)) {
             setDisabled(false);
         } else {
             setDisabled(true);
         }
 
-    }, [userNameError, passwordError, userNameDirty]);
+    }, [userNameError, passwordError, userNameDirty, passwordDirty]);
 
     return (
         <div className={styles.login}>
             <div className={styles.login__title}>SIGN IN</div>
+            <div
+                className={styles.error}
+                ref={errorEl}
+            >
+                Invalid user!
+            </div>
             <form
                 className={styles.form}
                 onSubmit={(event) => handleLogin(event)}
             >
                 <TextInput
-                    inputEl={userNameEl}
+                    name='User Name'
+                    type='text'
                     error={userNameError}
-                    value={userName}
+                    value={username}
                     setValue={setUserName}
                     inputHandler={userNameHandler}
                     dirty={userNameDirty}
-                    placeholder='User Name'
                 />
                 <PasswordInput
-                    inputEl={passwordEl}
+                    name='Password'
+                    type={passwordVisibility ? 'text' : 'password'}
+                    passwordVisibility={passwordVisibility}
+                    setPasswordVisibility={setPasswordVisibility}
                     error={passwordError}
                     value={password}
                     setValue={setPassword}
                     inputHandler={passwordHandler}
                     dirty={passwordDirty}
-                    placeholder='Password'
-                    passwordVisibility={passwordVisibility}
-                    setPasswordVisibility={setPasswordVisibility}
                 />
                 <Button
-                    text='Sigm In'
+                    text='Sign In'
                     disabled={disabled}
+                    type='submit'
                 />
             </form>
             <p
                 className={styles.login__redirect}
             >
                 Don’t have account yet?
-                <Link to="/auth/register" style={{ textDecoration: 'none' }}>
-                    <span className={styles.login__redirect_link}>
-                        New Account
-                    </span>
+                <Link to='/auth/register' className={styles.login__redirect_link}>
+                    <span>&nbsp;New Account</span>
                 </Link>
             </p>
         </div>

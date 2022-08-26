@@ -13,7 +13,6 @@
             font-size: 14px;
             line-height: 155%;
             color: #ffffff;
-            opacity: 0;
         }
         &_field {
             width: 100%;
@@ -47,5 +46,12 @@
 
 .error {
     color: red;
-    font-size: 10px;
+    &__message {
+        color: red;
+        font-size: 10px;
+    }
+    &__input {
+        color: red;
+        border-color: red;
+    }
 }

@@ -1,57 +1,65 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './PasswordInput.module.scss';
 
 const PasswordInput = (props) => {
     const {
-        inputEl,
         error,
         value,
-        setValue = Function.prototype,
-        inputHandler = Function.prototype,
+        type,
+        setValue,
+        inputHandler,
         dirty,
-        placeholder,
+        name,
         passwordVisibility,
-        setPasswordVisibility = Function.prototype
+        setPasswordVisibility,
     } = props;
 
     return (
         <div className={styles.form__input}>
-            <small
-                className={styles.form__input_label}
-                ref={inputEl}
-                style={error ? { color: 'red' } : { color: 'white' }}
+            <label
+                htmlFor={name}
+                className={error ? (styles.error + ' ' + styles.form__input_label) : styles.form__input_label}
             >
-                {placeholder}
-            </small>
+                {name}
+            </label>
             <div className={styles.password}>
                 <input
-                    className={styles.form__input_field}
-                    type={passwordVisibility ? "text" : "password"}
+                    id={name}
+                    className={error ? (styles.error__input + ' ' + styles.form__input_field) : styles.form__input_field}
+                    type={type}
                     value={value}
+                    placeholder={name}
                     onChange={(event) => setValue(event.target.value)}
-                    placeholder={placeholder}
-                    style={error ? { borderColor: 'red', color: 'red', width: '306px' } : { borderColor: 'white', color: 'white', width: '306px' }}
-                    onFocus={() => {
-                        inputEl.current.style.opacity = '1'
-                    }}
-                    onBlur={(event) => inputHandler(event)}
+                    onInput={(event) => inputHandler(event)}
                 />
                 <div
-                    className={styles.password__decor}
-                    style={error ? { borderColor: 'red' } : { borderColor: 'white' }}
+                    className={error ? (styles.password__decor + ' ' + styles.error__decor) : styles.password__decor}
                     onClick={() => setPasswordVisibility(!passwordVisibility)}
                 >
                     <div className={styles.password__decor_eye}></div>
-                    <div
-                        className={styles.password__decor_line}
-                        style={passwordVisibility ? { display: 'none' } : { display: 'block' }}
-                    >
-                    </div>
+                    <div className={passwordVisibility ? (styles.password__decor_line + ' ' + styles.visibility) : styles.password__decor_line}></div>
                 </div>
             </div>
-            {(dirty && error) && <small className={styles.error}>{error}</small>}
+            {(dirty && error) && <small className={styles.error__message}>{error}</small>}
         </div>
     );
 };
+
+PasswordInput.propTypes = {
+    error: PropTypes.string,
+    value: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    setValue: PropTypes.func.isRequired,
+    inputHandler: PropTypes.func.isRequired,
+    dirty: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+    passwordVisibility: PropTypes.bool.isRequired,
+    setPasswordVisibility: PropTypes.func.isRequired,
+}
+
+PasswordInput.defaultProps = {
+    error: ''
+}
 
 export default PasswordInput;
