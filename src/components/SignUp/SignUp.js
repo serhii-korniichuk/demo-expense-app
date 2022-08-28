@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
@@ -31,6 +32,8 @@ export default function SignUp({ onClick }) {
   const [showPassword, setShowPassword] = useState(false);
   const [register] = useRegisterUserMutation();
 
+  const navigate = useNavigate();
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -51,6 +54,7 @@ export default function SignUp({ onClick }) {
           }
           register(values);
           onSubmitProps.resetForm();
+          navigate('/');
         }}
       >
         {({ errors, touched }) => (

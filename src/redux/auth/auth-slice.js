@@ -13,15 +13,13 @@ export const authSlice = createSlice({
     builder.addMatcher(
       authApi.endpoints.registerUser.matchFulfilled,
       (state, { payload }) => {
-        console.log(payload);
         state.token = payload.accessToken;
-        state.isLoggedIn = true;
+        state.isLoggedIn = false;
       },
     );
     builder.addMatcher(
       authApi.endpoints.loginUser.matchFulfilled,
       (state, { payload }) => {
-        console.log(payload);
         state.token = payload.accessToken;
         state.isLoggedIn = true;
       },
