@@ -1,24 +1,43 @@
+@import "../../scss/variables.scss";
+
 .form {
-  padding: 0px 0px 24px 0px;
-  color: white;
-  position: relative;
-  label {
-      display: block;
-  }
-  input {
-      width: 100%;
-      border: 0;
-      border-bottom: 1px solid white;
-      background: #1d283a;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 155%;
-      padding: 5px 0px;
-      outline: none;
-      color: white;
-  }
-  img {
-      position: absolute;
-      right: 10px;
-  }
+    padding: 0px 0px 24px 0px;
+    color: white;
+    position: relative;
+    label {
+        display: block;
+    }
+    //fix background change when choosing
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        -webkit-text-fill-color: #ffffff;
+        -webkit-box-shadow: 0 0 0px 1000px $background inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+    input {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid white;
+        background: $background;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 155%;
+        padding: 5px 0px;
+        outline: none;
+        color: white;
+        &:-internal-autofill-selected {
+            background-color: inherit;
+            background-image: none !important;
+            color: inherit;
+        }
+    }
+    img {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+    }
 }

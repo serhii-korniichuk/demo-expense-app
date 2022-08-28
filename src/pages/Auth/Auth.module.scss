@@ -1,3 +1,5 @@
+@import "../../scss/variables.scss";
+
 .container {
     height: 100%;
     header {
@@ -8,7 +10,7 @@
 .wrapper {
     height: 100vh;
     overflow: auto;
-    background: #1d283a;
+    background: $background;
     padding: 0px 47px 0px 47px;
     color: white;
     font-size: 14px;

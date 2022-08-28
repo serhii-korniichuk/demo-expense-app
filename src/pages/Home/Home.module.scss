@@ -1,9 +1,11 @@
+@import "../../scss/variables.scss";
+
 .container {
     min-height: 100%;
 }
 
 .wrapper {
-    background: #1d283a;
+    background: $background;
     color: white;
     padding: 0 48px;
     min-height: 100vh;
@@ -14,6 +16,7 @@
     }
     .logoutBtn {
         color: #7faaf0;
+        padding: 5px;
         cursor: pointer;
         &:hover {
             text-decoration: underline;
@@ -52,13 +55,13 @@
             display: block;
             margin: 0 auto 81px;
             width: 100px;
-            background: #539713;
+            background: $green;
             color: white;
             font-weight: 600;
             font-size: 16px;
             padding: 9.5px;
             &:hover {
-                background: #457b13;
+                background: $green;
             }
         }
         img {

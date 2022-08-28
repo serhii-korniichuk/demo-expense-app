@@ -1,16 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import styles from "./Home.module.scss";
-import HeaderAuth from "../../components/HeaderAuth/HeaderAuth";
+import { HeaderAuth } from "../../components/index";
+
 import homeImg from "../../common/img/home.svg";
+import { authLogout } from "../../redux/auth/asyncActions";
 
 const Home = () => {
+    const dispatch = useDispatch();
+
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
                 <div className={styles.header}>
                     <HeaderAuth />
-                    <p className={styles.logoutBtn}>Logout</p>
+                    <p
+                        className={styles.logoutBtn}
+                        onClick={() => dispatch(authLogout())}>
+                        Logout
+                    </p>
                 </div>
                 <div className={styles.body}>
                     <h2>Congratulations</h2>

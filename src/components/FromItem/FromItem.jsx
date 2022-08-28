@@ -1,8 +1,9 @@
 import React from "react";
+
 import styles from "./FromItem.module.scss";
 import eyeOff from "../../common/img/eyeOff.svg";
 
-const FromItem = ({
+export const FromItem = ({
     label,
     value,
     valueChang,
@@ -43,5 +44,3 @@ const FromItem = ({
         </div>
     );
 };
-
-export default FromItem;
