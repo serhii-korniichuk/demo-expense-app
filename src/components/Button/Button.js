@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export default function Button({ children, width, onClick }) {
+export default function Button({ children, width, onClick, type }) {
   return (
-    <ButtonEl onClick={onClick} width={width}>
+    <ButtonEl type={type} onClick={onClick} width={width}>
       {children}
     </ButtonEl>
   );
@@ -32,6 +32,7 @@ const ButtonEl = styled.button`
 `;
 
 Button.propTypes = {
+  type: PropTypes.string.isRequired,
   with: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.any.isRequired,

@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import shortid from 'shortid';
 import Button from 'components/Button/Button';
 import { useLoginUserMutation } from 'redux/auth/auth-reducer';
-import Icon from 'components/Icon';
+import InputForm from 'components/InputForm';
 
 const validateSchema = Yup.object().shape({
   username: Yup.string()
@@ -19,11 +19,6 @@ const validateSchema = Yup.object().shape({
 
 export default function SignIn({ onClick }) {
   const [login] = useLoginUserMutation();
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
 
   return (
     <>
@@ -42,39 +37,29 @@ export default function SignIn({ onClick }) {
         {({ errors, touched }) => (
           <Form>
             <div>
-              <FieldWrap>
-                <label>User Name</label>
-                <Field
-                  className="field"
-                  name="username"
-                  type="text"
-                  title="Only letters and numbers"
-                  placeholder="Example123"
-                />
+              <InputForm
+                label="User Name"
+                name="username"
+                type="text"
+                placeholder="Example123"
+                title="Only letters and numbers"
+                id={shortid.generate()}
+              >
                 {errors.username && touched.username ? (
                   <ErrorMessage>{errors.username}</ErrorMessage>
                 ) : null}
-              </FieldWrap>
-              <FieldWrap>
-                <label>Password</label>
-                <Field
-                  className="field"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="***************"
-                />
-                <Icon
-                  className="icon"
-                  width="24px"
-                  height="24px"
-                  fill="#fff"
-                  iconName={showPassword ? 'icon-eye-on' : 'icon-eye-off'}
-                  onClick={handleClickShowPassword}
-                />
+              </InputForm>
+              <InputForm
+                label="Password"
+                name="password"
+                placeholder="***************"
+                isPassword
+                id={shortid.generate()}
+              >
                 {errors.password && touched.password ? (
                   <ErrorMessage>{errors.password}</ErrorMessage>
                 ) : null}
-              </FieldWrap>
+              </InputForm>
             </div>
             <ButtonWrap>
               <Button type="submit" width="100%">
@@ -101,47 +86,6 @@ const Title = styled.h1`
   color: #ffffff;
   margin-top: 72px;
   margin-bottom: 48px;
-`;
-
-const FieldWrap = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  font-weight: 400;
-  line-height: 1.55;
-  &:not(:last-child) {
-    margin-bottom: 24px;
-  }
-  &::before {
-    position: absolute;
-    content: '';
-    height: 1px;
-    width: 100%;
-    background: #fff;
-    bottom: 0;
-  }
-
-  label {
-    font-size: 14px;
-    margin-bottom: 5.5px;
-  }
-
-  .field {
-    margin-bottom: 7px;
-    padding: 0;
-    font-size: 16px;
-    line-height: 1.55;
-    opacity: 0.7;
-    background: transparent;
-    border: none;
-    color: #fff;
-  }
-
-  .icon {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-  }
 `;
 
 const ErrorMessage = styled.div`
