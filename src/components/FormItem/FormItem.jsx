@@ -1,9 +1,9 @@
 import React from "react";
 
-import styles from "./FromItem.module.scss";
+import styles from "./FormItem.module.scss";
 import eyeOff from "../../common/img/eyeOff.svg";
 
-export const FromItem = ({
+export const FormItem = ({
     label,
     value,
     valueChang,

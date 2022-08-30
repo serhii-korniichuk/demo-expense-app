@@ -1,7 +1,8 @@
 import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const instance = axios.create({
-    baseURL: "https://incode-backend-dev.herokuapp.com/",
+    baseURL: API_URL + "/",
     withCredentials: false,
     headers: {
         "content-type": "application/json",

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import styles from "./Auth.module.scss";
 import { FormSignIn, FormSignUp, HeaderAuth } from "../../components/index";
@@ -15,7 +15,6 @@ import {
 } from "../../redux/auth/slice";
 
 const Auth = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const firstRender = React.useRef(false);
     const [isSignIn, setSignIn] = React.useState(true);
