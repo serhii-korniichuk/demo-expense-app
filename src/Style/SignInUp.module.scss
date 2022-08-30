@@ -1,0 +1,60 @@
+@import "variables";
+
+.block {
+  min-height: 100vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $backGroundColor;
+  width: 424px;
+  height: 900px;
+
+  .inCodeLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    .inCodeLogoText {
+      color: $textColor;
+      font-family: $montserrat;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 150%;
+      margin-left: 60px;
+      margin-top: 48px;
+    }
+
+    .finance {
+      color: $secondTextColor;
+      font-family: $montserrat;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 155%;
+      margin-left: 60px;
+    }
+
+    .signIn {
+      color: $textColor;
+      font-family: $montserrat;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 150%;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-left: 60px;
+
+    }
+  }
+}
+
+.textColor {
+  color: $textColor;
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 155%;
+}
