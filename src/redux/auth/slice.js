@@ -9,7 +9,7 @@ const initialState = {
         confirmPassword: "",
     },
 
-    loggedIn: !!window.sessionStorage.getItem("accessToken"),
+    loggedIn: !!window.localStorage.getItem("accessToken"),
     isLoading: false,
     successAuth: false,
     error: null,

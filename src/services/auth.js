@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const API_URL = process.env.REACT_APP_API_URL;
 
 const instance = axios.create({
@@ -10,9 +11,8 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${JSON.parse(
-        window.sessionStorage.getItem("accessToken"),
-    )}`;
+    const token = JSON.parse(window.localStorage.getItem("accessToken"));
+    config.headers.Authorization = `Bearer ${token}`;
     return config;
 });
 

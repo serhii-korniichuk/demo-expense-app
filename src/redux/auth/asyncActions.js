@@ -17,7 +17,7 @@ export const authLogin = createAsyncThunk(
             }
 
             const accessToken = JSON.stringify(response.data.accessToken);
-            window.sessionStorage.setItem("accessToken", accessToken);
+            window.localStorage.setItem("accessToken", accessToken);
 
             return response.data;
         } catch (err) {
@@ -36,7 +36,7 @@ export const authLogout = createAsyncThunk(
                 return rejectWithValue(response.response);
             }
 
-            window.sessionStorage.removeItem("accessToken");
+            window.localStorage.removeItem("accessToken");
 
             return response.data;
         } catch (err) {
