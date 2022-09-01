@@ -3,13 +3,11 @@ import { authApi } from "../../services/auth";
 
 export const authLogin = createAsyncThunk(
     "auth/authLogin",
-    async (_, { getState, rejectWithValue }) => {
-        const { userName, password } = getState().auth.formData;
-
+    async (dataSignIn, { rejectWithValue }) => {
         try {
             const response = await authApi.login({
-                username: userName,
-                password,
+                username: dataSignIn.userName,
+                password: dataSignIn.password,
             });
 
             if (response.response) {
@@ -47,14 +45,12 @@ export const authLogout = createAsyncThunk(
 
 export const authRegister = createAsyncThunk(
     "auth/authRegister",
-    async (_, { getState, rejectWithValue }) => {
-        const { fullName, userName, password } = getState().auth.formData;
-
+    async (dataSignUp, { getState, rejectWithValue }) => {
         try {
             const response = await authApi.register({
-                displayName: fullName,
-                username: userName,
-                password,
+                displayName: dataSignUp.fullName,
+                username: dataSignUp.userName,
+                password: dataSignUp.password,
             });
             if (response.response) {
                 return rejectWithValue(response.response);

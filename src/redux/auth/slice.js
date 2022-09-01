@@ -2,13 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { authLogin, authLogout, authRegister } from "./asyncActions";
 
 const initialState = {
-    formData: {
-        fullName: "",
-        userName: "",
-        password: "",
-        confirmPassword: "",
-    },
-
     loggedIn: !!window.localStorage.getItem("accessToken"),
     isLoading: false,
     successAuth: false,
@@ -19,25 +12,6 @@ export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setFullName: (state, action) => {
-            state.formData.fullName = action.payload.trim();
-            state.error = null;
-        },
-        setUserName: (state, action) => {
-            state.formData.userName = action.payload.trim();
-            state.error = null;
-        },
-        setPassword: (state, action) => {
-            state.formData.password = action.payload;
-            state.error = null;
-        },
-        setConfirmPassword: (state, action) => {
-            state.formData.confirmPassword = action.payload;
-            state.error = null;
-        },
-        clearForm: (state) => {
-            state.formData = initialState.formData;
-        },
         setSuccessAuth: (state, action) => {
             state.successAuth = action.payload;
         },
@@ -49,11 +23,12 @@ export const authSlice = createSlice({
         // authLogin
         builder.addCase(authLogin.pending, (state) => {
             state.isLoading = true;
+            state.error = null;
         });
         builder.addCase(authLogin.fulfilled, (state) => {
-            state.formData = initialState.formData;
             state.isLoading = false;
             state.loggedIn = true;
+            state.error = null;
         });
         builder.addCase(authLogin.rejected, (state, action) => {
             state.isLoading = false;
@@ -79,8 +54,8 @@ export const authSlice = createSlice({
         });
         builder.addCase(authRegister.fulfilled, (state) => {
             state.isLoading = false;
-            state.formData = initialState.formData;
             state.successAuth = true;
+            state.error = null;
         });
         builder.addCase(authRegister.rejected, (state, action) => {
             state.isLoading = false;
@@ -89,14 +64,6 @@ export const authSlice = createSlice({
     },
 });
 
-export const {
-    setFullName,
-    setUserName,
-    setPassword,
-    setConfirmPassword,
-    clearForm,
-    setSuccessAuth,
-    clearError,
-} = authSlice.actions;
+export const { setSuccessAuth, clearError } = authSlice.actions;
 
 export default authSlice.reducer;
