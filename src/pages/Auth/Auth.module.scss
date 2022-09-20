@@ -1,0 +1,42 @@
+@import "../../scss/variables.scss";
+
+.container {
+    height: 100%;
+    header {
+      padding: 47px 0px 72px 0px;
+    }
+}
+
+.wrapper {
+    height: 100vh;
+    overflow: auto;
+    background: $background;
+    padding: 0px 47px 0px 47px;
+    color: white;
+    font-size: 14px;
+    margin: 0 auto;
+    max-width: 330px;
+    h1 {
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 150%;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        padding: 0px 0px 48px 0px;
+    }
+}
+
+.bottomText {
+    padding: 24px 0px 0px 0px;
+    text-align: center;
+    color: #f1f2f1;
+    font-weight: 400;
+    font-size: 12px;
+    span {
+        color: #7faaf0;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+    }
+}
