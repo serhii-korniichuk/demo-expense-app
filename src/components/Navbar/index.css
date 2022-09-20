@@ -1,0 +1,16 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 48px;
+}
+
+.nav__logo__title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.nav__logo__subtitle {
+  font-weight: 600;
+  color: #539713;
+}

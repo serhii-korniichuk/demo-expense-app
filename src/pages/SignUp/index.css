@@ -1,0 +1,31 @@
+.signUp {
+  padding: 48px;
+}
+
+.signUp__title {
+  font-size: 56px;
+  margin-bottom: 48px;
+  text-transform: uppercase;
+}
+
+.signUp__button {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.disclaimer {
+  font-size: 12px;
+  text-align: center;
+  color: #f1f2f1;
+}
+
+.disclaimer .link {
+  color: #7faaf0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.disclaimer .link:hover {
+  color: #5b87d0;
+}

@@ -1,0 +1,36 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.home__title__wrapper {
+  position: relative;
+}
+
+.home__title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 48px;
+  text-transform: uppercase;
+}
+
+.decor {
+  position: absolute;
+  top: -93px;
+  right: -162px;
+}
+
+.home__text {
+  font-weight: 600;
+  margin-bottom: 48px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.home__footer {
+  width: 340px;
+  height: 290px;
+}
