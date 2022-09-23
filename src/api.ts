@@ -28,3 +28,7 @@ const BASE_URL = 'https://incode-backend-dev.herokuapp.com';
          })
      });
  }
+
+ export const logout = async () => {
+     await fetch(`${BASE_URL}/logout`);
+ }

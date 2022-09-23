@@ -11,38 +11,43 @@ function App() {
 
   return (
     <div className="App">
-    <Routes>
-        <Route
-            path="/sign-up"
-            element={
-                <SignUp
+        <SignIn
+            isPassShowed={isPassShowed}
+            setIsPassShowed={setIsPassShowed}
+        />
+
+        <Routes>
+            <Route
+                path="/sign-up"
+                element={
+                    <SignUp
+                        isPassShowed={isPassShowed}
+                        setIsPassShowed={setIsPassShowed}
+                    />
+                }
+            />
+
+            <Route path="/" element={
+                <SignIn
                     isPassShowed={isPassShowed}
                     setIsPassShowed={setIsPassShowed}
                 />
-            }
-        />
-
-        <Route path="/" element={
-            <SignIn
-                isPassShowed={isPassShowed}
-                setIsPassShowed={setIsPassShowed}
+                }
             />
-            }
-        />
 
-        <Route path="/sign-in" element={
-            <SignIn
-                isPassShowed={isPassShowed}
-                setIsPassShowed={setIsPassShowed}
+            <Route path="/sign-in" element={
+                <SignIn
+                    isPassShowed={isPassShowed}
+                    setIsPassShowed={setIsPassShowed}
+                />
+                }
             />
-            }
-        />
 
-        <Route
-            path="homepage"
-            element={<Homepage />}
-        />
-    </Routes>
+            <Route
+                path="homepage"
+                element={<Homepage />}
+            />
+        </Routes>
     </div>
   );
 }

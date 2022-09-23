@@ -4,9 +4,18 @@ import '../styles/Homepage.scss';
 import '../styles/button.scss';
 import Congrats from '../images/Congrat.svg';
 import FooterImage from '../images/Vector.svg';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {logout} from "../api";
 
 export const Homepage = () => {
+    const navigate = useNavigate();
+
+    const onLogout = () => {
+        logout().then(res => {
+            navigate('/');
+        });
+    }
+
     return (
         <div className="page">
             <div className="Homepage">
@@ -20,9 +29,7 @@ export const Homepage = () => {
 
                     <div className="Homepage__buttons">
                         <button className="btn">See You</button>
-                        <Link to="/">
-                            <button className="btn__logout">Logout</button>
-                        </Link>
+                        <button className="btn__logout" onClick={onLogout}>Logout</button>
                     </div>
 
                     <img className="Homepage__footerImage" src={FooterImage} alt="footerImg"/>
