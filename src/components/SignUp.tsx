@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../styles/Auth.scss';
 import '../styles/Header.scss';
 import '../styles/button.scss';
 import {ReactComponent as Toggle, ReactComponent as Toggler} from "../images/toggler.svg";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {register} from "../api";
 
 type Props = {
     isPassShowed: boolean;
@@ -13,9 +14,42 @@ type Props = {
 export const SignUp: React.FC<Props> = (props) => {
     const { isPassShowed, setIsPassShowed } = props;
 
+    const [displayName, setDisplayName] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const navigate = useNavigate();
+
     const onPassToggle = (event: React.FormEvent<HTMLElement>) => {
         event.preventDefault();
         setIsPassShowed(!isPassShowed);
+    }
+
+    const onFormSubmit = (event: React.FormEvent<HTMLElement>) => {
+        event.preventDefault();
+
+        if (!username || !displayName || !password || !confirmPassword) {
+            setErrorMessage('Fill all fields!');
+        }
+
+        if (confirmPassword === password) {
+            register(displayName, username, password)
+                .then(res => {
+                    console.log(res);
+
+                    if (res.ok) {
+                        navigate('/homepage')
+                    } else {
+                        if (res.status === 409) {
+                            setErrorMessage('User already exist!');
+                        }
+                    }
+                });
+        } else {
+            setErrorMessage('Passwords must be same!');
+        }
     }
 
     return (
@@ -26,12 +60,14 @@ export const SignUp: React.FC<Props> = (props) => {
 
                 <div className="form">
                     <h1 className="form__title">SIGN UP</h1>
-                    <form action="/homepage" method="GET">
+                    <form onSubmit={e => onFormSubmit(e)}>
                         <p className="form__text">Full Name</p>
                         <input
                             type="text"
                             className="form__input"
                             placeholder="Example Name"
+                            value={displayName}
+                            onChange={e => setDisplayName(e.target.value)}
                         />
 
                         <p className="form__text">User Name</p>
@@ -39,6 +75,8 @@ export const SignUp: React.FC<Props> = (props) => {
                             type="text"
                             className="form__input"
                             placeholder="Example123"
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
                         />
 
                         <p className="form__text">Password</p>
@@ -47,6 +85,8 @@ export const SignUp: React.FC<Props> = (props) => {
                                 type={isPassShowed ? "text" : "password"}
                                 className="form__input"
                                 placeholder="***************"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
                             />
 
                             <button
@@ -63,6 +103,8 @@ export const SignUp: React.FC<Props> = (props) => {
                                 type={isPassShowed ? "text" : "password"}
                                 className="form__input"
                                 placeholder="***************"
+                                value={confirmPassword}
+                                onChange={e => setConfirmPassword(e.target.value)}
                             />
 
                             <button
@@ -72,6 +114,8 @@ export const SignUp: React.FC<Props> = (props) => {
                                 <Toggle />
                             </button>
                         </div>
+
+                        {errorMessage && <p className="error">{`${errorMessage}`}</p>}
 
                         <button
                             type="submit"
