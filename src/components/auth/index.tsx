@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "../unknown/header";
 import SignInForm from "./signInForm";
+import SignUpForm from "./signUpForm";
 import styles from "./styles.module.scss";
 
 const Auth = () => {
@@ -14,8 +15,7 @@ const Auth = () => {
       </h1>
 
       <div className={styles.form}>
-        {/* {signInVariant ? <SignInForm /> : <SignUpForm />} */}
-        <SignInForm />
+        {signInVariant ? <SignInForm /> : <SignUpForm />}
       </div>
 
       {signInVariant ? (

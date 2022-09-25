@@ -28,7 +28,7 @@ const Input = ({
               name={id}
               type="text"
               placeholder={placeholder}
-              autoComplete="off"
+              autoComplete="nah"
               onChange={onChange}
               value={value}
             />
