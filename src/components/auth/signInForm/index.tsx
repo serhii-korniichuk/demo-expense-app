@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ActionBtn from "../actionBtn";
+import Btn from "../../unknown/btn";
 import Input from "../input";
 
 const SignInForm = () => {
@@ -32,7 +32,8 @@ const SignInForm = () => {
         }
         value={password}
       />
-      <ActionBtn
+      <Btn
+        type="submit"
         label="Sign In"
         isDisabled={password.length === 0 || username.length === 0}
       />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ActionBtn from "../actionBtn";
+import Btn from "../../unknown/btn";
 import Input from "../input";
 
 const SignUpForm = () => {
@@ -53,7 +53,8 @@ const SignUpForm = () => {
         }
         value={confirmPassword}
       />
-      <ActionBtn
+      <Btn
+        type="submit"
         label="Sign Up"
         isDisabled={
           fullName.length === 0 ||
