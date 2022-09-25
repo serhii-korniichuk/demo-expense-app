@@ -1,6 +1,11 @@
 /// <reference types="react-scripts" />
 
-interface Credentials {
-  userName: string,
-  userPassword: string,
+interface LogInCredentials {
+  password: string,
+  username: string,
+}
+
+export interface LogUpCredentials extends LogInCreds {
+  displayName: string,
+
 }

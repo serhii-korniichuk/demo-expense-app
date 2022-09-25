@@ -19,6 +19,7 @@ export const App: React.FC = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/home" element={<Home />} />
+            <Route path="*" element={<Navigate to="/home" /> } />
           </Routes>
         </main>
       </div>
