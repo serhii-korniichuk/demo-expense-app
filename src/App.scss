@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Montserrat';
+  color: #fff;
+}
+
+body {
+  margin: 0;
+
+  background: #1D283A;
+}
+
+p,
+h1,
+h2 {
+  margin: 0;
+}
+
+.form {
+  &__input-title {
+    margin-bottom: 5.5px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 155%;
+  }
+
+  &__input {
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    background-color: transparent;
+
+    border: none;
+    border-bottom: 1px solid #fff;
+
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 155%;
+    opacity: 0.7;
+
+    outline: none;
+
+    transition: 0.2s;
+
+    &:focus {
+      border-bottom: 1px solid #539713;
+      transform: scale(1.08);
+    }
+
+    &:hover {
+      border-bottom: 1px solid #539713;
+    }
+
+    &:last-child {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__submit {
+    margin-bottom: 24px;
+
+    width: 100%;
+    height: 44px;
+
+    display: block;
+    
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 155%;
+
+    color: #FFFFFF;
+
+    background-color: #539713;
+
+    border: none;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+
+    transition: 0.2s;
+    &:hover {
+      background-color: #365d12;
+    }
+  }
+}
+
+.App {
+
+  &__container {
+    max-width: 400px;
+
+    margin: 0 auto;
+    padding: 48px;
+
+    @media (min-width: 576px) {
+      max-width: 100%;
+    }
+  }
+
+  &__main {
+    @media (min-width: 576px) {
+      margin: 0 auto;
+      max-width: 508px;
+    }
+  }
+
+  &__header {
+    margin-bottom: 72px;
+
+    @media (min-width: 576px) {
+      margin-bottom: 0px;
+    }
+  }
+}
