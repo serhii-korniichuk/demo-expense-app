@@ -1,0 +1,37 @@
+.sign-in {
+  &__title {
+    margin-bottom: 48px;
+
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 150%;
+
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  &__sign-up {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 155%;
+
+    color: #F1F2F1;
+  }
+
+  &__sign-up-link {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 155%;
+
+    text-decoration: none;
+
+
+    color: #7FAAF0;
+
+    transition: 0.2s;
+
+    &:hover {
+      color: #5d7fb4;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+stack:
+node
+npm
+react
+router
+typescript
+eslint
+sass
+classnames
