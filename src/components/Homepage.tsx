@@ -4,16 +4,16 @@ import '../styles/Homepage.scss';
 import '../styles/button.scss';
 import Congrats from '../images/Congrat.svg';
 import FooterImage from '../images/Vector.svg';
-import {Link, useNavigate} from "react-router-dom";
-import {logout} from "../api";
+import {useNavigate} from "react-router-dom";
+import {BASE_URL} from "../api";
 
 export const Homepage = () => {
     const navigate = useNavigate();
 
-    const onLogout = () => {
-        logout().then(res => {
-            navigate('/');
-        });
+    const logout = async () => {
+        await fetch(`${BASE_URL}/auth/logout`);
+        navigate('/');
+        return;
     }
 
     return (
@@ -29,7 +29,7 @@ export const Homepage = () => {
 
                     <div className="Homepage__buttons">
                         <button className="btn">See You</button>
-                        <button className="btn__logout" onClick={onLogout}>Logout</button>
+                        <button className="btn__logout" onClick={() => logout()}>Logout</button>
                     </div>
 
                     <img className="Homepage__footerImage" src={FooterImage} alt="footerImg"/>

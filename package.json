@@ -1,7 +1,6 @@
 {
   "name": "demo-expense-app",
   "version": "0.1.0",
-  "homepage": "https://denis-khristyuk.github.io/demo-expense-app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",

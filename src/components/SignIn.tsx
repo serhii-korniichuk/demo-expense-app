@@ -3,21 +3,15 @@ import '../styles/Auth.scss';
 import '../styles/Header.scss';
 import '../styles/button.scss';
 import { ReactComponent as Toggle} from '../images/toggler.svg';
-import {Link, Route, Routes, useNavigate} from 'react-router-dom';
-import { SignUp } from './SignUp';
+import {Link, useNavigate} from 'react-router-dom';
 import {login} from "../api";
 
-type Props = {
-    isPassShowed: boolean;
-    setIsPassShowed: CallableFunction;
-}
-
-export const SignIn: React.FC<Props> = (props) => {
-    const { isPassShowed, setIsPassShowed } = props;
+export const SignIn = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [isPassShowed, setIsPassShowed] = useState(false);
 
     const navigate = useNavigate();
 
@@ -35,7 +29,7 @@ export const SignIn: React.FC<Props> = (props) => {
 
         login(username, password).then(res => {
             if (res.ok) {
-                navigate('/homepage');
+                navigate('/home');
             } else {
                 setErrorMessage('Incorrect password or username!')
             }

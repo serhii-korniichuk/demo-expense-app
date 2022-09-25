@@ -2,23 +2,17 @@ import React, {useState} from 'react';
 import '../styles/Auth.scss';
 import '../styles/Header.scss';
 import '../styles/button.scss';
-import {ReactComponent as Toggle, ReactComponent as Toggler} from "../images/toggler.svg";
+import {ReactComponent as Toggle} from "../images/toggler.svg";
 import {Link, useNavigate} from "react-router-dom";
 import {register} from "../api";
 
-type Props = {
-    isPassShowed: boolean;
-    setIsPassShowed: CallableFunction;
-}
-
-export const SignUp: React.FC<Props> = (props) => {
-    const { isPassShowed, setIsPassShowed } = props;
-
+export const SignUp = () => {
     const [displayName, setDisplayName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [isPassShowed, setIsPassShowed] = useState(false);
 
     const navigate = useNavigate();
 
@@ -40,7 +34,7 @@ export const SignUp: React.FC<Props> = (props) => {
                     console.log(res);
 
                     if (res.ok) {
-                        navigate('/homepage')
+                        navigate('/home')
                     } else {
                         if (res.status === 409) {
                             setErrorMessage('User already exist!');

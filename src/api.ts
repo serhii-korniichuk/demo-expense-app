@@ -1,4 +1,4 @@
-const BASE_URL = 'https://incode-backend-dev.herokuapp.com';
+export const BASE_URL = 'https://incode-backend-dev.herokuapp.com';
 
  export const login = async (username: string, password: string) => {
      return await fetch(`${BASE_URL}/auth/login`, {
@@ -27,8 +27,4 @@ const BASE_URL = 'https://incode-backend-dev.herokuapp.com';
              displayName,
          })
      });
- }
-
- export const logout = async () => {
-     await fetch(`${BASE_URL}/logout`);
  }
