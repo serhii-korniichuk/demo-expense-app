@@ -4,7 +4,7 @@ import './styles/App.scss';
 import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
 import { Homepage } from './components/Homepage';
-import {Navigate, Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
     const [isLogged, setIsLogged] = useState(false);
@@ -20,7 +20,10 @@ function App() {
             />
 
             <Route path="/" element={
-                <Navigate to="/home" replace />
+                <Homepage
+                    isLogged={isLogged}
+                    setIsLogged={setIsLogged}
+                />
                 }
             />
 

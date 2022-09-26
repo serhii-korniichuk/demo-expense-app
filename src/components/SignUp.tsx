@@ -30,6 +30,10 @@ export const SignUp: React.FC<Props> = ({ setIsLogged }) => {
 
         if (!username || !displayName || !password || !confirmPassword) {
             setErrorMessage('All fields must be filled in');
+            return;
+        } else if (password.length < 8) {
+            setErrorMessage('Password must be at least 8 characters!');
+            return;
         }
 
         if (confirmPassword === password) {
@@ -40,16 +44,14 @@ export const SignUp: React.FC<Props> = ({ setIsLogged }) => {
                     if (res.ok) {
                         setIsLogged(true);
                         navigate('/home');
-                    } else {
-                        if (res.status === 409) {
-                            setErrorMessage('User already exist!');
-                        }
+                    } else if (res.status === 409) {
+                        setErrorMessage('User already exist!');
                     }
                 });
-        } else if (password.length < 8) {
-            setErrorMessage('Password must be at least 8 characters!');
+
         } else if (password !== confirmPassword) {
             setErrorMessage('The passwords don\'t match!');
+            return;
         }
     }
 
@@ -77,7 +79,10 @@ export const SignUp: React.FC<Props> = ({ setIsLogged }) => {
                             className="form__input"
                             placeholder="Example123"
                             value={username}
-                            onChange={e => setUsername(e.target.value)}
+                            onChange={e => {
+                                setUsername(e.target.value);
+                                setErrorMessage('');
+                            }}
                         />
 
                         <p className="form__text">Password</p>
@@ -87,7 +92,10 @@ export const SignUp: React.FC<Props> = ({ setIsLogged }) => {
                                 className="form__input"
                                 placeholder="***************"
                                 value={password}
-                                onChange={e => setPassword(e.target.value)}
+                                onChange={e => {
+                                    setPassword(e.target.value);
+                                    setErrorMessage('');
+                                }}
                             />
 
                             <button
@@ -105,7 +113,10 @@ export const SignUp: React.FC<Props> = ({ setIsLogged }) => {
                                 className="form__input"
                                 placeholder="***************"
                                 value={confirmPassword}
-                                onChange={e => setConfirmPassword(e.target.value)}
+                                onChange={e => {
+                                    setConfirmPassword(e.target.value);
+                                    setErrorMessage('');
+                                }}
                             />
 
                             <button
