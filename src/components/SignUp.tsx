@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
-import '../styles/Auth.scss';
-import '../styles/Header.scss';
-import '../styles/button.scss';
-import {ReactComponent as Toggle} from "../images/toggler.svg";
-import {Link, useNavigate} from "react-router-dom";
-import {register} from "../api";
+import React, { useState } from 'react';
+import '../styles/blocks/Auth.scss';
+import '../styles/blocks/Header.scss';
+import '../styles/blocks/button.scss';
+import { ReactComponent as Toggle } from '../images/toggler.svg';
+import { Link, useNavigate } from 'react-router-dom';
+import { register } from '../api';
 
-export const SignUp = () => {
+type Props = {
+    setIsLogged: CallableFunction;
+}
+
+export const SignUp: React.FC<Props> = ({ setIsLogged }) => {
     const [displayName, setDisplayName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -25,7 +29,7 @@ export const SignUp = () => {
         event.preventDefault();
 
         if (!username || !displayName || !password || !confirmPassword) {
-            setErrorMessage('Fill all fields!');
+            setErrorMessage('All fields must be filled in');
         }
 
         if (confirmPassword === password) {
@@ -34,15 +38,18 @@ export const SignUp = () => {
                     console.log(res);
 
                     if (res.ok) {
-                        navigate('/home')
+                        setIsLogged(true);
+                        navigate('/home');
                     } else {
                         if (res.status === 409) {
                             setErrorMessage('User already exist!');
                         }
                     }
                 });
-        } else {
-            setErrorMessage('Passwords must be same!');
+        } else if (password.length < 8) {
+            setErrorMessage('Password must be at least 8 characters!');
+        } else if (password !== confirmPassword) {
+            setErrorMessage('The passwords don\'t match!');
         }
     }
 
@@ -109,7 +116,7 @@ export const SignUp = () => {
                             </button>
                         </div>
 
-                        {errorMessage && <p className="error">{`${errorMessage}`}</p>}
+                        {errorMessage && <p className="error">{`Error! ${errorMessage}`}</p>}
 
                         <button
                             type="submit"

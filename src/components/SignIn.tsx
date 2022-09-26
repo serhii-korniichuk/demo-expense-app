@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
-import '../styles/Auth.scss';
-import '../styles/Header.scss';
-import '../styles/button.scss';
-import { ReactComponent as Toggle} from '../images/toggler.svg';
-import {Link, useNavigate} from 'react-router-dom';
-import {login} from "../api";
+import React, { useState } from 'react';
+import '../styles/blocks/Auth.scss';
+import '../styles/blocks/Header.scss';
+import '../styles/blocks/button.scss';
+import { ReactComponent as Toggle } from '../images/toggler.svg';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../api';
 
-export const SignIn = () => {
+type Props = {
+    setIsLogged: CallableFunction;
+}
 
+export const SignIn: React.FC<Props> = ({ setIsLogged }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -23,12 +26,13 @@ export const SignIn = () => {
     const onSubmitForm = (event: React.FormEvent<HTMLElement>) => {
         event.preventDefault();
         if (!username || !password) {
-            setErrorMessage('Fill all fields!')
+            setErrorMessage('All fields must be filled in!  ')
             return;
         }
 
         login(username, password).then(res => {
             if (res.ok) {
+                setIsLogged(true);
                 navigate('/home');
             } else {
                 setErrorMessage('Incorrect password or username!')
@@ -80,7 +84,7 @@ export const SignIn = () => {
                             </button>
                         </div>
 
-                        {errorMessage && <p className="error">{`${errorMessage}`}</p>}
+                        {errorMessage && <p className="error">{`Error! ${errorMessage}`}</p>}
 
                         <button
                             type="submit"
