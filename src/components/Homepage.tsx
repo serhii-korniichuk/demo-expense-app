@@ -40,7 +40,7 @@ export const Homepage: React.FC<Props> = ({ isLogged, setIsLogged }) => {
                     </p>
 
                     <div className="Homepage__buttons">
-                        <button className="btn">See You</button>
+                        <button className="btn Homepage__btn">See You</button>
                         <button className="btn__logout" onClick={() => logout()}>Logout</button>
                     </div>
 
