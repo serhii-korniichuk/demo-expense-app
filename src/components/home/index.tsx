@@ -1,8 +1,28 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { handleLogout } from "../../api";
 import Btn from "../unknown/btn";
 import Header from "../unknown/header";
 import styles from "./styles.module.scss";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!window.localStorage.accessToken){
+      navigate(`/auth`);
+    }
+  }, [navigate])
+
+  //logout request doesn't function properly
+
+  const handleLogoutAction = () => {
+    handleLogout().then(() => {
+      window.localStorage.removeItem("accessToken");
+      navigate(`/auth`);
+    })
+  }
+
   return (
     <div className={styles.container}>
       <Header className={styles.header} />
@@ -18,7 +38,12 @@ const Home = () => {
           detailed feedback on the result of your work
         </p>
 
-        <Btn type="button" label="See You" className={styles.btn} />
+        <Btn
+          type="button"
+          label="See You"
+          className={styles.btn}
+          onClick={handleLogoutAction}
+        />
 
         <img className={styles.groupImg} src="/images/group.png" alt="group" />
       </main>

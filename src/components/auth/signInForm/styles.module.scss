@@ -6,3 +6,8 @@
     margin-bottom: 12px;
     color: $error;
 }
+
+.success{
+    @extend .error;
+    color: $green;
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { handleLogin } from "../../../api";
 import Btn from "../../unknown/btn";
 import Input from "../input";
@@ -10,12 +11,17 @@ const SignInForm = () => {
   const [password, setPassword] = useState<string>(``);
   const [error, setError] = useState<string>(``);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    handleLogin({ username: ``, password: `` }).then((res) =>
-      setError(res as string)
-    );
+    handleLogin({ username: username, password: password })
+      .then((res) => {
+        window.localStorage.setItem("accessToken", res.accessToken);
+        navigate(`/`);
+      })
+      .catch((err) => setError(err.message));
   };
 
   return (

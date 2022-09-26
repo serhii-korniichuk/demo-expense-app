@@ -1,29 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleRegister } from "../../../api";
 import Btn from "../../unknown/btn";
 import Input from "../input";
 
 import styles from "../signInForm/styles.module.scss";
 
-const SignUpForm = () => {
+const SignUpForm = ({ onRegister }: { onRegister: Function }) => {
   const [fullName, setFullName] = useState<string>(``);
   const [username, setUsername] = useState<string>(``);
   const [password, setPassword] = useState<string>(``);
   const [confirmPassword, setConfirmPassword] = useState<string>(``);
   const [error, setError] = useState<string>(``);
-  
+  const [successReg, setSuccessReg] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     handleRegister({ displayName: fullName, username, password })
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res) {
+          setSuccessReg(true);
+        }
+      })
       .catch((err) => setError(err.message));
   };
+
+  useEffect(() => {
+    if (successReg) {
+      let timeout = setTimeout(() => onRegister(), 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [successReg, onRegister]);
 
   return (
     <form onSubmit={handleSubmit}>
       {error.length !== 0 && <span className={styles.error}>{error}</span>}
+      {successReg && (
+        <span className={styles.success}>
+          Registered. Redirecting to sign in form
+        </span>
+      )}
       <Input
         id="fullname"
         label="Full Name"

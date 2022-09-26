@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../unknown/header";
 import SignInForm from "./signInForm";
 import SignUpForm from "./signUpForm";
@@ -6,6 +7,14 @@ import styles from "./styles.module.scss";
 
 const Auth = () => {
   const [signInVariant, setSignInVariant] = useState<boolean>(true);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(window.localStorage.accessToken){
+      navigate(`/`);
+    }
+  }, [navigate])
 
   return (
     <div className={styles.container}>
@@ -15,7 +24,7 @@ const Auth = () => {
       </h1>
 
       <div className={styles.form}>
-        {signInVariant ? <SignInForm /> : <SignUpForm />}
+        {signInVariant ? <SignInForm /> : <SignUpForm onRegister={() => setSignInVariant(true)} />}
       </div>
 
       {signInVariant ? (

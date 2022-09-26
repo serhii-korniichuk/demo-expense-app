@@ -30,7 +30,7 @@ const Input = ({
               id={id}
               type="text"
               placeholder={placeholder}
-              autoComplete="nah"
+              autoComplete="off"
               onChange={onChange}
               value={value}
             />

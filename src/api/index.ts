@@ -44,3 +44,10 @@ export const handleRegister = async (data: {
     return content;
   }
 };
+
+export const handleLogout = async () => {
+  const rawResponse = await fetch(`${baseURI}/auth/logout`);
+  const content = await rawResponse.json();
+
+  return content;
+};
