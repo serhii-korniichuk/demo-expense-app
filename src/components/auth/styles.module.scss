@@ -5,6 +5,10 @@
     margin: 0 auto;
     padding: 48px;
 
+    @media screen and (max-width: 568px){
+        padding: 24px;
+    }
+
     .header{
         margin-bottom: 72px;
     }

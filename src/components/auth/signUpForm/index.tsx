@@ -1,20 +1,29 @@
 import { useState } from "react";
+import { handleRegister } from "../../../api";
 import Btn from "../../unknown/btn";
 import Input from "../input";
+
+import styles from "../signInForm/styles.module.scss";
 
 const SignUpForm = () => {
   const [fullName, setFullName] = useState<string>(``);
   const [username, setUsername] = useState<string>(``);
   const [password, setPassword] = useState<string>(``);
   const [confirmPassword, setConfirmPassword] = useState<string>(``);
+  const [error, setError] = useState<string>(``);
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(username);
+
+    handleRegister({ displayName: fullName, username, password })
+      .then((res) => console.log(res))
+      .catch((err) => setError(err.message));
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      {error.length !== 0 && <span className={styles.error}>{error}</span>}
       <Input
         id="fullname"
         label="Full Name"

@@ -1,18 +1,26 @@
 import { useState } from "react";
+import { handleLogin } from "../../../api";
 import Btn from "../../unknown/btn";
 import Input from "../input";
+
+import styles from "./styles.module.scss";
 
 const SignInForm = () => {
   const [username, setUsername] = useState<string>(``);
   const [password, setPassword] = useState<string>(``);
+  const [error, setError] = useState<string>(``);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(username);
+
+    handleLogin({ username: ``, password: `` }).then((res) =>
+      setError(res as string)
+    );
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      {error.length !== 0 && <span className={styles.error}>{error}</span>}
       <Input
         id="username"
         label="User Name"
