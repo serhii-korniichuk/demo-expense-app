@@ -1,3 +1,33 @@
+# demo-expense-app
+
+## Main dependency
+
+- Gatsby
+- MobX
+- Material UI
+- Prettier & ESLint
+
+## State management
+
+- `/src/stores` - Root mobx folder
+- `/src/stores/store/` - main store
+- `/src/stores/errorStore/` - store for managing server and client errors
+- `/src/stores/messageStore/` - store for notifications
+
+## SEO management
+
+- `/src/components/SEO/SEO.js` - SEO component
+- `/gatsby-config.js` - SEO settings and gatsby modules
+
+## Requirements
+
+- Installed [NodeJS](https://nodejs.org/uk/) v16.13.0
+
+## How to start
+
+- Download dependencies via YARN `yarn`
+- To start local build run `npm run dev`
+
 ## 🚀 Завдання
 
 Головним завданням є створення демо додатку, де користувач мав би змогу зареєструвати свій аккаунт за допомогою **Sign Up** форми та згодом увійти в нього через **Sign In** форму. Після успішного входу, користувача повинно автоматично перенаправити на сторінку **Home**, де в мабутньому він мав би змогу зкористатись кнопкою _Logout_ для виходу зі свого аккаунту.
