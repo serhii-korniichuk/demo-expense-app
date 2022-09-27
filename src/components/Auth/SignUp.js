@@ -1,16 +1,19 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
+import { useForm, Controller } from "react-hook-form";
+import { observer } from "mobx-react";
+import {
+  IconButton,
+  InputAdornment,
+  TextField,
+  CssBaseline,
+  Button,
+  Typography,
+  Container,
+  Box,
+} from "@mui/material";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { Icon, IconButton, InputAdornment } from "@mui/material";
 import store from "../../stores/store";
-import { observer } from "mobx-react";
-import { useForm, Controller } from "react-hook-form";
 import errorStore from "../../stores/errorStore";
 import { errorFormatter } from "../../utils/errorFormatter";
 
@@ -44,12 +47,7 @@ const SignUp = () => {
         <Typography component="h1" variant="h1" sx={{ alignSelf: "baseline" }}>
           SIGN UP
         </Typography>
-        <Box
-          component="form"
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate
-          sx={{ mt: 1 }}
-        >
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
           <Controller
             id="fullName"
             name="fullName"
@@ -170,15 +168,13 @@ const SignUp = () => {
               (textError) =>
                 textError && (
                   <Typography
-                    component="p4"
-                    variant="p4"
+                    variant="body2"
                     fontStyle="normal"
                     fontSize="12px"
                     fontWeight="400"
                     color="error.main"
                     align="center"
                     alignSelf="center"
-                    sx={{ mt: 3, mb: 3 }}
                   >
                     {textError + " "}
                   </Typography>
@@ -190,8 +186,7 @@ const SignUp = () => {
           </Button>
           <Box display="flex" justifyContent="center" alignItems="center">
             <Typography
-              component="p4"
-              variant="p4"
+              variant="body2"
               fontStyle="normal"
               fontSize="12px"
               fontWeight="400"
@@ -200,8 +195,7 @@ const SignUp = () => {
               I have an account.
             </Typography>
             <Typography
-              component="p4"
-              variant="p4"
+              variant="body2"
               fontStyle="normal"
               fontSize="12px"
               fontWeight="400"

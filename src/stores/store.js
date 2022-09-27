@@ -62,7 +62,6 @@ const createStore = () => ({
         messageStore.createMessage("Success! Now sign in");
       }
     } catch (error) {
-      console.log(error);
       errorStore.createError(error.message);
     }
   },

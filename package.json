@@ -1,8 +1,8 @@
 {
-  "name": "50starsrentals",
+  "name": "demo-expense-app",
   "private": true,
-  "description": "",
-  "version": "0.1.0",
+  "description": "InCode",
+  "version": "1.0.0",
   "author": "Fertern",
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.5",
@@ -23,12 +23,10 @@
     "gatsby-transformer-sharp": "^2.5.2",
     "mobx": "^6.0.1",
     "mobx-react": "^7.0.0",
-    "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.0.0",
     "react-hook-form": "^7.36.1",
-    "react-moment": "^0.9.7",
     "sharp": "^0.25.4",
     "typeface-montserrat": "^1.1.13"
   },

@@ -2,15 +2,15 @@ import React from "react";
 import { observer } from "mobx-react";
 import Layout from "../layout";
 import { Box, Button, Typography, Grid } from "@mui/material";
-import { DecorImage, HomeImage } from "../components/Home/Home";
+import { DecorImage, HomeImage } from "../components/Home/Images";
 import store from "../stores/store";
 
 const IndexPage = () => (
   <Layout
     privateRoute
     seo={{
-      metaTitle: "Register",
-      metaDescription: "Register in 50 Stars Rentals ",
+      metaTitle: "Home",
+      metaDescription: "Homepage InCode Finance",
     }}
   >
     <Grid
@@ -19,6 +19,7 @@ const IndexPage = () => (
       justifyContent="center"
       alignItems="center"
       minHeight="900px"
+      maxWidth="xs"
     >
       <Box position="relative">
         <Typography
@@ -29,6 +30,12 @@ const IndexPage = () => (
           fontWeight="700"
           fontSize="48px"
           marginBottom="48px"
+          sx={{
+            fontSize: {
+              lg: "48px",
+              xs: "22px",
+            },
+          }}
         >
           CONGRATULATIONS
         </Typography>
@@ -43,8 +50,8 @@ const IndexPage = () => (
         marginBottom="48px"
         maxWidth="450px"
       >
-        Now you are on the main page. Soon we will provide you with detailed feedback
-        on the result of your work
+        Now you are on the main page. Soon we will provide you with detailed feedback on the result
+        of your work
       </Typography>
       <Button
         type="submit"

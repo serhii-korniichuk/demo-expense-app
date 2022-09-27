@@ -1,7 +1,7 @@
 export const errorFormatter = (errors, isMultipleError) => {
   const errorNames = [
     ["confirmPassword", "Confirm password"],
-    ["fullname", "Full name"],
+    ["fullName", "Full name"],
     ["username", " User Name"],
     ["email", "Email"],
     ["password", "Password"],

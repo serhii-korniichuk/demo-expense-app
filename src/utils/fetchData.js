@@ -31,7 +31,6 @@ const fetchData = async (
 
   try {
     const json = await response.json();
-
     return json;
   } catch (error) {
     return false;

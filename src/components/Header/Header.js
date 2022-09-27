@@ -1,30 +1,41 @@
-import { Container, Typography } from "@mui/material";
-import { Link } from "gatsby";
 import React from "react";
-// todo config logo
+import { Container, Typography } from "@mui/material";
+import { graphql, Link, useStaticQuery } from "gatsby";
+
 const Header = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          subTitle
+        }
+      }
+    }
+  `);
+  const { title, subTitle } = data.site.siteMetadata;
   return (
     <Container maxWidth="xl" align="left" sx={{ marginTop: "48px" }}>
       <Link to="/">
         <Typography
           component="h3"
           variant="h3"
-          color="#FFFFFF"
+          color="logo.main"
           align="left"
           noWrap
           sx={{ flex: 1 }}
         >
-          InCode
+          {title}
         </Typography>
         <Typography
           component="h5"
           variant="h5"
-          color="primary.main"
+          color="logo.sub"
           align="left"
           noWrap
           sx={{ flex: 1 }}
         >
-          Finance
+          {subTitle}
         </Typography>
       </Link>
     </Container>

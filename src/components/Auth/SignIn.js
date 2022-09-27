@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
+import { observer } from "mobx-react";
+import { useForm, Controller } from "react-hook-form";
+import {
+  IconButton,
+  InputAdornment,
+  TextField,
+  CssBaseline,
+  Button,
+  Typography,
+  Container,
+  Box,
+} from "@mui/material";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import Box from "@mui/material/Box";
-import { useForm, Controller } from "react-hook-form";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { IconButton, InputAdornment } from "@mui/material";
 import store from "../../stores/store";
-import { observer } from "mobx-react";
 import messageStore from "../../stores/messageStore";
 import errorStore from "../../stores/errorStore";
 import { errorFormatter } from "../../utils/errorFormatter";
@@ -43,21 +46,11 @@ const SignIn = () => {
           alignItems: "center",
         }}
       >
-        <Typography
-          component="h1"
-          variant="h1"
-          fontSize="56px"
-          sx={{ alignSelf: "baseline" }}
-        >
+        <Typography component="h1" variant="h1" fontSize="56px" sx={{ alignSelf: "baseline" }}>
           SIGN IN
         </Typography>
 
-        <Box
-          component="form"
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate
-          sx={{ mt: 1 }}
-        >
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
           <Controller
             id="username"
             name="username"
@@ -123,15 +116,14 @@ const SignIn = () => {
               (textError) =>
                 textError && (
                   <Typography
-                    component="p4"
-                    variant="p4"
+                    variant="body2"
                     fontStyle="normal"
                     fontSize="12px"
                     fontWeight="400"
                     color="error.main"
                     align="center"
                     alignSelf="center"
-                    sx={{ mt: 3, mb: 3 }}
+                    sx={{ mt: 2 }}
                   >
                     {textError + " "}
                   </Typography>
@@ -140,8 +132,7 @@ const SignIn = () => {
           {isMessage &&
             messageStore.messages.map((message) => (
               <Typography
-                component="p4"
-                variant="p4"
+                variant="body2"
                 fontStyle="normal"
                 fontSize="12px"
                 fontWeight="400"
@@ -157,8 +148,7 @@ const SignIn = () => {
           </Button>
           <Box display="flex" justifyContent="center" alignItems="center">
             <Typography
-              component="p4"
-              variant="p4"
+              variant="body2"
               fontStyle="normal"
               fontSize="12px"
               fontWeight="400"
@@ -167,8 +157,7 @@ const SignIn = () => {
               Don't have account yet?
             </Typography>
             <Typography
-              component="p4"
-              variant="p4"
+              variant="body2"
               fontStyle="normal"
               fontSize="12px"
               fontWeight="400"

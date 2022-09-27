@@ -3,10 +3,9 @@ import Layout from "../layout";
 
 const NotFoundPage = () => (
   <Layout
-    onlyPublicRoute
     seo={{
-      metaTitle: "Register",
-      metaDescription: "Register in 50 Stars Rentals ",
+      metaTitle: "404",
+      metaDescription: "Not found",
     }}
   >
     <h1>NOT FOUND</h1>

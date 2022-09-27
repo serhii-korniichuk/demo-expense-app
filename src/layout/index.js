@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { observer } from "mobx-react";
-import Header from "../components/Header/Header";
-import "../assets/css/main.css";
-// import SEO from '../components/SEO';
-// import themeStore from '../stores/themeStore';
-import PropTypes from "prop-types";
-import store from "../stores/store";
 import { navigate } from "gatsby";
-// import NotificationsBlock from '../components/NotificationsBlock';
-import Container from "@mui/material/Container";
+import { ThemeProvider } from "@mui/material/styles";
+import { observer } from "mobx-react";
+import SEO from "../components/SEO/SEO";
+import Header from "../components/Header/Header";
+import store from "../stores/store";
 import theme from "./theme";
+import "../assets/css/main.css";
 
 const Layout = ({ children, seo, privateRoute, onlyPublicRoute }) => {
   useEffect(() => {
@@ -33,24 +29,11 @@ const Layout = ({ children, seo, privateRoute, onlyPublicRoute }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <SEO seo={seo} /> */}
+      <SEO seo={seo} />
       <Header />
-      {/* <NotificationsBlock /> */}
-      <Container
-        maxWidth="lg"
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        {children}
-      </Container>
+      {children}
     </ThemeProvider>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default observer(Layout);

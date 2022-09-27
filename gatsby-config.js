@@ -1,4 +1,12 @@
 module.exports = {
+  siteMetadata: {
+    title: "InCode",
+    logoTitle: "InCode",
+    siteName: "InCode",
+    subTitle: "Finance",
+    description: "Demo Expense App InCode Finance",
+    logoSubTitle: "Finance",
+  },
   plugins: [
     "gatsby-plugin-react-helmet",
     {
@@ -10,7 +18,6 @@ module.exports = {
     },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    // "gatsby-plugin-top-layout",
     "gatsby-plugin-mui-emotion",
   ],
 };
