@@ -18,7 +18,7 @@ const IndexPage = () => (
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      minHeight="900px"
+      minHeight="800px"
       maxWidth="xs"
     >
       <Box position="relative">
