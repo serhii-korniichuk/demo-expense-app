@@ -165,9 +165,10 @@ const SignUp = () => {
               errors.confirmPassword && " Password's must match",
               isServerError && errorStore.errorToShow,
             ].map(
-              (textError) =>
+              (textError, index) =>
                 textError && (
                   <Typography
+                    key={`error-${index}`}
                     variant="body2"
                     fontStyle="normal"
                     fontSize="12px"
