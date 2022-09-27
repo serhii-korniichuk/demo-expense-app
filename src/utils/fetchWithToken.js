@@ -1,4 +1,6 @@
+import store from "../stores/store";
 import fetchData from "./fetchData";
+import isTokenExpired from "./isTokenExpired";
 import { getTokens, saveTokens } from "./localStorageTools";
 
 const fetchWithToken = async (
@@ -10,12 +12,12 @@ const fetchWithToken = async (
     refreshToken: savedRefreshToken,
     accessToken: savedAccessToken,
   } = getTokens();
-  const refreshToken = savedRefreshToken || "";
-  const accessToken = savedAccessToken || "";
+  const refreshToken = isTokenExpired(savedRefreshToken) ? "" : savedRefreshToken;
+  let accessToken = isTokenExpired(savedAccessToken) ? "" : savedAccessToken;
   if (!accessToken && refreshToken) {
     if (refreshToken) {
       try {
-        const request = await fetchData(
+        const result = await fetchData(
           "/auth/refresh",
           {
             method: "POST",
@@ -23,9 +25,8 @@ const fetchWithToken = async (
           contentType,
           { Authorization: `Bearer ${refreshToken}` }
         );
-        const result = await request.json();
 
-        accessToken = result.data.accessToken || "";
+        accessToken = result.accessToken || "";
         saveTokens({ accessToken });
       } catch (e) {
         console.error(e);

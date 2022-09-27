@@ -118,7 +118,7 @@ const SignIn = () => {
             [
               isValidateError && `${errorFormatter(errors, isMultipleError)}`,
               errors.confirmPassword && " Password's must match",
-              isServerError && errorStore.errors.join(" "),
+              isServerError && errorStore.errorToShow,
             ].map(
               (textError) =>
                 textError && (

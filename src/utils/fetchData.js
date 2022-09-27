@@ -25,7 +25,8 @@ const fetchData = async (
   });
 
   if (![200, 201, 204].includes(response.status)) {
-    throw new Error(response.message);
+    const errorResponse = await response.json();
+    throw new Error(errorResponse.message);
   }
 
   try {

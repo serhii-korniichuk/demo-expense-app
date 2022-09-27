@@ -11,6 +11,7 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.6",
+    "atob": "^2.1.2",
     "babel-plugin-styled-components": "^1.11.1",
     "babel-preset-gatsby": "^0.5.14",
     "gatsby": "^2.24.78",
