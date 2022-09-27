@@ -42,12 +42,6 @@ const fetchWithToken = async (
 
   const response = await fetchData(url, options, contentType, headers);
 
-  if (response.status === 401) {
-    console.error(e);
-    store.clearUserData();
-    return null;
-  }
-
   return response;
 };
 

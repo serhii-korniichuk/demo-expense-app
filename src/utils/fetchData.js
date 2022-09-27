@@ -12,21 +12,29 @@ const fetchData = async (
   if (contentType) {
     headers["Content-Type"] = contentType;
   }
+  headers["Access-Control-Allow-Origin"] = "*";
 
-  let originUrl = process.env.API;
+  let originUrl = process.env.API_URL;
 
   if (options.body) {
     options.body = JSON.stringify(options.body);
   }
   const response = await fetch(`${originUrl || ""}${url}`, {
     headers,
-    ...{ credentials: "include" },
     ...options,
   });
 
-  const json = await response.json();
+  if (![200, 201, 204].includes(response.status)) {
+    throw new Error(response.message);
+  }
 
-  return json;
+  try {
+    const json = await response.json();
+
+    return json;
+  } catch (error) {
+    return false;
+  }
 };
 
 export default fetchData;

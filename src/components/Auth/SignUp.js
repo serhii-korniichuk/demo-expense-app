@@ -19,12 +19,15 @@ const SignUp = () => {
     handleSubmit,
     control,
     formState: { errors },
+    watch,
   } = useForm();
   const { isPassVisible } = store;
-  const isError = Object.keys(errors).length > 0 || !!errorStore.errors.length;
+  const isValidateError = !!Object.keys(errors).length > 0;
+  const isServerError = !!errorStore.errors.length;
+  const isAnyError = isValidateError || isServerError;
   const isMultipleError = Object.keys(errors).length > 1;
-  const onSubmit = (event) => {
-    console.log(event);
+  const onSubmit = (data) => {
+    store.register(data);
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -48,8 +51,8 @@ const SignUp = () => {
           sx={{ mt: 1 }}
         >
           <Controller
-            id="fullname"
-            name="fullname"
+            id="fullName"
+            name="fullName"
             defaultValue=""
             control={control}
             rules={{ required: true }}
@@ -59,7 +62,7 @@ const SignUp = () => {
                 margin="normal"
                 fullWidth
                 label="Full Name"
-                autoComplete="fullname"
+                autoComplete="fullName"
                 autoFocus
                 variant="standard"
                 color="secondary"
@@ -158,27 +161,29 @@ const SignUp = () => {
               />
             )}
           />
-
-          {isError &&
+          {isAnyError &&
             [
-              `${errorFormatter(errors, isMultipleError)}`,
+              isValidateError && `${errorFormatter(errors, isMultipleError)}`,
               errors.confirmPassword && " Password's must match",
-              errorStore.errors.map((error) => error),
-            ].map((textError) => (
-              <Typography
-                component="p4"
-                variant="p4"
-                fontStyle="normal"
-                fontSize="12px"
-                fontWeight="400"
-                color="error.main"
-                align="center"
-                alignSelf="center"
-                sx={{ mt: 3, mb: 3 }}
-              >
-                {textError}
-              </Typography>
-            ))}
+              isServerError && errorStore.errors.join(" "),
+            ].map(
+              (textError) =>
+                textError && (
+                  <Typography
+                    component="p4"
+                    variant="p4"
+                    fontStyle="normal"
+                    fontSize="12px"
+                    fontWeight="400"
+                    color="error.main"
+                    align="center"
+                    alignSelf="center"
+                    sx={{ mt: 3, mb: 3 }}
+                  >
+                    {textError + " "}
+                  </Typography>
+                )
+            )}
 
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 3 }}>
             Sign Up

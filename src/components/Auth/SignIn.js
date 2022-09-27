@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -21,12 +21,15 @@ const SignIn = () => {
     control,
     formState: { errors },
   } = useForm();
-  const { isPassVisible } = store;
-  const isError = Object.keys(errors).length > 0 || !!errorStore.errors.length;
+  const isValidateError = !!Object.keys(errors).length > 0;
+  const isServerError = !!errorStore.errors.length;
+  const isAnyError = isValidateError || isServerError;
   const isMessage = !!messageStore.messages.length;
+  useEffect(() => messageStore.clearAllMessages(), [isMessage && isAnyError]);
+  const { isPassVisible } = store;
   const isMultipleError = Object.keys(errors).length > 1;
-  const onSubmit = (event) => {
-    console.log(event);
+  const onSubmit = (data) => {
+    store.login(data);
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -111,28 +114,31 @@ const SignIn = () => {
               />
             )}
           />
-
-          {isError &&
+          {isAnyError &&
             [
-              `${errorFormatter(errors, isMultipleError)}`,
-              errorStore.errors.map((error) => error),
-            ].map((textError) => (
-              <Typography
-                component="p4"
-                variant="p4"
-                fontStyle="normal"
-                fontSize="12px"
-                fontWeight="400"
-                color="error.main"
-                align="center"
-                alignSelf="center"
-                sx={{ mt: 3, mb: 3 }}
-              >
-                {textError}
-              </Typography>
-            ))}
+              isValidateError && `${errorFormatter(errors, isMultipleError)}`,
+              errors.confirmPassword && " Password's must match",
+              isServerError && errorStore.errors.join(" "),
+            ].map(
+              (textError) =>
+                textError && (
+                  <Typography
+                    component="p4"
+                    variant="p4"
+                    fontStyle="normal"
+                    fontSize="12px"
+                    fontWeight="400"
+                    color="error.main"
+                    align="center"
+                    alignSelf="center"
+                    sx={{ mt: 3, mb: 3 }}
+                  >
+                    {textError + " "}
+                  </Typography>
+                )
+            )}
           {isMessage &&
-            messages.map((message) => (
+            messageStore.messages.map((message) => (
               <Typography
                 component="p4"
                 variant="p4"

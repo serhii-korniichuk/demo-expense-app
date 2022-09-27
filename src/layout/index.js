@@ -13,13 +13,13 @@ import Container from "@mui/material/Container";
 import theme from "./theme";
 
 const Layout = ({ children, seo, privateRoute, onlyPublicRoute }) => {
-  // useEffect(() => {
-  //   (async () => await store.authenticate())();
-  // }, []);
+  useEffect(() => {
+    store.authUser();
+  }, []);
 
   const isBrowser = typeof window !== "undefined";
 
-  const isAuth = store && store.user && store.user.jwt;
+  const isAuth = store && store.isAuth;
 
   if (privateRoute && !isAuth && isBrowser) {
     navigate("/auth");

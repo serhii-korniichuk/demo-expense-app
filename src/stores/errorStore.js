@@ -2,9 +2,6 @@ import { makeAutoObservable } from "mobx";
 
 const errorStore = () => ({
   errors: [],
-  isError() {
-    return this.errors.length > 0;
-  },
   createError(error) {
     const newErrorsArray = [...this.errors];
 

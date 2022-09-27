@@ -2,10 +2,10 @@ import { makeAutoObservable } from "mobx";
 
 const createNotifyStore = () => ({
   messages: [],
-  createMessage(error) {
-    const newMessagesArray = [...this.errors];
+  createMessage(message) {
+    const newMessagesArray = [...this.messages];
 
-    newMessagesArray.push(error);
+    newMessagesArray.push(message);
     this.messages = Array.from(new Set(newMessagesArray));
   },
   clearAllMessages() {

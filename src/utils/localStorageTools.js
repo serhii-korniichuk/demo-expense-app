@@ -1,12 +1,12 @@
 const getTokens = () => {
   if (localStorage.getItem("InCodeTokens")) {
-    return JSON.parse(isBrowser && localStorage.getItem("InCodeTokens"));
+    return JSON.parse(localStorage.getItem("InCodeTokens"));
   }
   return {};
 };
 
 const saveTokens = (userData) => {
-  const prevTokenData = localStorage.getItem("InCodeTokens") || {};
+  const prevTokenData = getTokens();
   localStorage.setItem(
     "InCodeTokens",
     JSON.stringify({ ...prevTokenData, ...userData })

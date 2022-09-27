@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import Layout from "../layout";
 import { Box, Button, Typography, Grid } from "@mui/material";
 import { DecorImage, HomeImage } from "../components/Home/Home";
+import store from "../stores/store";
 
 const IndexPage = () => (
   <Layout
@@ -18,9 +19,6 @@ const IndexPage = () => (
       justifyContent="center"
       alignItems="center"
       minHeight="900px"
-      // item
-      // xs={12}
-      // md={10}
     >
       <Box position="relative">
         <Typography
@@ -48,7 +46,13 @@ const IndexPage = () => (
         Now you are on the main page. Soon we will provide you with detailed feedback
         on the result of your work
       </Typography>
-      <Button type="submit" variant="contained" size="large" sx={{ mt: 3, mb: 2 }}>
+      <Button
+        type="submit"
+        variant="contained"
+        size="large"
+        sx={{ mt: 3, mb: 2 }}
+        onClick={() => store.logout()}
+      >
         See You
       </Button>
       <HomeImage src="/homePeople.svg" alt="InCode home" />

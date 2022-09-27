@@ -1,8 +1,9 @@
 import { makeAutoObservable } from "mobx";
-import { errorCatcher } from "../utils/errorCatcher";
 import fetchWithToken from "../utils/fetchWithToken";
+import fetchData from "../utils/fetchData";
 import { clearTokens, saveTokens } from "../utils/localStorageTools";
 import errorStore from "./errorStore";
+import messageStore from "./messageStore";
 
 const createStore = () => ({
   user: {},
@@ -30,58 +31,43 @@ const createStore = () => ({
     this.user = user;
   },
 
-  login({ username, password }) {
-    errorCatcher(async () => {
-      const { accessToken, refreshToken } = await fetchWithToken("/auth/login", {
+  async login({ username, password }) {
+    try {
+      const response = await fetchData("/auth/login", {
         method: "POST",
         body: { username, password },
       });
-      saveTokens({ accessToken, refreshToken });
-      this.authUser();
-    });
+
+      if (response) {
+        const { accessToken, refreshToken } = response;
+        saveTokens({ accessToken, refreshToken });
+        this.authUser();
+      }
+    } catch (error) {
+      errorStore.createError(error.message);
+    }
   },
 
   async register({ username, fullName, password }) {
-    const response = await errorCatcher(async () => {
-      await fetchWithToken("/auth/register", {
+    try {
+      const response = await fetchData("/auth/register", {
         method: "POST",
         body: { username, displayName: fullName, password },
       });
-    });
 
-    if (response) {
-      this.setIsSignIn(true);
-      this.setIsPassVisible(false);
-      messageStore.createMessage("Success! Now sign in");
+      if (response) {
+        this.setIsSignIn(true);
+        this.setIsPassVisible(false);
+        messageStore.createMessage("Success! Now sign in");
+      }
+    } catch (error) {
+      errorStore.createError(error.message);
     }
   },
 
   async logout() {
     await fetchWithToken("/auth/logout");
     this.clearUserData();
-  },
-
-  badRequest() {
-    errorCatcher3000(() => {
-      throw new Error("bad error - ");
-    });
-  },
-
-  async setSurName(name) {
-    this.setName(
-      await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve(name + "REDACTED!");
-          errorStore.makeError("DOGE ERROR");
-          errorStore.showError();
-        }, 1000)
-      )
-    );
-    this.surname = await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve(name);
-      }, 5000)
-    );
   },
 });
 
