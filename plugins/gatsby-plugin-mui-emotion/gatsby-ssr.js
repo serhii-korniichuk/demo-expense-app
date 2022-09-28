@@ -23,7 +23,9 @@ export const replaceRenderer = ({ bodyComponent, setHeadComponents, replaceBodyH
   const cache = getEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
-  const emotionStyles = extractCriticalToChunks(renderToString(<CacheProvider value={cache}>{bodyComponent}</CacheProvider>));
+  const emotionStyles = extractCriticalToChunks(
+    renderToString(<CacheProvider value={cache}>{bodyComponent}</CacheProvider>)
+  );
 
   setHeadComponents(
     emotionStyles.styles.map((style) => (

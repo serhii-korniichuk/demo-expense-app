@@ -7,10 +7,7 @@ const getTokens = () => {
 
 const saveTokens = (userData) => {
   const prevTokenData = getTokens();
-  localStorage.setItem(
-    "InCodeTokens",
-    JSON.stringify({ ...prevTokenData, ...userData })
-  );
+  localStorage.setItem("InCodeTokens", JSON.stringify({ ...prevTokenData, ...userData }));
   return true;
 };
 

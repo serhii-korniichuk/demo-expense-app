@@ -131,8 +131,9 @@ const SignIn = () => {
                 )
             )}
           {isMessage &&
-            messageStore.messages.map((message) => (
+            messageStore.messages.map((message, index) => (
               <Typography
+                key={`message-${index}`}
                 variant="body2"
                 fontStyle="normal"
                 fontSize="12px"
@@ -155,7 +156,7 @@ const SignIn = () => {
               fontWeight="400"
               align="center"
             >
-              Don't have account yet?
+              {"Don't have account yet?"}
             </Typography>
             <Typography
               variant="body2"

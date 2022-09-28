@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { navigate } from "gatsby";
 import { ThemeProvider } from "@mui/material/styles";
 import { observer } from "mobx-react";
+import PropTypes from "prop-types";
 import SEO from "../components/SEO/SEO";
 import Header from "../components/Header/Header";
 import store from "../stores/store";
@@ -34,6 +35,13 @@ const Layout = ({ children, seo, privateRoute, onlyPublicRoute }) => {
       {children}
     </ThemeProvider>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  seo: PropTypes.object,
+  privateRoute: PropTypes.bool,
+  onlyPublicRoute: PropTypes.bool,
 };
 
 export default observer(Layout);
