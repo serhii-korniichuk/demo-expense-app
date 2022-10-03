@@ -2,7 +2,28 @@ import React from 'react';
 import { Logo } from '../Auth/Logo';
 import './Home.scss';
 
-export const Home: React.FC = () => {
+type Props = {
+  toLoginUser: () => void;
+}
+export const Home: React.FC<Props> = (props) => {
+  const {toLoginUser} = props;
+
+  const handleLogout = () => {
+    fetch('https://incode-backend-dev.herokuapp.com/auth/logout', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(res => {
+        console.log(res);
+        toLoginUser();
+      })
+      .catch(res => {
+        console.log(res);
+      })
+  }
+
   return (
     <div className="home">
       <div className="home__logo">
@@ -18,6 +39,7 @@ export const Home: React.FC = () => {
         <button
           className="home__bttn"
           type="button"
+          onClick={() => {handleLogout()}}
         >
           See You
         </button>

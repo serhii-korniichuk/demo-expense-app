@@ -3,11 +3,17 @@ import './Auth.scss';
 import { Logo } from './Logo';
 import { Registration } from './Registration';
 
-export const Auth: React.FC = () => {
+type Props = {
+  toLoginUser: () => void;
+}
+
+export const Auth: React.FC<Props> = (props) => {
+  const {toLoginUser} = props;
+  
   return (
     <section className="register">
       <Logo />
-      <Registration />
+      <Registration toLoginUser={toLoginUser} />
     </section>
   )
 }

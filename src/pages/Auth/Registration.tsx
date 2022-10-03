@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import './Registration.scss';
 
-export const Registration: React.FC = () => {
+type Props = {
+  toLoginUser: () => void;
+};
+
+export const Registration: React.FC<Props> = (props) => {
+  const {toLoginUser} = props;
+
   const [isSignUp, setIsSignUp] = useState(false);
   const [userName, setUserName] = useState('');
   const [userFullName, setUserFullName] = useState('');
@@ -30,6 +36,8 @@ export const Registration: React.FC = () => {
           console.log(res);
           if (!res.ok) {
             setIsSignUp(prev => !prev);
+          } else {
+            toLoginUser();
           }
         })
         .catch(res => {
@@ -60,15 +68,11 @@ export const Registration: React.FC = () => {
       })
         .then(res => {
           console.log(res);
-          
+          toLoginUser();
         })
         .catch(res => {
           console.log(res);
         });
-        // .finally(() => {
-        //   setUserName('');
-        //   setUserPass('');
-        // })
     };
   };
 
