@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.scss';
-import { Auth } from './pages/Auth';
+// import { Auth } from './pages/Auth/Auth';
+import { Home } from './pages/Home/Home';
 
 function App() {
   return (
     <div className="App">
-      <Auth />
+      {/* <Auth /> */}
+      <Home /> 
     </div>
   );
 }
