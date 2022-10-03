@@ -39,6 +39,9 @@ const theme = createTheme({
   },
   palette: {
     mode: "dark",
+    background: {
+      default: "#1d283a",
+    },
     logo: {
       main: "#fff",
       sub: "#539713",

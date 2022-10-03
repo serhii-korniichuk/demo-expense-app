@@ -23,10 +23,14 @@
 
 - Installed [NodeJS](https://nodejs.org/uk/) v16.13.0
 
+## Environment
+
+- `REACT_APP_API_URL=https://incode-backend-dev.herokuapp.com`
+
 ## How to start
 
 - Download dependencies via YARN `yarn`
-- To start local build run `npm run dev`
+- To start local build run `yarn start`
 
 ## 🚀 Завдання
 

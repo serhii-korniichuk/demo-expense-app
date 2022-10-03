@@ -1,20 +1,10 @@
-import { useStaticQuery, graphql } from "gatsby";
+import { PropTypes } from "prop-types";
 import React from "react";
 import { Helmet } from "react-helmet";
+import siteMetadata from "../../constants/siteMetadata";
 
 const SEO = ({ seo = {} }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          description
-          siteName
-        }
-      }
-    }
-  `);
-  const { title, description, siteName } = data.site.siteMetadata;
+  const { title, description, siteName } = siteMetadata;
 
   const defaultSeo = {
     metaTitle: title,
@@ -57,30 +47,14 @@ const SEO = ({ seo = {} }) => {
         }
       );
     }
-    if (fullSeo.shareImage) {
-      const imageUrl =
-        (process.env.GATSBY_ROOT_URL || "http://localhost:8000") + fullSeo.shareImage.publicURL;
-      tags.push(
-        {
-          name: "image",
-          content: imageUrl,
-        },
-        {
-          property: "og:image",
-          content: imageUrl,
-        },
-        {
-          name: "twitter:image",
-          content: imageUrl,
-        }
-      );
-    }
+
     if (fullSeo.article) {
       tags.push({
         property: "og:type",
         content: "article",
       });
     }
+
     tags.push({ name: "twitter:card", content: "summary_large_image" });
 
     return tags;
@@ -90,8 +64,8 @@ const SEO = ({ seo = {} }) => {
 
   return (
     <Helmet
-      title={`${fullSeo.metaTitle} - ${siteName}`}
-      titleTemplate={`${fullSeo.metaTitle} - ${siteName}`}
+      title={`${fullSeo.metaTitle}-${siteName}`}
+      titleTemplate={`${fullSeo.metaTitle}-${siteName}`}
       meta={metaTags}
       link={[
         {
@@ -101,6 +75,10 @@ const SEO = ({ seo = {} }) => {
       ]}
     />
   );
+};
+
+SEO.propTypes = {
+  seo: PropTypes.object,
 };
 
 export default SEO;

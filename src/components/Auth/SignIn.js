@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { observer } from "mobx-react";
 import { useForm, Controller } from "react-hook-form";
 import {
@@ -28,14 +28,14 @@ const SignIn = () => {
   const isServerError = !!errorStore.errors.length;
   const isAnyError = isValidateError || isServerError;
   const isMessage = !!messageStore.messages.length;
-  useEffect(() => messageStore.clearAllMessages(), [isMessage && isAnyError]);
+  // useEffect(() => messageStore.clearAllMessages(), [isMessage && isAnyError]);
   const { isPassVisible } = store;
   const isMultipleError = Object.keys(errors).length > 1;
   const onSubmit = (data) => {
     store.login(data);
   };
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" onClick={() => messageStore.clearAllMessages()}>
       <CssBaseline />
       <Box
         position="relative"
@@ -119,7 +119,7 @@ const SignIn = () => {
                     key={`error-${index}`}
                     variant="body2"
                     fontStyle="normal"
-                    fontSize="12px"
+                    fontSize="14px"
                     fontWeight="400"
                     color="error.main"
                     align="center"
@@ -136,10 +136,12 @@ const SignIn = () => {
                 key={`message-${index}`}
                 variant="body2"
                 fontStyle="normal"
-                fontSize="12px"
+                fontSize="14px"
                 fontWeight="400"
                 color="primary.main"
                 align="center"
+                alignSelf="center"
+                sx={{ mt: 2 }}
               >
                 {message}
               </Typography>

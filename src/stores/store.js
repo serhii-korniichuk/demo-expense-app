@@ -1,14 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import fetchWithToken from "../utils/fetchWithToken";
 import fetchData from "../utils/fetchData";
-import { clearTokens, saveTokens } from "../utils/localStorageTools";
+import { clearTokens, getTokens, saveTokens } from "../utils/localStorageTools";
 import errorStore from "./errorStore";
 import messageStore from "./messageStore";
 
 // main store
 const createStore = () => ({
   user: {},
-  isAuth: false,
+  isAuth: !!getTokens().accessToken,
   isSignIn: true,
   isPassVisible: false,
 

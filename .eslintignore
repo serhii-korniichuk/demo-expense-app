@@ -3,6 +3,7 @@
 node_modules
 coverage/
 public
+build
 
 # Cruft
 .DS_Store

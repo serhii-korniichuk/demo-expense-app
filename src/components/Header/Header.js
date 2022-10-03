@@ -1,22 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Container, Typography } from "@mui/material";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import siteMetadata from "../../constants/siteMetadata";
 
 const Header = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          subTitle
-        }
-      }
-    }
-  `);
-  const { title, subTitle } = data.site.siteMetadata;
+  const { title, subTitle } = siteMetadata;
   return (
     <Container maxWidth="xl" align="left" sx={{ marginTop: "48px" }}>
-      <Link to="/">
+      <NavLink to="/">
         <Typography
           component="h3"
           variant="h3"
@@ -37,7 +28,7 @@ const Header = () => {
         >
           {subTitle}
         </Typography>
-      </Link>
+      </NavLink>
     </Container>
   );
 };

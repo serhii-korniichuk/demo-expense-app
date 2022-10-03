@@ -1,9 +1,11 @@
 import React from "react";
 import { observer } from "mobx-react";
-import Layout from "../layout";
 import { Box, Button, Typography, Grid } from "@mui/material";
-import { DecorImage, HomeImage } from "../components/Home/Images";
 import store from "../stores/store";
+import Layout from "../layout";
+import { DecorImage, HomeImage } from "../components/Home/Images";
+import decor from "../assets/images/decor.svg";
+import homePeople from "../assets/images/homePeople.svg";
 
 const IndexPage = () => (
   <Layout
@@ -39,7 +41,7 @@ const IndexPage = () => (
         >
           CONGRATULATIONS
         </Typography>
-        <DecorImage src="/decor.svg" />
+        <DecorImage src={decor} />
       </Box>
 
       <Typography
@@ -62,7 +64,7 @@ const IndexPage = () => (
       >
         See You
       </Button>
-      <HomeImage src="/homePeople.svg" alt="InCode home" />
+      <HomeImage src={homePeople} alt="InCode home" />
     </Grid>
   </Layout>
 );

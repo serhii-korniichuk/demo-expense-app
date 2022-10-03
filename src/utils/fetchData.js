@@ -14,7 +14,9 @@ const fetchData = async (
   }
   headers["Access-Control-Allow-Origin"] = "*";
 
-  let originUrl = process.env.API_URL;
+  const originUrl = process.env.REACT_APP_API_URL;
+
+  console.log(originUrl);
 
   if (options.body) {
     options.body = JSON.stringify(options.body);

@@ -9,7 +9,7 @@ export const DecorImage = styled.img`
   position: absolute;
   right: -25%;
   top: -125%;
-  @media (max-width: ${theme.breakpoints.values.sm}px) {
+  @media (max-width: ${theme.breakpoints.values.lg}px) {
     width: 80px;
     right: -20%;
     top: -60%;
