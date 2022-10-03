@@ -8,6 +8,70 @@ export const Registration: React.FC = () => {
   const [userPass, setUserPass] = useState('');
   const [userPassConfirm, setUserPassConfirm] = useState('');
 
+  const canSignIn = userName !== '' && userPass !== '';
+  const isPassCorrect = userPass === userPassConfirm
+  const canSignUp = canSignIn && userFullName !== '' && isPassCorrect;
+
+  const handleSignIn = () => {
+    if (canSignIn) {
+      const data = {
+        username: userName,
+        password: userPass,
+      }
+
+      fetch('https://incode-backend-dev.herokuapp.com/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(res => {
+          console.log(res);
+          if (!res.ok) {
+            setIsSignUp(prev => !prev);
+          }
+        })
+        .catch(res => {
+          console.log(res);
+          setIsSignUp(prev => !prev);
+        })
+        .finally(() => {
+          setUserName('');
+          setUserPass('');
+        })
+    };
+  };
+
+  const handleSignUp = () => {
+    if (canSignUp) {
+      const data = {
+        password: userPass,
+        username: userName,
+        displayName: userFullName,
+      }
+
+      fetch('https://incode-backend-dev.herokuapp.com/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(res => {
+          console.log(res);
+          
+        })
+        .catch(res => {
+          console.log(res);
+        });
+        // .finally(() => {
+        //   setUserName('');
+        //   setUserPass('');
+        // })
+    };
+  };
+
   return (
   <section className="registration">
     <h1 className="registration__action">
@@ -20,6 +84,11 @@ export const Registration: React.FC = () => {
       className="registration__card-form card-form"
       onSubmit={(e) => {
         e.preventDefault();
+        if (!isSignUp) {
+          handleSignIn();
+        } else {
+          handleSignUp();
+        }
       }}
     >
       {isSignUp && (
@@ -101,7 +170,6 @@ export const Registration: React.FC = () => {
         <button 
           className="action-button"
           type="submit"
-          
         >
           {isSignUp 
             ? 'Sign Up'
