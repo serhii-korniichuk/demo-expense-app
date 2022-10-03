@@ -1,0 +1,57 @@
+{
+  "name": "demo-expense-app",
+  "private": true,
+  "description": "InCode",
+  "version": "1.0.0",
+  "author": "Fertern",
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@fontsource/montserrat": "^4.5.13",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.6",
+    "atob": "^2.1.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.24.0",
+    "mobx": "^6.0.1",
+    "mobx-react": "^7.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.0.0",
+    "react-hook-form": "^7.36.1",
+    "react-router-dom": "^6.4.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "prettier": "^2.7.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "prettier": "prettier .prettierrc \"./**/*.+(js|json|jsx)\" --write",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fertern/demo-expense-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
