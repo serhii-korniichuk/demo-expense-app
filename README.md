@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# My Create React App 'demo-expense-app'
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Demo link of Create React App here: [React App](https://pavlomarkov.github.io/demo-expense-app/).
 
-## Available Scripts
+## 🚀 Завдання
 
-In the project directory, you can run:
+Головним завданням є створення демо додатку, де користувач мав би змогу зареєструвати свій аккаунт за допомогою **Sign Up** форми та згодом увійти в нього через **Sign In** форму. Після успішного входу, користувача повинно автоматично перенаправити на сторінку **Home**, де в мабутньому він мав би змогу зкористатись кнопкою _Logout_ для виходу зі свого аккаунту.
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📎 Посилання
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Макет**: [Figma](https://www.figma.com/file/hbthFdqeHcPtKLXQIjkeqX/Test-Incode-Finance-2022)
 
-### `npm test`
+**API документація**: [Swagger](https://incode-backend-dev.herokuapp.com/api/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br>
 
-### `npm run build`
+## 👩‍💻 Технічні аспекти
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Додаток складається з 2-х сторінок **Auth** та **Home**:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Auth** сторінка повинна містити в собі **Sign Up** та **Sign In** форми, які динамічно перемикаються відоповідно до функціоналу.
+- **Home** сторінка повинна містити в собі повідомлення про успішний вхід в додаток та кнопку _Logout_.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `npm run eject`
+Елементи **Sign Up** блоку з формою:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Логотип компанії
+- Заголовок з назвою форми
+- Поле _Full Name_
+- Поле _User Name_
+- Поле _Email Address_
+- Поле _Password_
+- Кнопка відправки данних форми
+- Текстове поле з кнопкою для переходу на форму **_Sign In_**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Запит для реєстрації аккаунту: [/auth/register](/auth/register)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Елементи **Sign In** блоку з формою:
 
-## Learn More
+- Логотип компанії
+- Заголовок з назвою форми
+- Поле _Email Address_
+- Поле _Password_
+- Кнопка відправки данних форми
+- Текстове поле з кнопкою для переходу на форму **_Sign Up_**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> Запит для входу в аккаунт: [/auth/login](https://incode-backend-dev.herokuapp.com/api/#/auth/AuthController_login)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br>
+
+Елементи **Home** сторінки:
+
+- Логотип компанії
+- Текстовий блок
+- Кнопка _Logout_
+
+> Запит для виходу з аккаунту: [/auth/logout](https://incode-backend-dev.herokuapp.com/api/#/auth/AuthController_logout)
+
+<br>

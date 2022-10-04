@@ -43,9 +43,7 @@ export const Home: React.FC<Props> = (props) => {
         >
           See You
         </button>
-        <div className="home__img">
-
-        </div>
+        <div className="home__img"></div>
       </div>
     </div>
   )
