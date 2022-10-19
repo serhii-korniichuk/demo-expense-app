@@ -18,6 +18,10 @@ export const App: React.FC = () => {
           path="/"
           element={<Form />}
         />
+        <Route
+          path="*"
+          element={<Form />}
+        />
       </Routes>
     </div>
   );
