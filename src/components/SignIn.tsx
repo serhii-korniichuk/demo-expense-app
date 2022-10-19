@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from './api';
 
 type Props = {
@@ -18,6 +19,7 @@ export const SignIn: React.FC<Props> = ({ setSignCheck }) => {
   const handleClick = () => {
     setVisiblePass(!visiblePass);
   };
+  const redirect = useNavigate();
 
   const handleSingIn = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -27,7 +29,7 @@ export const SignIn: React.FC<Props> = ({ setSignCheck }) => {
     try {
       await loginUser(username, password)
         .then(() => {
-          window.location.href = '/home';
+          redirect('/home');
         });
       const x = loginUser(username, password);
 

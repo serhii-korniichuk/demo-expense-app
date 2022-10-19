@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { logoutUser } from './api';
 import logo from './imgs/Vector.svg';
 import img from './imgs/Decor.svg';
@@ -7,6 +8,7 @@ type Props = {};
 
 export const Home: React.FC<Props> = () => {
   const [error, setError] = useState('');
+  const redirect = useNavigate();
 
   const handleLogOut = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -16,7 +18,7 @@ export const Home: React.FC<Props> = () => {
     } catch {
       setError('');
     } finally {
-      window.location.href = '/';
+      redirect('/');
     }
   };
 
