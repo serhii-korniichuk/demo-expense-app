@@ -1,0 +1,21 @@
+$main-dark: rgba(29, 40, 58, 1);
+$main-green: rgba(83, 151, 19, 1);
+
+%font {
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+%h1-title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+  color: #FFFFFF;
+}
+
+%error {
+  font-size: 12px;
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+}

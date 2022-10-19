@@ -1,0 +1,38 @@
+.field {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    height: 60 px;
+    
+    &__label {
+      @extend %font;
+      font-size: 14px;
+      line-height: 22px;
+      padding-bottom: 5px;
+    }
+  
+    &__inputs {
+      width: 328px;
+      @extend %font;
+  
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 25px;
+      letter-spacing: 0em;
+      text-align: left;
+  
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 1px solid white;
+      background: none;
+      color: rgba(255, 255, 255, 1);
+          
+      &::placeholder {
+        color: rgba(255, 255, 255, 1);
+        opacity: 0.7;
+        }
+    }
+  
+  }

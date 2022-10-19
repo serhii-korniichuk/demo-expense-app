@@ -1,0 +1,100 @@
+@import "./styles/_utils.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+@import "./styles/button.scss";
+@import "./styles/header.scss";
+@import "./styles/field.scss";
+@import './styles/main.scss';
+
+.body {
+  margin: 0;
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  @extend %font;
+}
+
+.form-body {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 0 48px;
+  gap: 40px;
+  background-color: $main-dark;
+  color: white;
+  width: 424px;
+  border-radius: 0px;
+
+}
+
+.h1 {
+  width: 134px;
+  height: 54px;
+  @extend %h1-title;;
+}
+
+.form {
+  &__title {
+    margin: 0;
+    margin-bottom: 48px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 150%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  &__bottom {
+    align-self: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    color: #F1F2F1;
+  }
+
+  &__link {
+    cursor: pointer;
+    padding-left: 10px;
+    color: rgba(127, 170, 240, 1);
+  }
+
+}
+
+
+.password {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    height: 16px;
+    width: 22px;
+  }
+}
+
+.error {
+  color: tomato;
+  @extend %error;
+
+}
+
+.success {
+  color: $main-green;
+  @extend %error;
+}
+
+.container {
+  margin-top: 50px;
+  width: 100%;
+  // height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
