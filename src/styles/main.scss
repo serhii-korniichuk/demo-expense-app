@@ -1,0 +1,60 @@
+.main {
+    background-color: $main-dark;
+    width: 100vw;
+    height: 100vh;
+  
+    &__h1 {
+      display: block;
+      margin-left: 60px;
+    }
+    &__p {
+      display: block;
+      margin-left: 60px;
+    }
+  
+    &__bcimg {
+      position: relative;
+  
+    }
+  
+    &__img {
+      position: absolute;
+      bottom: 0;
+      left: 400px;
+      height: 189px;
+      width: 230px;
+    }
+  
+    &__title {
+      @extend %font;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 150%;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+  
+    &__text {
+      display: block;
+      margin: 24px;
+      max-width: 470px;
+      @extend %font;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 155%;
+      text-align: center;
+      color: #FFFFFF;
+  
+      @media (min-height: 850px) {
+        margin: 48px;
+      }
+    }
+  
+    &__pict {
+      height: 280px;
+      width: 340px;
+      @media (min-height: 850px) {
+        margin-top: 72px;
+      }
+    }
+  }

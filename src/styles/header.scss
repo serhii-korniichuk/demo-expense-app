@@ -1,0 +1,19 @@
+.header {
+    margin-top: 48px;
+  
+    &__h1 {
+      margin: 0;
+      @extend %font;
+      @extend %h1-title;
+      letter-spacing: 0em;    
+    }
+  
+    &__p {
+      margin: 0;
+      @extend %font;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 25px;
+      color: $main-green;
+    }
+  }
