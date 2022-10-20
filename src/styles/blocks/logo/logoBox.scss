@@ -1,0 +1,17 @@
+.logoBox {
+  position: relative;
+  margin-bottom: 72px;
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 54px;
+    color: white;
+  }
+
+  &__description {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #539713;
+  }
+}
