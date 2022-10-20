@@ -1,12 +1,17 @@
 import { useState } from "react";
 import InputField from "../InputField/InputField";
-import { FormButton, Caption, Form, Label } from "./AuthForm.styled";
+import { FormButton, Caption, Form, Label, Warning } from "./AuthForm.styled";
+import { useDispatch } from "react-redux";
+import { logInUser, registerUser } from "../../redux/authThunk";
 
 const AuthForm = ({ signupMode }) => {
+  const dispatch = useDispatch();
+
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmOK, setConfirmOK] = useState(true);
 
   const handleChange = (e) => {
     const { name: inputName, value } = e.target;
@@ -18,9 +23,11 @@ const AuthForm = ({ signupMode }) => {
         setUsername(value);
         break;
       case "password":
+        setConfirmOK(true);
         setPassword(value);
         break;
       case "confirm":
+        setConfirmOK(true);
         setConfirmPassword(value);
         break;
       default:
@@ -37,7 +44,16 @@ const AuthForm = ({ signupMode }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("calling sign function");
+    if (signupMode) {
+      if (password !== confirmPassword) {
+        setConfirmOK(false);
+        return;
+      }
+      dispatch(registerUser({ displayName: fullname, username, password }));
+    }
+    if (!signupMode) {
+      dispatch(logInUser({ username, password }));
+    }
     clearForm();
   };
 
@@ -84,13 +100,15 @@ const AuthForm = ({ signupMode }) => {
         </Label>
         {signupMode && (
           <Label htmlFor="confirm">
-            Full Name
+            Confirm Password
+            {!confirmOK && <Warning> - enter the same password</Warning>}
             <InputField
               id="confirm"
               name="confirm"
               type="password"
               value={confirmPassword}
               required={true}
+              minLength={6}
               autocomplete="off"
               onChange={handleChange}
             />

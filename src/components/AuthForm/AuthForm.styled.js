@@ -25,3 +25,7 @@ export const Label = styled.label`
 export const FormButton = styled(Button)`
   width: 100%;
 `;
+
+export const Warning = styled.span`
+  color: var(--color-warn);
+`;
