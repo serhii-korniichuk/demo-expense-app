@@ -11,10 +11,14 @@ import {
   Paragraph,
   WelcomeImg,
 } from "./Home.styled";
+import { useDispatch } from "react-redux";
+import { logOutUser } from "../../redux/authThunk";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
   const logOut = () => {
-    console.log("Calling log out");
+    dispatch(logOutUser());
   };
 
   return (
