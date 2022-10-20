@@ -18,7 +18,7 @@ export const refresh = () => {
 };
 
 export const register = (newUser: NewUser) => {
-  return client.post<NewUser>('/auth/register', {
+  return client.post<NewUser | number>('/auth/register', {
     username: newUser.username,
     password: newUser.password,
     displayName: newUser.displayName,

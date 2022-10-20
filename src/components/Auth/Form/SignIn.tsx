@@ -16,6 +16,8 @@ interface Props {
   setUsername: (v:string) => void,
   password: string,
   setPassword: (v:string) => void,
+  setConfirmPassword: (v:string) => void,
+  setFullName: (v:string) => void,
 }
 
 export const SignIn: React.FC<Props> = (props) => {
@@ -31,9 +33,12 @@ export const SignIn: React.FC<Props> = (props) => {
     setPassword,
     setLoading,
     setErrorMessage,
+    setFullName,
+    setConfirmPassword,
   } = props;
   const [isUserError, setIsUserError] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
+  const [isUserCreated, setIsUserCreated] = useState(false);
 
   const saveUser = (token:string) => {    
     localStorage.setItem('token', JSON.stringify(token));
@@ -54,26 +59,43 @@ export const SignIn: React.FC<Props> = (props) => {
   }, []);
 
   const loginUser = async() => {
-    const token = await login(username, password).then(async (res) => {
+    const token = await login(username, password).then(async (res) => {    
+        
       if (res?.accessToken) {
+        setIsUserCreated(true);
         setAccessToken(res.accessToken)
+        
         return res.accessToken;
-      } else {
+      } else if (res === 404) {
         setIsUserError(true);
+      } else if (res === 401) {
+        setIsPasswordError(true);
+      } else {
         return null;
       }
     });
-    
+
     if (token) {
       await getUserToken(token);
       saveUser(token);
     }
   }
-  
-  const handleNewAccount = () => {
-    setNeedToRegister(true);
+  const isValidUsername = () => {
+    if (!isUserCreated) {
+      return setIsUserError(true);
+    }
+  };
+
+  const clearInputField = () => {
     setUsername('');
     setPassword('');
+    setFullName('');
+    setConfirmPassword('');
+  }
+
+  const handleNewAccount = () => {
+    setNeedToRegister(true);
+    clearInputField();
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -88,6 +110,7 @@ export const SignIn: React.FC<Props> = (props) => {
     } catch (error) {
       setErrorMessage('Something went wrtong');
       setIsPasswordError(true);
+      isValidUsername();
     } finally {
       setLoading(false);
     }

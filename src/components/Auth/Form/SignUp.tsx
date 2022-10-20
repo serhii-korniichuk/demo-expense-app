@@ -39,6 +39,7 @@ export const SignUp: React.FC<Props> = (props) => {
   } = props;
   const [isUserError, setIsUserError] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
+  const [isUsernameBusy, setIsUsernameBusy] = useState(false);
 
   const registerUser = async () => {
     const newUser = {
@@ -48,13 +49,19 @@ export const SignUp: React.FC<Props> = (props) => {
     }
     setLoading(true);
     setIsUserError(false);
-    await register(newUser).catch(() => {
+    await register(newUser).then(res => {
+      if (res === 409) {
+        setNeedToRegister(true);
+        setIsUsernameBusy(true);
+      } else {
+        setPassword('');
+        setNeedToRegister(false);
+      }
+    }).catch(() => {
       setIsUserError(true);
       setErrorMessage(`Can't register`);
     });
     setLoading(false);
-    setPassword('');
-    setNeedToRegister(false);
   };
 
   const isValidConfirmPassword = () => {
@@ -110,6 +117,7 @@ export const SignUp: React.FC<Props> = (props) => {
         placeholder={'Example123'}
         isUserError={isUserError}
         setIsUserError={setIsUserError}
+        isUsernameBusy={isUsernameBusy}
       />
 
       <Input 

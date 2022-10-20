@@ -48,6 +48,8 @@ export const AuthForm: React.FC<Props> = ({ setAccessToken }) => {
           setUsername={setUsername}
           password={password}
           setPassword={setPassword}
+          setFullName={setFullName}
+          setConfirmPassword={setConfirmPassword}
         />
       }
     </div>

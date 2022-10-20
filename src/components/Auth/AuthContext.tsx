@@ -10,8 +10,6 @@ type Props = {
 export const AuthProvider: React.FC<Props> = ({ children }) => {
   const [accessToken, setAccessToken] = useState('');
 
-  console.log(accessToken);
-  
   if (!accessToken) {
     return <AuthForm setAccessToken={setAccessToken} />;
   }

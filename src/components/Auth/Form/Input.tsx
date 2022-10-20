@@ -14,7 +14,7 @@ interface Props {
   isPasswordError?: boolean,
   setIsPasswordError?: (v:boolean) => void,
   setIsUserError?: (v:boolean) => void,
-
+  isUsernameBusy?: boolean,
 }
 
 export const Input: React.FC<Props> = (props) => {
@@ -31,13 +31,21 @@ export const Input: React.FC<Props> = (props) => {
     isPasswordError,
     setIsPasswordError,
     setIsUserError,
+    isUsernameBusy,
   } = props;
 
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isValidUsername, setIsValidUsername] = useState(true);
   
   const inputType = isPassword && !isShowPassword
   ? 'password'
   : 'text'
+
+  const handleIsValidUsername = () => {
+    if (label === 'User Name') {
+      return setIsValidUsername(!value.includes(' '));
+    }
+  }
 
   return (
     <>
@@ -61,6 +69,7 @@ export const Input: React.FC<Props> = (props) => {
           minLength={4}
           disabled={loading}
           value={value}
+          onBlur={handleIsValidUsername}
           onChange={e => {
             setValue(e.target.value);
             if (setIsPasswordError) {
@@ -85,9 +94,18 @@ export const Input: React.FC<Props> = (props) => {
         }  
       </div>
 
-      { (isUserError || isPasswordError) &&
+      { (isUserError 
+        || isPasswordError 
+        || !isValidUsername 
+        || isUsernameBusy) && 
           <p className="incodeForm__field__error help is-danger">
-            {`Not valid ${label.toLowerCase()}.`}
+            {
+              !isValidUsername
+              ? `Try username without space :)`
+              : isUsernameBusy
+                ? `Someone is already useing this username :(`
+                :`Not valid ${label.toLowerCase()}.`
+            }
           </p>
         }
       <div className="incodeForm__field__decor" />

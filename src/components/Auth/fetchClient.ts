@@ -19,17 +19,15 @@ function request<T>(
     options.body = JSON.stringify(data);
     options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
-      
     };
   }
 
   return wait(300)
     .then(() => fetch(BASE_URL + url, options))
     .then(response => {
-      if (!response.ok) {
-        throw new Error();
+      if (!response.ok) {        
+        return response.status;
       }
-
       return response.json();
     });
 }
