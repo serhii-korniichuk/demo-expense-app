@@ -66,6 +66,9 @@ export const authSlice = createSlice({
     [logOutUser.rejected](state, { payload }) {
       state.errorMessage = payload;
       state.isFetching = false;
+      // logging out on front end anyway
+      state.token = null;
+      state.isLoggedIn = false;
     },
     [reconnectUser.rejected](state, { payload }) {
       state.errorMessage = payload;
