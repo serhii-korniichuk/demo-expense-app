@@ -80,7 +80,9 @@ export const registerUser = createAsyncThunk(
         case 500:
           return thunkAPI.rejectWithValue("Something is wrong with connection");
         case 401:
-          return thunkAPI.rejectWithValue("User registered. Failed to log in");
+          return thunkAPI.rejectWithValue(
+            "User successfully registered. Plese retry logging in"
+          );
         case 404:
           return thunkAPI.rejectWithValue("Failed to find new user");
         default:
