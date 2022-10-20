@@ -1,0 +1,63 @@
+.incodeApp {
+  padding: 48px;
+  
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  &__congradulationsBox {
+    position: relative;
+    margin-bottom: 48px;
+    
+    &__title {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 150%;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    &__decorImg {
+      position: absolute;
+
+      bottom: 0;
+      right: -118px;
+      width: 237px;
+      height: 188px;
+      background-image: url(../../../images/decor.png);
+      background-color: transparent;
+    }
+  }
+
+  &__description {
+    margin-bottom: 48px;
+    max-width: 466px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 155%;
+    text-align: center;
+    color: white;
+  }
+
+  &__button {
+    width: 99px;
+    height: 44px;
+    margin-bottom: 72px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 155%;
+    background-color: #539713;
+    border: 0;
+    color: #FFFFFF;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  }
+ 
+  &__humansImg {
+    height: 288px;
+    width: 340px;
+    background-image: url(../../../images/humans.png);
+  }
+}
