@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logo } from '../Auth/Logo';
+import { Logo } from '../Auth/page-elements/Logo';
 import './Home.scss';
 
 type Props = {

@@ -70,9 +70,19 @@
   &__eye {
     width: 22px;
     height: 22px;
-    background-image: url('../../Vector1.svg'), url('../../Vector.svg');
-    background-position: center, center;
-    background-repeat: no-repeat, no-repeat;
+    cursor: pointer;
+
+    &--closed {
+      background-image: url('../../Vector1.svg'), url('../../Vector.svg');
+      background-position: center, center;
+      background-repeat: no-repeat, no-repeat;
+    }
+
+    &--open {
+      background-image: url('../../Vector.svg');
+      background-position: center;
+      background-repeat: no-repeat, no-repeat;
+    }
   }
 }
 

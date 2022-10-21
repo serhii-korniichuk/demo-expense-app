@@ -1,6 +1,6 @@
 import React from 'react';
 import './Auth.scss';
-import { Logo } from './Logo';
+import { Logo } from './page-elements/Logo';
 import { Registration } from './Registration';
 
 type Props = {

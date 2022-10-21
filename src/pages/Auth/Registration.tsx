@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Input } from './page-elements/Input';
 import './Registration.scss';
 
 type Props = {
@@ -76,6 +77,11 @@ export const Registration: React.FC<Props> = (props) => {
     };
   };
 
+  const setName = (value: string) => setUserFullName(value);
+  const setNameOfUser = (value: string) => setUserName(value)
+  const setPass = (value: string) => setUserPass(value);
+  const setPassConfirm = (value: string) => setUserPassConfirm(value);
+
   return (
   <section className="registration">
     <h1 className="registration__action">
@@ -96,79 +102,37 @@ export const Registration: React.FC<Props> = (props) => {
       }}
     >
       {isSignUp && (
-        <div 
-        className="input"
-      >
-        <label 
-          className="input__label"
-        >
-          Full Name
-        </label>
-        <input 
+        <Input 
+          name="Full Name" 
+          value={userFullName} 
+          setName={setName} 
           type="text" 
-          className="input__field"
-          value={userFullName}
-          placeholder="Example Name"
-          onChange={(e) => setUserFullName(e.target.value)}
-          required
+          placeholder="Example Name" 
         />
-      </div>
       )}
-      <div 
-        className="input"
-      >
-        <label 
-          className="input__label"
-        >
-          User Name
-        </label>
-        <input 
-          type="text" 
-          className="input__field"
-          value={userName}
-          placeholder="Example123"
-          onChange={(e) => setUserName(e.target.value)}
-          required
-        />
-      </div>
+      <Input 
+        name="User Name" 
+        value={userName} 
+        setName={setNameOfUser} 
+        type="text" 
+        placeholder="Example123" 
+      />
+      <Input 
+        name="Password" 
+        value={userPass} 
+        setName={setPass} 
+        type="password" 
+        placeholder="***************"
+      />
       
-      <div className="input">
-        <label 
-          className="input__label"
-        >
-          Password
-        </label>
-        <span className="input__area">
-          <input 
-          type="password"
-          className="input__field" 
-          value={userPass}
-          placeholder="***************"
-          onChange={(e) => setUserPass(e.target.value)}
-          required
-          />
-          <span className="input__eye"></span>
-        </span>
-      </div>
       {isSignUp && (
-        <div className="input">
-        <label 
-          className="input__label"
-        >
-          Confirm Password
-        </label>
-        <span className="input__area">
-          <input 
-          type="password"
-          className="input__field" 
+        <Input 
+          name="Confirm Password" 
           value={userPassConfirm}
-          placeholder="***************"
-          onChange={(e) => setUserPassConfirm(e.target.value)}
-          required
-          />
-          <span className="input__eye"></span>
-        </span>
-      </div>
+          setName={setPassConfirm} 
+          type="password" 
+          placeholder="***************" 
+        />
       )}
       <div className="action">
         <button 
