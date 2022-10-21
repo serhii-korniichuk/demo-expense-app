@@ -1,23 +1,28 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Auth from "./pages/Auth/Auth";
 import Home from "./pages/Home/Home";
-import { useSelector } from "react-redux";
-import authSelectors from "./redux/authSelectors";
+import { useDispatch } from "react-redux";
+import { reconnectUser } from "./redux/authThunk";
+import { useEffect } from "react";
+import RestrictedRoutes from "./components/Routes/RestrictedRoutes";
+import PrivateRoutes from "./components/Routes/PrivateRoutes";
 
 function App() {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(reconnectUser());
+  }, [dispatch]);
 
   return (
     <Routes>
-      <Route
-        path="/auth"
-        element={!isLoggedIn ? <Auth /> : <Navigate to="/home" />}
-      />
-      <Route
-        path="/home"
-        element={isLoggedIn ? <Home /> : <Navigate to="/auth" />}
-      />
-      <Route path="*" element={<Navigate to="/auth" />} />
+      <Route element={<RestrictedRoutes />}>
+        <Route path="/auth" element={<Auth />} />
+      </Route>
+      <Route element={<PrivateRoutes />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="*" element={<Navigate to="/auth" />} />
+      </Route>
     </Routes>
   );
 }
