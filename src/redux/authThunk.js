@@ -66,13 +66,8 @@ export const registerUser = createAsyncThunk(
       switch (err.response.status) {
         case 409:
           return thunkAPI.rejectWithValue("This user name is already in use");
-        // back-end issue found:
-        // conflict 409 occurs only if username and password both match the existed user,
-        // otherwise (username matches existed user, password not) it returns bad request 400
         case 400:
-          return thunkAPI.rejectWithValue(
-            "Bad request. Possibly, username already exists"
-          );
+          return thunkAPI.rejectWithValue("Bad request. Try another one");
         case 500:
           return thunkAPI.rejectWithValue("Something is wrong with connection");
         default:
