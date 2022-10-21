@@ -6,7 +6,7 @@ const logInOnRegisterMiddleware = (store) => (next) => (action) => {
     action.payload.username &&
     action.payload.password
   ) {
-    store.dispatch(logInUser(action.payload));
+    setTimeout(() => store.dispatch(logInUser(action.payload)), 250);
   }
   next(action);
 };
