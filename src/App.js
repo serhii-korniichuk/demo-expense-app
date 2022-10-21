@@ -6,6 +6,7 @@ import { reconnectUser } from "./redux/authThunk";
 import { useEffect } from "react";
 import RestrictedRoutes from "./components/Routes/RestrictedRoutes";
 import PrivateRoutes from "./components/Routes/PrivateRoutes";
+import PageWrapper from "./pages/PageWrapper/PageWrapper";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,12 +17,14 @@ function App() {
 
   return (
     <Routes>
-      <Route element={<RestrictedRoutes />}>
-        <Route path="/auth" element={<Auth />} />
-      </Route>
-      <Route element={<PrivateRoutes />}>
-        <Route path="/home" element={<Home />} />
-        <Route path="*" element={<Navigate to="/auth" />} />
+      <Route path="/" element={<PageWrapper />}>
+        <Route element={<RestrictedRoutes />}>
+          <Route path="/auth" element={<Auth />} />
+        </Route>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<Navigate to="/auth" />} />
+        </Route>
       </Route>
     </Routes>
   );
