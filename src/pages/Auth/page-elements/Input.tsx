@@ -22,7 +22,7 @@ export const Input: React.FC<Props> = ({ name, value, setName, type, placeholder
       </label>
       <span className="input__area">
         <input 
-          type={isOpenPas ? 'text' : 'password'} 
+          type={isOpenPas ? 'text' : type} 
           className="input__field"
           value={value}
           placeholder={placeholder}
