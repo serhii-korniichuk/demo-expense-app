@@ -49,10 +49,16 @@ const AuthForm = ({ signupMode }) => {
         setConfirmOK(false);
         return;
       }
-      dispatch(registerUser({ displayName: fullname, username, password }));
+      dispatch(
+        registerUser({
+          displayName: fullname.trim(),
+          username: username.trim(),
+          password,
+        })
+      );
     }
     if (!signupMode) {
-      dispatch(logInUser({ username, password }));
+      dispatch(logInUser({ username: username.trim(), password }));
     }
     clearForm();
   };
