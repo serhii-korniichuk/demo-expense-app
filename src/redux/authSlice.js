@@ -28,8 +28,6 @@ export const authSlice = createSlice({
       state.isFetching = false;
     },
     [registerUser.fulfilled](state, { payload }) {
-      state.token = payload.token;
-      state.isLoggedIn = true;
       state.isFetching = false;
     },
     [logOutUser.fulfilled](state, _) {

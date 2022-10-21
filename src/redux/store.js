@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import logInOnRegisterMiddleware from "./logInOnRegisterMiddleware";
 
 const persistConfig = {
   key: "expense_app_auth",
@@ -30,6 +31,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    logInOnRegisterMiddleware,
   ],
 });
 

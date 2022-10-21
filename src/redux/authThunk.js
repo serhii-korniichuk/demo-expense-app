@@ -20,7 +20,6 @@ export const logInUser = createAsyncThunk(
       token.set(data.accessToken);
       return { token: data.accessToken };
     } catch (err) {
-      console.log(err);
       switch (err.response.status) {
         case 401:
           return thunkAPI.rejectWithValue("Incorrect name or password");
@@ -43,7 +42,6 @@ export const logOutUser = createAsyncThunk(
       token.unset();
       return data;
     } catch (err) {
-      console.log(err);
       switch (err.response.status) {
         case 401:
           return thunkAPI.rejectWithValue("Unauthorized user");
@@ -62,29 +60,21 @@ export const registerUser = createAsyncThunk(
   "auth/register",
   async (userCredentials, thunkAPI) => {
     try {
-      const { data: registeredData } = await axios.post(
-        "/auth/register",
-        userCredentials
-      );
-      const { data } = await axios.post("/auth/login", {
-        username: registeredData.username,
-        password: userCredentials.password,
-      });
-      token.set(data.accessToken);
-      return { token: data.accessToken };
+      const { data } = await axios.post("/auth/register", userCredentials);
+      return { username: data.username, password: userCredentials.password };
     } catch (err) {
-      console.log(err);
       switch (err.response.status) {
         case 409:
           return thunkAPI.rejectWithValue("This user name is already in use");
+        // back-end issue found:
+        // conflict 409 occurs only if username and password both match the existed user,
+        // otherwise (username matches existed user, password not) it returns bad request 400
+        case 400:
+          return thunkAPI.rejectWithValue(
+            "Bad request. Possibly, username already exists"
+          );
         case 500:
           return thunkAPI.rejectWithValue("Something is wrong with connection");
-        case 401:
-          return thunkAPI.rejectWithValue(
-            "User successfully registered. Plese retry logging in"
-          );
-        case 404:
-          return thunkAPI.rejectWithValue("Failed to find new user");
         default:
           return thunkAPI.rejectWithValue(
             "Uknown error code " + err.response.status
@@ -106,7 +96,6 @@ export const reconnectUser = createAsyncThunk(
       const { data } = await axios.get("/users/self");
       return data;
     } catch (err) {
-      console.log(err);
       switch (err.response.status) {
         case 401:
           return thunkAPI.rejectWithValue("Your token has expired");
