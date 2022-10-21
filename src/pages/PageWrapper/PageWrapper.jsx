@@ -5,8 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import authSelectors from "../../redux/authSelectors";
 import { resetError } from "../../redux/authSlice";
+import Loader from "../../components/Loader/Loader";
 
 const PageWrapper = () => {
+  const isFetching = useSelector(authSelectors.getIsFetching);
   const errorMessage = useSelector(authSelectors.getErrorMessage);
   const dispatch = useDispatch();
 
@@ -20,6 +22,7 @@ const PageWrapper = () => {
   return (
     <>
       <Outlet />
+      {isFetching && <Loader />}
       <ToastContainer
         position="top-center"
         autoClose={3000}
