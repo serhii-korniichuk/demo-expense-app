@@ -99,7 +99,7 @@ const AuthForm = ({ signupMode }) => {
             type="password"
             value={password}
             required={true}
-            minLength={6}
+            minLength={8}
             autocomplete="off"
             onChange={handleChange}
           />
@@ -114,7 +114,7 @@ const AuthForm = ({ signupMode }) => {
               type="password"
               value={confirmPassword}
               required={true}
-              minLength={6}
+              minLength={8}
               autocomplete="off"
               onChange={handleChange}
             />
