@@ -1,0 +1,40 @@
+.textField {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-size: 16px;
+  background-color: transparent;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.input {
+  padding: 6.5px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 155%;
+  color: #fff;
+  background-color: transparent;
+  outline: none;
+  border: none;
+
+  &::placeholder {
+    opacity: 0.7;
+  }
+}
+
+.eyeIcon {
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  width: 23px;
+  height: 23px;
+  right: 0;
+  position: absolute;
+  //top: 50%;
+  //transform: translateY(-50%);
+  bottom: 11.5px;
+}
