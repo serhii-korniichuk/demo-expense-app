@@ -7,18 +7,12 @@ interface AuthToken {
   refreshToken: string;
 }
 
-interface ResponseError {
-  statusCode: number,
-  message: string,
-  error: string
-}
-
 export const registerUser = (user: User) => {
   return client.post(ENDPOINTS.register, user);
 };
 
 export const loginUser = (username: string, password: string) => {
-  return client.post<AuthToken | ResponseError>(ENDPOINTS.login, {
+  return client.post<AuthToken>(ENDPOINTS.login, {
     username,
     password,
   });
