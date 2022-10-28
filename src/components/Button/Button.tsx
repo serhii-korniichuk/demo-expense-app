@@ -3,17 +3,23 @@ import classes from './Button.module.scss';
 
 type Props = {
   width: string;
-  isDisabled: boolean;
+  isDisabled?: boolean;
   children: ReactNode;
+  onClick?: () => void;
 };
 
-export const Button: FC<Props> = ({ width, isDisabled, children }) => {
+export const Button: FC<Props> = (props) => {
+  const {
+    width, isDisabled, children, onClick,
+  } = props;
+
   return (
     <button
       type="submit"
       className={classes.button}
       style={{ width }}
       disabled={isDisabled}
+      onClick={onClick}
     >
       {children}
     </button>
