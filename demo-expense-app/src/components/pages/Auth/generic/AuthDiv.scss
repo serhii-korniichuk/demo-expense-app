@@ -1,0 +1,13 @@
+$primaryColor: #1D283A;
+$linkColor: #7FAAF0;
+
+.authDiv {
+    background-color: $primaryColor;
+    height: 100vh;
+    width: 35vw;
+}
+.buttonToSignIn, .buttonToSignUp {
+    background-color: transparent;
+    color: $linkColor;
+    border: none;
+}

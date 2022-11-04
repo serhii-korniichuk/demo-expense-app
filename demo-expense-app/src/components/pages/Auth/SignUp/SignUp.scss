@@ -1,0 +1,18 @@
+.signUp {
+    color: white;
+    .form {
+        display: flex;
+        flex-direction: column;
+        .buttonToSignIn{
+            background-color: red;
+        }
+    }
+        .h1__signUp {
+            font-weight: 700;
+            font-size: 56px;
+            line-height: 150%;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+}
