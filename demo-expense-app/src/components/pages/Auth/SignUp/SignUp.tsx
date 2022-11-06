@@ -63,7 +63,6 @@ export const SignUp = ({ onHandleToSignIn }: OnHandleToSignIn) => {
 
       const data = await response.json();
       setState(data);
-      console.log(response);
       onHandleToSignIn();
     } catch (err) {}
   };
