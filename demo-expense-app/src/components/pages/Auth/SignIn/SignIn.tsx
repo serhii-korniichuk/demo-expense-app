@@ -12,6 +12,8 @@ interface authToken {
 export const SignIn = () => {
   const requestURL = `${BASE_URL}${API_AUTH.login}`;
   const [token, setToken] = useState<authToken>();
+  const [isErrorActive, setIsErrorActive] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {}, []);
@@ -34,19 +36,20 @@ export const SignIn = () => {
           },
         });
         if (!response.ok) {
-          console.log("error");
+          setIsErrorActive(true);
           throw "Something wrong";
         }
 
         const data = await response.json();
         setToken(data);
+        // setIsErrorActive(false);
       } catch (err) {}
     };
     loginUser();
   };
 
   if (typeof token !== "undefined") {
-    navigate("/Home", { state: { token: token } });
+    navigate("/Main", { state: { token: token } });
   }
   return (
     <div className="signIn">
@@ -55,10 +58,6 @@ export const SignIn = () => {
       <Formik
         initialValues={{ username: "", password: "" }}
         onSubmit={onHandleSubmit}
-        // onSubmit={async (values) => {
-        //   await new Promise((r) => setTimeout(r, 500));
-        //   alert(JSON.stringify(values, null, 2));
-        // }}
       >
         <Form className="form">
           <label htmlFor="username">User Name</label>
@@ -84,6 +83,13 @@ export const SignIn = () => {
           <button className="button" type="submit">
             Sign In
           </button>
+          <span
+            className={
+              isErrorActive ? "errorMessage" : "errorMessage invisibleMessage"
+            }
+          >
+            Invalid Credentials
+          </span>
         </Form>
       </Formik>
     </div>

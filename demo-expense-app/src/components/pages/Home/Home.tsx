@@ -13,22 +13,21 @@ export const Home = () => {
       <div className="homePage">
         {" "}
         <Header></Header>
-        <div className="content">
+        <div className="homePage__content">
           <h1 className="h1">No access </h1>
-          <Link className="authPageLink" to="../Auth">
-            <h2>return to intro page</h2>
+          <Link className="authPageLink" to="../">
+            <h2>Return to intro page</h2>
           </Link>
         </div>
       </div>
     );
   }
+
   const { token } = location.state;
   const requestURL = `${BASE_URL}${API_AUTH.logout}`;
 
   const onLogout = (values: any) => {
-    // console.log(values);
     if (typeof values === "undefined") {
-      console.log("le");
       return;
     }
     const logoutUser = async () => {
@@ -40,13 +39,9 @@ export const Home = () => {
             Authorization: `Bearer ${token.accessToken}`,
           },
         });
-        console.log(response);
         if (!response.ok) {
-          console.log(response.status + " " + response.statusText);
-          throw "Something wrong";
+          throw response.status + " " + response.statusText;
         }
-
-        const data = await response.json();
       } catch (err) {}
     };
     logoutUser();
@@ -55,14 +50,14 @@ export const Home = () => {
   return (
     <div className="homePage">
       <Header></Header>
-      <div className="content">
+      <div className="homePage__content">
         <h1 className="h1">Congradulations</h1>
         <img src={decor} className="img__gratsDecor"></img>
         <p className="p">
           Now you are on the main page. Soon we will provide you with detailed
           feedback on the result of your work
         </p>
-        <Link to="../Auth">
+        <Link to="../">
           <button className="btn__logout" onClick={onLogout}>
             Log Out
           </button>

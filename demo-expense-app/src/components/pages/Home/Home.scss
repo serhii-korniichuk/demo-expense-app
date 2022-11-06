@@ -6,6 +6,7 @@ $linkColor: #7faaf0;
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
+
   .h1 {
     font-weight: 700;
     font-size: 48px;
@@ -13,11 +14,13 @@ $linkColor: #7faaf0;
     text-transform: uppercase;
   }
 }
-.content {
+.homePage__content {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 5%;
+  min-width: 100%;
+
   color: white;
 
   .img__gratsDecor {

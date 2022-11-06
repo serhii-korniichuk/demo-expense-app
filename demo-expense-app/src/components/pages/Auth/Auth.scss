@@ -1,9 +1,72 @@
-body {
-  background-color: white;
-}
+$primaryColor: #1d283a;
+$linkColor: #7faaf0;
+$secondaryColor: #539713;
 
 .authPage {
   color: white;
   min-width: 500px;
   width: 40vw;
+}
+
+.authPage__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  min-width: 500px;
+  width: 40vw;
+  .title {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 150%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .input {
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 2px solid #ffffff;
+    box-shadow: none;
+    outline: none;
+    width: 328px;
+    height: 59px;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 5%;
+  }
+  .input:focus {
+    background-color: transparent;
+  }
+  .input:not(:focus) {
+    background-color: transparent;
+  }
+  input:-internal-autofill-selected {
+    background-color: transparent !important;
+    appearance: none;
+    color: white;
+  }
+
+  .button {
+    background-color: $secondaryColor;
+    color: white;
+    width: 330px;
+    height: 44px;
+    margin-bottom: 5%;
+  }
+}
+.buttonToSignIn,
+.buttonToSignUp {
+  background-color: transparent;
+  color: $linkColor;
+  border: none;
+}
+
+.errorMessage {
+  color: red;
+  padding-bottom: 10px;
+}
+.invisibleMessage {
+  display: none;
 }
