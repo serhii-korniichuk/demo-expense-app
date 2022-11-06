@@ -18,24 +18,28 @@ const AuthDiv = (props: any) => {
     return (
       <div className="authDiv">
         <SignUp></SignUp>
-        <span> I have an account.</span>
+        <div className="toSignIn">
+          <span> I have an account.</span>
 
-        <button className="buttonToSignIn" onClick={onHandleToSignIn}>
-          {" "}
-          Go to Sign In
-        </button>
+          <button className="buttonToSignIn" onClick={onHandleToSignIn}>
+            {" "}
+            Go to Sign In
+          </button>
+        </div>
       </div>
     );
   } else
     return (
       <div className="authDiv">
         <SignIn></SignIn>
-        <span> Don't have account yet?</span>
+        <div className="toSignUp">
+          <span> Don't have account yet?</span>
 
-        <button className="buttonToSignUp" onClick={onHandleToSignUp}>
-          {" "}
-          New Account
-        </button>
+          <button className="buttonToSignUp" onClick={onHandleToSignUp}>
+            {" "}
+            New Account
+          </button>
+        </div>
       </div>
     );
 };

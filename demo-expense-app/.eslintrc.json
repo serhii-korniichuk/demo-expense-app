@@ -26,4 +26,15 @@
     "react/jsx-props-no-spreading": ["warn"],
     "react/no-unescaped-entities": ["off"]
   }
+  // "eslintConfig": {
+  //   "extends": ["airbnb", "prettier", "plugin:jsx-a11y/recommended"],
+  //   "settings": {
+  //     "import/resolver": {
+  //       "node": {
+  //         "paths": ["src"],
+  //         "extensions": [".js", ".jsx", ".ts", ".tsx"]
+  //       }
+  //     }
+  //   }
+  // }
 }
