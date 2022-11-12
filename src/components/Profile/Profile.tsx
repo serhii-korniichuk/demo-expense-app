@@ -22,6 +22,8 @@ const Profile = () => {
   React.useEffect(() => {
     if (localStorage.getItem("token")) {
       dispatch(fetchCheckAuth());
+    } else {
+      navigate("/");
     }
   }, []);
 
