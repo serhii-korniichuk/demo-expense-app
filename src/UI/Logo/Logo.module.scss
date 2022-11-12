@@ -1,0 +1,17 @@
+.LogoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.LogoTitle {
+  margin-top: 10px;
+
+  color: var(--logo-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 155%;
+}
+
+.Big {
+  padding: 48px;
+}

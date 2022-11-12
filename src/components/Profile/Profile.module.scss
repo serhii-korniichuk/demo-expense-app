@@ -1,0 +1,28 @@
+.ProfileWrapper {
+  text-align: center;
+}
+
+.ButtonWrapper {
+  width: 99px;
+  margin: 0 auto;
+  margin-top: 45px;
+}
+
+.ProfileNotification {
+  width: 458px;
+  margin: 0 auto;
+
+  color: var(--logo-title);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 155%;
+
+  p {
+    margin: 0;
+  }
+}
+
+.ImageWrapper {
+  padding-bottom: 48px;
+  margin-top: 72px;
+}

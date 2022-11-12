@@ -1,0 +1,26 @@
+:root {
+  --main-background: #1d283a;
+  --logo-color: #539713;
+  --logo-title: #fff;
+  --footer-link-color: #7faaf0;
+  --error-title-color: #d04035;
+}
+
+
+body {
+  margin: 0;
+
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
+}
