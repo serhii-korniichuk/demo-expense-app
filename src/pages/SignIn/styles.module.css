@@ -1,0 +1,32 @@
+.wrapper {
+    width: 100%;
+    max-width: 330px;
+}
+
+.title {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 48px;
+}
+
+.linkWrapper {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.link {
+    margin-left: 5px;
+    color: #7faaf0;
+}
+
+@media (max-width: 767px) {
+    .linkWrapper {
+        text-align: left;
+    }
+
+    .link {
+        display: block;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
