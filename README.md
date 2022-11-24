@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+## 🚀 Завдання
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Головним завданням є створення демо додатку, де користувач мав би змогу зареєструвати свій аккаунт за допомогою **Sign Up** форми та згодом увійти в нього через **Sign In** форму. Після успішного входу, користувача повинно автоматично перенаправити на сторінку **Home**, де в мабутньому він мав би змогу зкористатись кнопкою _Logout_ для виходу зі свого аккаунту.
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+## 📎 Посилання
 
-### `npm start`
+**Макет**: [Figma](https://www.figma.com/file/hbthFdqeHcPtKLXQIjkeqX/Test-Incode-Finance-2022)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**API документація**: [Swagger](https://incode-backend-dev.herokuapp.com/api/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+## 👩‍💻 Технічні аспекти
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Додаток складається з 2-х сторінок **Auth** та **Home**:
 
-### `npm run build`
+- **Auth** сторінка повинна містити в собі **Sign Up** та **Sign In** форми, які динамічно перемикаються відоповідно до функціоналу.
+- **Home** сторінка повинна містити в собі повідомлення про успішний вхід в додаток та кнопку _Logout_.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Елементи **Sign Up** блоку з формою:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Логотип компанії
+- Заголовок з назвою форми
+- Поле _Full Name_
+- Поле _User Name_
+- Поле _Password_
+- Поле _Confirm Password_
+- Кнопка відправки данних форми
+- Текстове поле з кнопкою для переходу на форму **_Sign In_**
 
-### `npm run eject`
+> Запит для реєстрації аккаунту: [/auth/register](/auth/register)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Елементи **Sign In** блоку з формою:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Логотип компанії
+- Заголовок з назвою форми
+- Поле _User Name_
+- Поле _Password_
+- Кнопка відправки данних форми
+- Текстове поле з кнопкою для переходу на форму **_Sign Up_**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> Запит для входу в аккаунт: [/auth/login](https://incode-backend-dev.herokuapp.com/api/#/auth/AuthController_login)
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Елементи **Home** сторінки:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Логотип компанії
+- Текстовий блок
+- Кнопка _Logout_
 
-### Code Splitting
+> Запит для виходу з аккаунту: [/auth/logout](https://incode-backend-dev.herokuapp.com/api/#/auth/AuthController_logout)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
 
-### Analyzing the Bundle Size
+## 📌 Порядок виконання завдання
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Зробіть **fork** данного репозиторія
+- Виконайте завдання
+- Створіть **pull request** виконаного завдання в данний репозиторій
+- Повідомте про виконання завдання
