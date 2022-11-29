@@ -5,5 +5,4 @@
 **Макет**: [Figma](https://www.figma.com/file/hbthFdqeHcPtKLXQIjkeqX/Test-Incode-Finance-2022)
 
 solution of the test task. 
-you can look at the link 
-https://anastasiia-khmelovska.github.io/demo-expense-app/
+you can look at the [link](https://anastasiia-khmelovska.github.io/demo-expense-app/)
