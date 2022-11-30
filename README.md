@@ -8,7 +8,7 @@
 
 **Макет**: [Figma](https://www.figma.com/file/hbthFdqeHcPtKLXQIjkeqX/Test-Incode-Finance-2022)
 
-**API документація**: [Swagger](https://incode-backend-dev.herokuapp.com/api/)
+**API документація**: [Swagger](https://expa.fly.dev/api)
 
 <br>
 
