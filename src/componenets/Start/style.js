@@ -44,10 +44,10 @@ export const Input = styled.input`
   margin: 5.5px 0 0;
   padding: 0 0 6.5px;
   height: 25px;
-  color: #bbbec4;
+  color: ${({ isHidden }) => (isHidden ? "rgba(0,0,0,0)" : "#bbbec4")};
   background: none;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid ${({ isValid }) => (isValid ? "#fff" : "#ff0400")};
   &:focus {
     outline: none;
   }
@@ -55,14 +55,33 @@ export const Input = styled.input`
   font-size: 16px;
 `;
 
+export const HiddenPassword = styled.span`
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  color: #bbbec4;
+  font-size: 20px;
+`;
+
 export const ShowButton = styled.button`
   position: absolute;
   height: 22px;
   width: 22px;
+  padding: 0;
   right: 0;
   bottom: 7.5px;
   background: none;
   border: none;
+
+  img {
+    margin-top: 0px;
+  }
+
+  i {
+    margin-top: 4px;
+    color: #fff;
+    font-size: 18px;
+  }
 `;
 
 export const Button = styled.button`
