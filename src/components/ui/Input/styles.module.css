@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.input {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    width: 100%;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 6px 0;
+    opacity: 0.7;
+    border: 0;
+    border-bottom: 1px solid #ffffff;
+}
+
+.showPasswordToggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.error {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #c30000;
+}

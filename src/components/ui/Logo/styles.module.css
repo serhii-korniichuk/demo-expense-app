@@ -1,0 +1,10 @@
+.text {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.subText {
+    color: #539713;
+    font-weight: 600;
+}

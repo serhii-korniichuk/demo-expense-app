@@ -1,0 +1,17 @@
+.button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    padding: 10px 16px;
+    background-color: #539713;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    background-color: #73994f;
+}
+
+.fullWidth {
+    width: 100%;
+}
