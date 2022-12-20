@@ -28,7 +28,7 @@ export const Home = () => {
     );
     refreshToken = refreshToken && refreshToken[2];
 
-    if (!refreshToken) navigate("/login");
+    if (!refreshToken) navigate("/login"); // also could've used api request to update refreshToken
   }, []);
 
   useEffect(() => {
