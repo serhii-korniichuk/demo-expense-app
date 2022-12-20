@@ -9,10 +9,4 @@ export type User = {
   admin: boolean;
 };
 
-export const getUserApi = async (): Promise<AxiosResponse<User>> => {
-  try {
-    return await AuthApiService.get('/users/self');
-  } catch (error) {
-    throw new Error(error as string);
-  }
-};
+export const getUserApi = async (): Promise<AxiosResponse<User>> => await AuthApiService.get('/users/self');
