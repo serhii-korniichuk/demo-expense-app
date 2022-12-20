@@ -26,9 +26,9 @@ export const Home = () => {
     const refreshToken = document.cookie.match(
       new RegExp("(^| )refreshToken=([^;]+)")
     );
-    refreshToken = refreshToken[2];
+    refreshToken = refreshToken && refreshToken[2];
 
-    // check if valid
+    if (!refreshToken) navigate("/login");
   }, []);
 
   useEffect(() => {
