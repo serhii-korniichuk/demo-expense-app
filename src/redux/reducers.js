@@ -1,12 +1,28 @@
+import {
+  ADD_NOTIFICATION,
+  CHANGE_NOTIFICATIONS,
+  REGISTER,
+  LOGIN,
+  LOGOUT,
+} from "./types";
+
 const initialState = {
   notifications: [],
-  loggedIn: false,
+  loggedIn: true,
 };
 
 export const rootReducer = (state = initialState, action) => {
-  console.log("action", action);
   switch (action.type) {
-    case "register/fulfilled": {
+    case ADD_NOTIFICATION:
+      return {
+        ...state,
+        notifications: [...state.notifications, action.payload],
+      };
+
+    case CHANGE_NOTIFICATIONS:
+      return { ...state, notifications: action.payload };
+
+    case `${REGISTER}/fulfilled`: {
       if (action.payload?.error === "Conflict") {
         return {
           ...state,
@@ -30,11 +46,8 @@ export const rootReducer = (state = initialState, action) => {
       }
       return { ...state, loggedIn: true };
     }
-    case "login/fulfilled": {
-      console.log(
-        "action.payload.statusCode < 200 && action.payload.statusCode > 299",
-        action.payload.statusCode < 200 && action.payload.statusCode > 299
-      );
+
+    case `${LOGIN}/fulfilled`: {
       if (action.payload.statusCode < 200 || action.payload.statusCode > 299) {
         return {
           ...state,
@@ -44,15 +57,21 @@ export const rootReducer = (state = initialState, action) => {
               key: new Date().getTime(),
               type: "error",
               text: action.payload.message,
+              ...action.payload,
             },
           ],
         };
       } else {
+        localStorage.setItem("accessToken", action.payload.accessToken);
+        document.cookie = `refreshToken=${action.payload.refreshToken}`;
         return { ...state, loggedIn: true };
       }
     }
-    case "notifications":
-      return { ...state, notifications: action.payload };
+
+    case `${LOGOUT}/fulfilled`: {
+      return { ...state, loggedIn: false };
+    }
+
     default:
       return state;
   }

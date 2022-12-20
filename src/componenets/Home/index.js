@@ -1,5 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/actions";
 import Decoration from "../../assets/images/decor.png";
 import Image from "../../assets/images/home-image.png";
@@ -18,6 +19,23 @@ import {
 
 export const Home = () => {
   const dispatch = useDispatch();
+  const { loggedIn, accessToken } = useSelector((store) => store);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const refreshToken = document.cookie.match(
+      new RegExp("(^| )refreshToken=([^;]+)")
+    );
+    refreshToken = refreshToken[2];
+
+    // check if valid
+  }, []);
+
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate("/sign-in");
+    }
+  }, [loggedIn]);
 
   return (
     <Wrapper>
@@ -35,7 +53,7 @@ export const Home = () => {
           Now you are on the main page. Soon we will provide you with detailed
           feedback on the result of your work
         </Text>
-        <LogOut onClick={() => dispatch(logout())}>Log Out</LogOut>
+        <LogOut onClick={() => dispatch(logout(accessToken))}>Log Out</LogOut>
         <HomeImage src={Image} alt="footer" />
       </Main>
     </Wrapper>

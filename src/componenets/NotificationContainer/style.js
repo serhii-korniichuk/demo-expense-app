@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const slideIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(110%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+`;
 
 export const Notification = styled.div`
   gap: 30px;
@@ -14,7 +26,17 @@ export const Notification = styled.div`
   right: 25px;
   top: ${({ top }) => (top ? `${top * 60 + 15}px` : "15px")};
   font-weight: 600;
-  z-index: 1;
+  animation: ${slideIn} 0.5s linear;
+  z-index: 2;
+
+  @media screen and (max-width: 426px) {
+    width: 80%;
+    right: 5%;
+  }
+
+  @media screen and (max-width: 281px) {
+    right: 3%;
+  }
 `;
 
 export const CloseButton = styled.button`
