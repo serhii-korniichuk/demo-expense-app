@@ -1,0 +1,21 @@
+.logo-wrapper {
+    width: 100%;
+}
+
+.main-text {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 150%;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sub-text {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #539713;
+    line-height: 155%;
+    font-family: 'Montserrat', sans-serif;
+}
