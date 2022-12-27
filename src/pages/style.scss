@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+   url("../../public/Montserrat.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #1D283A;
+}
+
+.nameCompany {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 150%;
+  color: #FFFFFF;
+  margin-bottom: 0;
+  margin-top: 48px;
+}
+
+.companyType {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 155%;
+  color: #539713;
+  margin-bottom: 0;
+}
+
+.loginHeader {
+  margin-top: 72px;
+  margin-bottom: 48px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 150%;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.createAccount {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 155%;
+  color: #F1F2F1;
+  margin-top: 24px;
+}
+
+.mainHeader {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.mainText {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 155%;
+  text-align: center;
+  color: #FFFFFF;
+  width: 466px;
+  margin: 48px auto;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.mainContainer {
+  margin: 60px;
+}
+
+@media (max-width: 900px) {
+  .smallSizeMainContainer {
+    margin: 48px;
+  }
+
+  .mainHeader {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 100%;
+  }
+
+  .mainText {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 48px auto;
+    width: auto;
+  }
+
+}
