@@ -23,12 +23,13 @@ export const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const refreshToken = document.cookie.match(
+    let refreshToken = document.cookie.match(
       new RegExp("(^| )refreshToken=([^;]+)")
     );
     refreshToken = refreshToken && refreshToken[2];
 
     if (!refreshToken) navigate("/login"); // also could've used api request to update refreshToken
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

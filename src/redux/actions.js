@@ -44,7 +44,7 @@ export const login = createAsyncThunk(LOGIN, async (data) => {
 });
 
 export const logout = createAsyncThunk(LOGOUT, async () => {
-  const refreshToken = document.cookie.match(
+  let refreshToken = document.cookie.match(
     new RegExp("(^| )refreshToken=([^;]+)")
   );
   refreshToken = refreshToken[2];
@@ -58,7 +58,7 @@ export const logout = createAsyncThunk(LOGOUT, async () => {
       "X-CSRF-TOKEN": refreshToken,
       "Content-Type": "application/json",
     },
-    credentials: "same-origin",
+    // credentials: "same-origin",
   }).then((data) => data.json());
 
   return res;

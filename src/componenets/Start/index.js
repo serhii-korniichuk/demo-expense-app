@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login, register } from "../../redux/actions";
@@ -38,7 +38,7 @@ export const Start = () => {
 
   useEffect(() => {
     if (loggedIn) navigate("/home");
-  }, [loggedIn]);
+  }, [loggedIn, navigate]);
 
   const updatePassword = (e, setProperty, setHiddenProperty) => {
     setProperty(e.target.value);
