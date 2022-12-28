@@ -50,15 +50,16 @@ export const logout = createAsyncThunk(LOGOUT, async () => {
   refreshToken = refreshToken[2];
 
   const res = await fetch(`${BASE_URL}/auth/logout`, {
-    credentials: "include",
+    // credentials: "include",
     headers: {
       Authorization: `Token ${refreshToken.toString("base64")}`,
-      "Access-Control-Allow-Origin": "http://localhost:3000/",
+      "Access-Control-Allow-Origin":
+        "https://cookiewithevil.github.io/demo-expense-app-git/",
       Accept: "application/json",
       "X-CSRF-TOKEN": refreshToken,
       "Content-Type": "application/json",
     },
-    // credentials: "same-origin",
+    credentials: "same-origin",
   }).then((data) => data.json());
 
   return res;

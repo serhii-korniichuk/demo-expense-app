@@ -28,7 +28,8 @@ export const Home = () => {
     );
     refreshToken = refreshToken && refreshToken[2];
 
-    if (!refreshToken) navigate("/login"); // also could've used api request to update refreshToken
+    if (!refreshToken)
+      navigate("https://cookiewithevil.github.io/demo-expense-app-git/login"); // also could've used api request to update refreshToken
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

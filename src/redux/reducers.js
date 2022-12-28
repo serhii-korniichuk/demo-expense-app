@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   notifications: [],
-  loggedIn: true,
+  loggedIn: false,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -44,6 +44,8 @@ export const rootReducer = (state = initialState, action) => {
           ],
         };
       }
+      localStorage.setItem("accessToken", action.payload.accessToken);
+      document.cookie = `refreshToken=${action.payload.refreshToken}`;
       return { ...state, loggedIn: true };
     }
 
@@ -69,6 +71,13 @@ export const rootReducer = (state = initialState, action) => {
     }
 
     case `${LOGOUT}/fulfilled`: {
+      localStorage.removeItem("accessToken");
+      const refreshToken = document.cookie.match(
+        new RegExp("(^| )refreshToken=([^;]+)")
+      );
+      if (refreshToken[2]) {
+        document.cookie = `${refreshToken[2]}=;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+      }
       return { ...state, loggedIn: false };
     }
 

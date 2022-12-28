@@ -15,6 +15,7 @@ import {
   ShowButton,
   Button,
   BottomText,
+  InvalidMessage,
 } from "./style";
 import EyeOffIcon from "../../assets/images/eye-off.svg";
 
@@ -40,6 +41,17 @@ export const Start = () => {
     if (loggedIn) navigate("/home");
   }, [loggedIn, navigate]);
 
+  useEffect(() => {
+    setSubmitIsPressed(false);
+    setDisplayName("");
+    setUsername("");
+    setPassword("");
+    togglePassword(false);
+    setConfirmPassword("");
+    toggleConfirmPassword(false);
+    setHiddenPassword("");
+  }, [pathname]);
+
   const updatePassword = (e, setProperty, setHiddenProperty) => {
     setProperty(e.target.value);
 
@@ -51,8 +63,8 @@ export const Start = () => {
     e.preventDefault();
     setSubmitIsPressed(true);
 
-    if (pathname.includes("sign-up")) {
-      if (password && username && displayName) {
+    if (pathname.includes("/sign-up")) {
+      if (password && username && displayName && confirmPassword === password) {
         dispatch(
           register({
             password,
@@ -107,8 +119,8 @@ export const Start = () => {
           <Input
             value={password}
             onChange={(e) => updatePassword(e, setPassword, setHiddenPassword)}
-            placeholder="Password"
-            isHidden={!showPassword}
+            placeholder={!showPassword && hiddenPassword ? "" : "Password"}
+            isHidden={false || !showPassword}
             isValid={!isSubmitPressed || Boolean(password)}
           />
           {!showPassword && <HiddenPassword>{hiddenPassword}</HiddenPassword>}
@@ -133,7 +145,11 @@ export const Start = () => {
               onChange={(e) =>
                 updatePassword(e, setConfirmPassword, setHiddenConfirmPassword)
               }
-              placeholder="Confirm Password"
+              placeholder={
+                !showConfirmPassword && hiddenConfirmPassword
+                  ? ""
+                  : "Confirm Password"
+              }
               isHidden={!showConfirmPassword}
               isValid={
                 !isSubmitPressed ||
@@ -155,6 +171,9 @@ export const Start = () => {
                 <img src={EyeOffIcon} alt="" />
               )}
             </ShowButton>
+            {isSubmitPressed && Boolean(confirmPassword !== password) && (
+              <InvalidMessage>Passwords don't match</InvalidMessage>
+            )}
           </Label>
         )}
 

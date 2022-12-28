@@ -41,27 +41,34 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  position: relative;
   width: 100%;
   margin: 5.5px 0 0;
   padding: 0 0 6.5px;
   height: 25px;
-  color: ${({ isHidden }) => (isHidden ? "rgba(0,0,0,0)" : "#bbbec4")};
+  color: #bbbec4;
   background: none;
   border: none;
   border-bottom: 1px solid ${({ isValid }) => (isValid ? "#fff" : "#ff0400")};
   &:focus {
     outline: none;
   }
+  user-select: ${({ isHidden }) => (isHidden ? "none" : "text")};
+  -webkit-user-select: ${({ isHidden }) => (isHidden ? "none" : "text")};
+  -moz-user-select: ${({ isHidden }) => (isHidden ? "none" : "text")};
+  -ms-user-select: ${({ isHidden }) => (isHidden ? "none" : "text")};
 
   font-size: 16px;
+  z-index: 1;
 `;
-
 export const HiddenPassword = styled.span`
   position: absolute;
   left: 0;
   bottom: 5px;
   color: #bbbec4;
   font-size: 20px;
+  background: #1d283a;
+  z-index: 1;
 `;
 
 export const ShowButton = styled.button`
@@ -83,6 +90,7 @@ export const ShowButton = styled.button`
     color: #fff;
     font-size: 18px;
   }
+  z-index: 1;
 `;
 
 export const Button = styled.button`
@@ -110,4 +118,14 @@ export const BottomText = styled.p`
     color: #6b90cc;
     text-decoration: none;
   }
+`;
+
+export const InvalidMessage = styled.span`
+  font-weight: 400;
+  font-size: 12px;
+  color: #ff0400;
+  position: absolute;
+  min-width: 150px;
+  bottom: -16px;
+  left: 0;
 `;
