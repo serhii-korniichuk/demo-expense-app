@@ -66,8 +66,9 @@ export const HiddenPassword = styled.span`
   left: 0;
   bottom: 5px;
   color: #bbbec4;
-  font-size: 20px;
+  padding-right: 12px;
   background: #1d283a;
+  font-size: 20px;
   z-index: 1;
 `;
 
