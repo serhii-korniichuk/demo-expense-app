@@ -1,0 +1,102 @@
+.wrapper {
+  background: #1D283A;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+
+  .logo {
+    margin-right: auto;
+  }
+
+  .pageTitle {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 72px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    position: relative;
+
+    .decor {
+      position: absolute;
+      right: -125px;
+      top: -125px;
+    }
+
+    &Auth {
+      align-self: flex-start;
+      font-size: 56px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+  }
+
+  .welcomeText {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 465px;
+  }
+
+  .logOutButton {
+    margin: 45px 0 70px;
+    width: 100px;
+    height: 44px;
+    background: #539713;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .sendButton {
+    height: 44px;
+    width: 100%;
+    background: #539713;
+    border: none;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .password {
+    position: relative;
+
+    .show {
+      position: absolute;
+      right: 5px;
+      top: 25px;
+    }
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    color: #F1F2F1;
+    padding-top: 25px;
+
+    &Switcher {
+      color: #7FAAF0;
+      cursor: pointer;
+    }
+
+    &Switcher:hover {
+      text-decoration: underline;
+    }
+  }
+}

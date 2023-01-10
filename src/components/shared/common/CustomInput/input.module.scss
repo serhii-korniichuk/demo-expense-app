@@ -1,0 +1,33 @@
+.customInput {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
+
+  label {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid #FFFFFF;
+    background-color: #1D283A;
+    outline: none;
+    font-size: 16px;
+    line-height: 25px;
+    color: #FFFFFF;
+    opacity: 0.7;
+    padding-bottom: 5px;
+  }
+
+  & .error {
+    font-size: 12px;
+    line-height: 22px;
+    color: tomato;
+    align-self: flex-end;
+  }
+}
