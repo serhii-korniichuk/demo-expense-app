@@ -1,0 +1,33 @@
+.container {
+  width: 424px;
+  height: 100vh;
+  background-color: #1D283A;
+  display: grid;
+  grid-template-rows: 190px auto 1fr;
+
+  h1 {
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 150%;
+    color: white;
+    margin: 0 48px;
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .footer {
+      color: #F1F2F1;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 155%;
+
+      span {
+        color: #7FAAF0;
+        cursor: pointer;
+      }
+    }
+  }
+}
