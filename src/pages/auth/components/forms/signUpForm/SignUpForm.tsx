@@ -1,5 +1,4 @@
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Button, IconButton, InputAdornment } from '@mui/material';
+import { Button } from '@mui/material';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
@@ -7,7 +6,7 @@ import React from 'react';
 import { useAction } from '../../../../../hooks';
 import { registerNewUser } from '../../../../../model/api/api';
 import { setUser } from '../../../../../model/reducer/user/reducer';
-import { StyledInput } from '../../../../../shared/components';
+import { ShowPasswordIcon, StyledInput } from '../../../../../shared/components';
 import classes from '../form.module.scss';
 
 const validationSchema = yup.object({
@@ -32,24 +31,23 @@ export const SignUpForm = (): JSX.Element => {
   const [boundedSetUser] = useAction([setUser]);
   const navigate = useNavigate();
 
+  const initialValues = {
+    displayName: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+  };
+
   const formik = useFormik({
-    initialValues: {
-      displayName: '',
-      username: '',
-      password: '',
-      confirmPassword: '',
-    },
+    initialValues,
     validationSchema,
     onSubmit: ({ displayName, password, username }) => {
       registerNewUser({ displayName, password, username })
         .then(({ data }) => {
           boundedSetUser(data);
         })
-        .then(() => {
-          formik.values.displayName = '';
-          formik.values.password = '';
-          formik.values.username = '';
-          formik.values.confirmPassword = '';
+        .then(async () => {
+          await formik.setValues(initialValues);
         })
         .then(() => {
           navigate('/');
@@ -66,10 +64,6 @@ export const SignUpForm = (): JSX.Element => {
 
   const handleClickShowConfirmPassword = (): void => {
     setShowConfirmPassword((show) => !show);
-  };
-
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
   };
 
   return (
@@ -108,21 +102,7 @@ export const SignUpForm = (): JSX.Element => {
         value={formik.values.password}
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {showPassword
-                  ? (
-                  <VisibilityOff sx={{ color: '#FFFFFF' }} />
-                    )
-                  : (
-                  <Visibility sx={{ color: '#FFFFFF' }} />
-                    )}
-              </IconButton>
-            </InputAdornment>
+            <ShowPasswordIcon statement={showPassword} handleClick={handleClickShowPassword} />
           ),
         }}
       />
@@ -138,21 +118,10 @@ export const SignUpForm = (): JSX.Element => {
         value={formik.values.confirmPassword}
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowConfirmPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {showConfirmPassword
-                  ? (
-                  <VisibilityOff sx={{ color: '#FFFFFF' }} />
-                    )
-                  : (
-                  <Visibility sx={{ color: '#FFFFFF' }} />
-                    )}
-              </IconButton>
-            </InputAdornment>
+            <ShowPasswordIcon
+              statement={showConfirmPassword}
+              handleClick={handleClickShowConfirmPassword}
+            />
           ),
         }}
       />

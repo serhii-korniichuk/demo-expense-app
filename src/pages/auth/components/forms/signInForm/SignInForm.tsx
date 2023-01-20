@@ -1,13 +1,12 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import React from 'react';
-import { Button, IconButton, InputAdornment } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAction } from '../../../../../hooks';
 import { getSelf, login } from '../../../../../model/api/api';
 import { setUser } from '../../../../../model/reducer/user/reducer';
-import { StyledInput } from '../../../../../shared/components';
+import { ShowPasswordIcon, StyledInput } from '../../../../../shared/components';
 import classes from '../form.module.scss';
 
 const validationSchema = yup.object({
@@ -29,15 +28,13 @@ export const SignInForm = (): JSX.Element => {
     setShowPassword((show) => !show);
   };
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const initialValues = {
+    username: '',
+    password: '',
   };
 
   const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-    },
+    initialValues,
     validationSchema,
     onSubmit: async ({ password, username }) => {
       await login({ password, username })
@@ -49,9 +46,8 @@ export const SignInForm = (): JSX.Element => {
         .then(({ data }) => {
           boundedSetUser(data);
         })
-        .then(() => {
-          formik.values.password = '';
-          formik.values.username = '';
+        .then(async () => {
+          await formik.setValues(initialValues);
         })
         .then(() => {
           navigate('/');
@@ -87,21 +83,7 @@ export const SignInForm = (): JSX.Element => {
         helperText={formik.touched.password && formik.errors.password}
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {showPassword
-                  ? (
-                  <VisibilityOff sx={{ color: '#FFFFFF' }} />
-                    )
-                  : (
-                  <Visibility sx={{ color: '#FFFFFF' }} />
-                    )}
-              </IconButton>
-            </InputAdornment>
+            <ShowPasswordIcon statement={showPassword} handleClick={handleClickShowPassword} />
           ),
         }}
       />

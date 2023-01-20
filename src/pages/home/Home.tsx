@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAction } from '../../hooks';
@@ -11,6 +11,8 @@ import classes from './Home.module.scss';
 import vector from '../../assets/vector.png';
 import decor from './../../assets/decor.png';
 
+let isFirstMount = true;
+
 export const Home: FC = () => {
   const { user } = useSelector(userSelector);
   const [shouldRedirect, setShouldRedirect] = useState<boolean>(false);
@@ -18,7 +20,7 @@ export const Home: FC = () => {
   const [boundedLogOut, boundedSetUser] = useAction([clearUserData, setUser]);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const getUserOnMount = useCallback(() => {
     if (!user) {
       getSelf()
         .then(({ data }) => {
@@ -32,6 +34,15 @@ export const Home: FC = () => {
           setIsLoading(false);
         });
     }
+  }, []);
+
+  useEffect(() => {
+    if (isFirstMount) {
+      getUserOnMount();
+    }
+    return () => {
+      isFirstMount = false;
+    };
   }, []);
 
   const handleLogOut = (): void => {
@@ -55,35 +66,27 @@ export const Home: FC = () => {
     }
   };
 
-  return (
-    <>
-      {isLoading
-        ? (
-        <Loader />
-          )
-        : shouldRedirect
-          ? (
-        <Navigate to="/auth" replace />
-            )
-          : (
-        <div className={classes.homeContainer}>
-          <Logo />
-          <div className={classes.congratulationsContainer}>
-            <div className={classes.congratulationsHeaderContainer}>
-              <img className={classes.decorContainer} alt="decor" src={decor} />
-              <h2>CONGRATULATION</h2>
-            </div>
-            <p>
-              Now you are on the main page. Soon we will provide you with detailed feedback on the
-              result of your work
-            </p>
-            <Button onClick={handleLogOut} variant="contained" color="success">
-              Log Out
-            </Button>
-          </div>
-          <img className={classes.vector} alt="vector" src={vector} />
+  const component = (
+    <div className={classes.homeContainer}>
+      <Logo />
+      <div className={classes.congratulationsContainer}>
+        <div className={classes.congratulationsHeaderContainer}>
+          <img className={classes.decorContainer} alt="decor" src={decor} />
+          <h2>CONGRATULATION</h2>
         </div>
-            )}
-    </>
+        <p>
+          Now you are on the main page. Soon we will provide you with detailed feedback on the
+          result of your work
+        </p>
+        <Button onClick={handleLogOut} variant="contained" color="success">
+          Log Out
+        </Button>
+      </div>
+      <img className={classes.vector} alt="vector" src={vector} />
+    </div>
   );
+
+  const render = shouldRedirect ? <Navigate to="/auth" replace /> : component;
+
+  return <>{isLoading ? <Loader /> : render}</>;
 };
