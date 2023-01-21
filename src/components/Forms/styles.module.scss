@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  justify-content: space-evenly;
+  width: 300px;
+}
+
+.signIn {
+  height: 300px;
+}
+
+.signUp {
+  height: 400px;
+}
