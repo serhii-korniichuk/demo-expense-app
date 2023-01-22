@@ -1,0 +1,129 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "import"
+    ],
+    "rules": {
+        "for-direction": 2,
+    "getter-return": 2,
+    "react/react-in-jsx-scope": "off",
+    "no-async-promise-executor": 2,
+    "no-case-declarations": 2,
+    "no-compare-neg-zero": 2,
+    "no-const-assign": 2,
+    "no-constant-condition": 2,
+    "no-control-regex": 2,
+    "no-delete-var": 2,
+    "no-dupe-args": 2,
+    "no-dupe-else-if": 2,
+    "no-dupe-keys": 2,
+    "no-duplicate-case": 2,
+    "no-empty": 2,
+    "no-extra-boolean-cast": 0,
+    "no-extra-semi": 0,
+    "no-fallthrough": 2,
+    "no-inner-declarations": 2,
+    "no-invalid-regexp": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "no-redeclare": 2,
+    "no-regex-spaces": 2,
+    "no-self-assign": 2,
+    "no-shadow-restricted-names": 2,
+    "no-sparse-arrays": 2,
+    "no-unused-labels": 2,
+    "no-unused-vars": 0,
+    "@typescript-eslint/no-unused-vars": 2,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "no-unused-expressions": 2,
+    "no-use-before-define": "off",
+    "no-empty-function": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "no-useless-concat": 2,
+    "no-multi-spaces": 2,
+    "import/no-unresolved": 0,
+    "object-curly-spacing": ["error", "always"],
+    "quotes": [2, "single", "avoid-escape"],
+    "use-isnan": 2,
+    "max-depth": ["error", 5],
+    "max-len": ["error", 120],
+    "camelcase": 2,
+    "no-var": 2,
+    "semi": ["error", "never"],
+    "rest-spread-spacing": 2,
+    "comma-spacing": 2,
+    "key-spacing": 2,
+    "keyword-spacing": 2,
+    "strict": 2,
+    "react/prop-types": 0,
+    "react/no-unescaped-entities": 0,
+    "import/order":[
+      "error",
+      {
+        "newlines-between": "always-and-inside-groups",
+        "groups": ["builtin", "external", "internal", "sibling", "object", "parent", "index", "type"],
+        "pathGroups":[{
+          "pattern": "react**",
+          "group": "builtin",
+          "position": "before"
+        },
+        {
+          "pattern": "~/node_modules/**",
+          "group": "external"
+        },
+        {
+          "pattern": "src/components/**",
+          "group": "internal"
+        },
+        {
+          "pattern": "src/assets/**",
+          "group": "sibling"
+        },
+        {
+          "pattern": "src/redux/**",
+          "group": "object"
+        },
+        {
+          "pattern": "src/types/**",
+          "group": "parent"
+        },
+        {
+          "pattern": "src/utils/**",
+          "group": "parent"
+        },
+        {
+          "pattern": "./style",
+          "group": "type"
+        }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive":false
+        }
+      }
+    ]
+    }
+}
