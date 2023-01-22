@@ -1,28 +1,38 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 
-import logo from './logo.svg'
+import createCache from '@emotion/cache'
+import { CacheProvider } from '@emotion/react'
+import { ThemeProvider } from '@mui/material/styles'
+import { SnackbarProvider } from 'notistack'
+
+import { setupStore } from './redux/store'
+import Routes from './routes'
+
+import { theme } from 'src/utils/constants/ui'
 
 import './App.css'
 
-function App() {
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
+const App: React.FC = () => {
+  const store = setupStore()
+  const muiCache = createCache({
+    key: 'mui',
+    prepend: true
+  })
 
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <CacheProvider value={muiCache}>
+          <SnackbarProvider maxSnack={1}>
+            <ThemeProvider theme={theme}>
+              <Routes />
+            </ThemeProvider>
+          </SnackbarProvider>
+        </CacheProvider>
+      </Provider>
+    </BrowserRouter>
   )
 }
 
