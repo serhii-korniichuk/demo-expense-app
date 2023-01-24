@@ -1,0 +1,18 @@
+@import 'styles/variables';
+
+.text,
+.button {
+  font-family: 'Montserrat Regular';
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.text {
+  color: $color-brg;
+}
+
+.button {
+  color: $color-blue;
+  cursor: pointer;
+}
