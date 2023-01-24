@@ -3,9 +3,10 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Home from './pages/privatePages/home'
 import Authorization from './pages/publicPages/authorization'
+import { isLoggedIn } from './utils/helpers/authService'
 
 const Routers: React.FC = () => {
-  const isAuth = Boolean(localStorage.getItem('token'))
+  const isAuth = isLoggedIn()
 
   return (
     <Routes>

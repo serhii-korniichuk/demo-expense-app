@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react'
 
 import { Box, Typography } from '@mui/material'
 
+import Header from 'src/components/header'
+
 import Login from './login'
 import Register from './register'
 
@@ -39,8 +41,7 @@ const Authorization: React.FC = () => {
 
   return (
     <Box className={classes.root}>
-      <Typography variant='h3'>InCode</Typography>
-      <Typography variant='h5'>Finance</Typography>
+      <Header />
       <Typography variant='h1' sx={{ marginTop: '72px', textTransform: 'uppercase' }}>
         {title}
       </Typography>

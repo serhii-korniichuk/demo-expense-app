@@ -209,7 +209,7 @@ export const theme = createTheme({
             fontSize: 16,
             fontWeight: 600,
             lineHeight: '24px',
-            color: defaultTheme.palette.success[700]
+            color: defaultTheme.palette.textPrimary.main
           }
         },
         {

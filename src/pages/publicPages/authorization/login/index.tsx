@@ -27,7 +27,7 @@ const Login: React.FC = () => {
         dispatch(
           authLogin({
             data: { password: values.password, username: values.username },
-            func: () => navigate('/home')
+            func: () => navigate('/')
           })
         )
       }}

@@ -24,7 +24,7 @@ export const authLogin = createAsyncThunk(
     try {
       const res = await api.postLogin(data.data)
 
-      localStorage.setItem('token', res?.data.accessToken || '')
+      localStorage.setItem('accessToken', res?.data.accessToken || '')
       localStorage.setItem('refreshToken', res?.data.refreshToken || '')
 
       if (data.func) {
