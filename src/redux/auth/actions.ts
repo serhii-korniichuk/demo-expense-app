@@ -6,7 +6,6 @@ export const authRegister = createAsyncThunk(
   async (data: RequestDataWithFunc<IRegisterRequest>, thunkApi) => {
     try {
       const res = await api.postRegister(data.data)
-      console.log('register!', res)
 
       if (data.func) {
         data.func()
@@ -24,7 +23,6 @@ export const authLogin = createAsyncThunk(
   async (data: RequestDataWithFunc<ILoginRequest>, thunkApi) => {
     try {
       const res = await api.postLogin(data.data)
-      console.log('resss', res)
 
       localStorage.setItem('token', res?.data.accessToken || '')
       localStorage.setItem('refreshToken', res?.data.refreshToken || '')
@@ -45,7 +43,6 @@ export const authLogin = createAsyncThunk(
 //   async (data: RequestDataWithFunc<string>, thunkApi) => {
 //     try {
 //       const res = await api.postRefresh(data.data)
-//       console.log('resss', res)
 
 //       // if (res) {
 //       localStorage.setItem('token', res?.accessToken)

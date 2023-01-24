@@ -1,6 +1,6 @@
 declare interface RequestDataWithFunc<T> {
   data: T
-  func: () => void
+  func?: () => void
 }
 
 declare interface QueriesData {
@@ -15,3 +15,5 @@ declare interface ApiWrapper {
   data?: any
   isFormData?: boolean
 }
+
+declare type ITypographyVariant = 'h1' | 'h2' | 'h3' | 'h5' | 'info2' | 'info3' | 'info4'

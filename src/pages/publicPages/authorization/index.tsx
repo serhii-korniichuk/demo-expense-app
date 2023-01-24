@@ -1,19 +1,53 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
+
+import { Box, Typography } from '@mui/material'
 
 import Login from './login'
 import Register from './register'
 
-const Authorization: React.FC = () => {
-  const [authType /* setAuthType */] = useState<'singIn' | 'singUp'>('singIn')
+import { useStyles } from './style'
 
-  switch (authType) {
-    case 'singIn':
-      return <Login />
-    case 'singUp':
-      return <Register />
-    default:
-      return <Login />
-  }
+const Authorization: React.FC = () => {
+  const [authType, setAuthType] = useState<'singIn' | 'singUp'>('singIn')
+
+  const classes = useStyles()
+
+  const getContent = useCallback(() => {
+    const signInForm = {
+      title: 'Sign In',
+      text: 'Don’t have account yet?',
+      link: (
+        <Typography variant='info4'>
+          Don’t have account yet? <span onClick={() => setAuthType('singUp')}>New Account</span>
+        </Typography>
+      ),
+      form: <Login />
+    }
+    const signUpForm = {
+      title: 'Sign Up',
+      link: (
+        <Typography variant='info4'>
+          I have an account. <span onClick={() => setAuthType('singIn')}>Go to Sign in</span>
+        </Typography>
+      ),
+      form: <Register callBack={setAuthType} />
+    }
+    return authType === 'singIn' ? signInForm : signUpForm
+  }, [authType])
+
+  const { title, link, form } = getContent()
+
+  return (
+    <Box className={classes.root}>
+      <Typography variant='h3'>InCode</Typography>
+      <Typography variant='h5'>Finance</Typography>
+      <Typography variant='h1' sx={{ marginTop: '72px', textTransform: 'uppercase' }}>
+        {title}
+      </Typography>
+      <Box className={classes.formContainer}>{form}</Box>
+      <Box className={classes.linkContainer}>{link}</Box>
+    </Box>
+  )
 }
 
 export default Authorization

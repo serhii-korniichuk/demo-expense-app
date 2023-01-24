@@ -2,10 +2,6 @@ import { createTheme } from '@mui/material/styles'
 
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
-    h1: true
-    h2: true
-    h3: true
-    h5: true
     info2: true
     info3: true
     info4: true
@@ -87,8 +83,8 @@ const defaultTheme = createTheme({
       [100]: '#FFFFFF'
     },
     primary: {
-      main: '#3360FF',
-      dark: '#4D73F6',
+      main: '#1D283A',
+      dark: '#7FAAF0',
       [800]: '#E45633',
       [700]: '#F06745',
       [600]: '#F0CDC4'
@@ -103,8 +99,8 @@ const defaultTheme = createTheme({
       [400]: '#E7EFFF'
     },
     success: {
-      [800]: '#74BE29',
-      [700]: '#9DC864',
+      [800]: '#4A7B0A',
+      [700]: '#539713',
       [600]: '#B5D689',
       [500]: '#D9EBC3'
     },
@@ -128,7 +124,7 @@ const defaultTheme = createTheme({
       main: 'rgba(116, 190, 41, 0.14)'
     },
     textPrimary: {
-      main: '#252A32'
+      main: '#FFFFFF'
     },
     textSecondary: {
       main: '#485469'
@@ -185,7 +181,8 @@ export const theme = createTheme({
           style: {
             fontSize: 56,
             fontWeight: 700,
-            lineHeight: '48px'
+            lineHeight: '48px',
+            color: defaultTheme.palette.textPrimary.main
           }
         },
         {
@@ -193,7 +190,8 @@ export const theme = createTheme({
           style: {
             fontSize: 48,
             fontWeight: 700,
-            lineHeight: '72px'
+            lineHeight: '72px',
+            color: defaultTheme.palette.textPrimary.main
           }
         },
         {
@@ -201,7 +199,8 @@ export const theme = createTheme({
           style: {
             fontSize: 36,
             fontWeight: 700,
-            lineHeight: '54px'
+            lineHeight: '54px',
+            color: defaultTheme.palette.textPrimary.main
           }
         },
         {
@@ -209,7 +208,8 @@ export const theme = createTheme({
           style: {
             fontSize: 16,
             fontWeight: 600,
-            lineHeight: '24px'
+            lineHeight: '24px',
+            color: defaultTheme.palette.success[700]
           }
         },
         {
@@ -217,7 +217,8 @@ export const theme = createTheme({
           style: {
             fontSize: 16,
             fontWeight: 400,
-            lineHeight: '155%'
+            lineHeight: '155%',
+            color: defaultTheme.palette.textPrimary.main
           }
         },
         {
@@ -225,7 +226,8 @@ export const theme = createTheme({
           style: {
             fontSize: 14,
             fontWeight: 400,
-            lineHeight: '155%'
+            lineHeight: '155%',
+            color: defaultTheme.palette.textPrimary.main
           }
         },
         {
@@ -233,7 +235,12 @@ export const theme = createTheme({
           style: {
             fontSize: 12,
             fontWeight: 400,
-            lineHeight: '155%'
+            lineHeight: '155%',
+            color: defaultTheme.palette.textPrimary.main,
+            '&>span': {
+              color: defaultTheme.palette.primary.dark,
+              cursor: 'pointer'
+            }
           }
         }
       ]
@@ -241,41 +248,61 @@ export const theme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: { color: 'verified' },
-          style: {
-            fontFamily: 'Quicksand',
-            background: 'rgba(116, 190, 41, 0.14)',
-            color: '#74BE29'
-          }
-        },
-        {
-          props: { size: 'XL' },
-          style: {
-            width: 311
-          }
-        },
-        {
           props: { size: 'LG' },
           style: {
-            width: 254
-          }
-        },
-        {
-          props: { size: 'MD' },
-          style: {
-            width: 160
+            width: '100%',
+            maxWidth: '330px'
           }
         },
         {
           props: { size: 'SM' },
           style: {
-            width: 114
+            width: '100%',
+            maxWidth: '114px'
           }
         },
         {
-          props: { size: 'XS' },
+          props: { type: 'button' },
           style: {
-            width: 72
+            height: '44px',
+            borderRadius: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            boxShadow:
+              '0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px rgb(0 0 0 / 14%), 0px 1px 5px rgb(0 0 0 / 12%)',
+            outline: 'none',
+            border: 'none',
+            background: defaultTheme.palette.success[700],
+            '&:hover': {
+              background: defaultTheme.palette.success[800]
+            }
+          }
+        }
+      ]
+    },
+    MuiTextField: {
+      variants: [
+        {
+          props: { variant: 'standard' },
+          style: {
+            width: '100%',
+            color: defaultTheme.palette.textPrimary.main,
+            '& input': {
+              borderBottom: `1px solid ${defaultTheme.palette.neutral[100]} !important`,
+              color: defaultTheme.palette.neutral[100],
+              paddingRight: 30,
+              opacity: '.7'
+            },
+            '& .MuiInput-root:hover:before': {
+              borderBottom: `1px solid ${defaultTheme.palette.neutral[100]} !important`
+            },
+            '& .mui-157495d-MuiInputBase-root-MuiInput-root:after': {
+              borderBottom: `1px solid ${defaultTheme.palette.neutral[100]} !important`
+            },
+            '.Mui-focused': {
+              color: `${defaultTheme.palette.textPrimary.main} !important`
+            }
           }
         }
       ]
