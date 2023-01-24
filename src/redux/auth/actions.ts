@@ -38,20 +38,22 @@ export const authLogin = createAsyncThunk(
   }
 )
 
-// export const authRefresh = createAsyncThunk(
-//   'auth/refresh',
-//   async (data: RequestDataWithFunc<string>, thunkApi) => {
-//     try {
-//       const res = await api.postRefresh(data.data)
+export const authLogout = createAsyncThunk(
+  'auth/logout',
+  async (data: RequestWithFunc, thunkApi) => {
+    try {
+      const res = await api.getLogout()
 
-//       // if (res) {
-//       localStorage.setItem('token', res?.accessToken)
-//       localStorage.setItem('refreshToken', res?.refreshToken)
-//       // }
+      localStorage.removeItem('accessToken')
+      localStorage.removeItem('refreshToken')
 
-//       return { data: res }
-//     } catch (e: any) {
-//       return thunkApi.rejectWithValue(e.message)
-//     }
-//   }
-// )
+      if (data.func) {
+        data.func()
+      }
+
+      return { data: res }
+    } catch (e: any) {
+      return thunkApi.rejectWithValue(e.message)
+    }
+  }
+)

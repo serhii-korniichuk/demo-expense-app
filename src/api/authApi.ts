@@ -15,6 +15,12 @@ const userApi = {
       data
     }),
 
+  getLogout: () =>
+    apiWrapper({
+      method: 'get',
+      url: '/auth/logout'
+    }),
+
   postRefresh: (data: string) =>
     apiWrapper<ILoginResponse>({
       method: 'post',

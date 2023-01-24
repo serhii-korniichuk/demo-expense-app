@@ -7,14 +7,19 @@ import { CustomButton } from 'src/components/customButton'
 import { CustomIcon } from 'src/components/customIcon'
 import Header from 'src/components/header'
 
+import { authLogout } from 'src/redux/auth/actions'
+
 import { IconType } from 'src/types/enums'
 import { isLoggedIn } from 'src/utils/helpers/authService'
+
+import { useAppDispatch } from 'src/utils/hooks/redux'
 
 import { useStyles } from './style'
 
 const Home: React.FC = () => {
   const classes = useStyles()
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (!isLoggedIn()) {
@@ -39,7 +44,7 @@ const Home: React.FC = () => {
             <CustomButton
               type='button'
               size='SM'
-              onClick={() => console.log('hello!')}
+              onClick={() => dispatch(authLogout({ func: () => navigate('/auth') }))}
               text='Log Out'
             />
           </Box>

@@ -38,18 +38,16 @@ BASE_CONNECTION.interceptors.response.use(
         try {
           const res = await api.postRefresh(refreshToken)
 
-          console.log('res!!!', res)
-
           localStorage.removeItem('accessToken')
           localStorage.removeItem('refreshToken')
-          // localStorage.setItem('accessToken', res?.data?.accessToken)
-          // localStorage.setItem('refreshToken', res?.data?.refreshToken)
+          localStorage.setItem('accessToken', res?.data.accessToken || '')
+          localStorage.setItem('refreshToken', res?.data.refreshToken || '')
 
           BASE_CONNECTION.request(originalRequest)
         } catch {
           localStorage.clear()
           document.location = '/'
-          // return Promise.reject(error)
+          return Promise.reject(err)
         }
       }
     } else {
@@ -59,7 +57,6 @@ BASE_CONNECTION.interceptors.response.use(
 )
 
 export const apiWrapper = async <T>({ method, url, data, isFormData = false }: ApiWrapper) => {
-  // const checkedUrl = parseData ? `${url}${parseQueries(parseData)}` : url
   const commonHeader = isFormData && {
     'Content-Type': 'application/x-www-form-urlencoded'
   }

@@ -3,6 +3,10 @@ declare interface RequestDataWithFunc<T> {
   func?: () => void
 }
 
+declare interface RequestWithFunc {
+  func: () => void
+}
+
 declare interface QueriesData {
   password: 'string'
   username: 'string'
