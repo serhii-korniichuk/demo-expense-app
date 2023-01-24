@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import api from 'src/api/api'
 
+import { messageSlice } from '../message/reducer'
+
 export const authRegister = createAsyncThunk(
   'auth/register',
   async (data: RequestDataWithFunc<IRegisterRequest>, thunkApi) => {
@@ -10,10 +12,12 @@ export const authRegister = createAsyncThunk(
       if (data.func) {
         data.func()
       }
-      // return { data: res }
-      return { success: 'Please check your inbox to verify your email and log in after', data: res }
-    } catch (e: any) {
-      return thunkApi.rejectWithValue(e.message)
+
+      thunkApi.dispatch(messageSlice.actions.setSuccess('Successfully'))
+
+      return res?.data
+    } catch (e) {
+      return thunkApi.dispatch(messageSlice.actions.setError(e as ErrorHandler))
     }
   }
 )
@@ -30,10 +34,12 @@ export const authLogin = createAsyncThunk(
       if (data.func) {
         data.func()
       }
+
+      thunkApi.dispatch(messageSlice.actions.setSuccess('Successfully'))
+
       return { data: res }
-      // return { success: 'Please check your inbox to verify your email and log in after', data: res }
-    } catch (e: any) {
-      return thunkApi.rejectWithValue(e.message)
+    } catch (e) {
+      return thunkApi.dispatch(messageSlice.actions.setError(e as ErrorHandler))
     }
   }
 )
@@ -51,9 +57,11 @@ export const authLogout = createAsyncThunk(
         data.func()
       }
 
+      thunkApi.dispatch(messageSlice.actions.setSuccess('Successfully'))
+
       return { data: res }
-    } catch (e: any) {
-      return thunkApi.rejectWithValue(e.message)
+    } catch (e) {
+      return thunkApi.dispatch(messageSlice.actions.setError(e as ErrorHandler))
     }
   }
 )

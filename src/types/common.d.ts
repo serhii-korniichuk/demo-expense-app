@@ -21,3 +21,11 @@ declare interface ApiWrapper {
 }
 
 declare type ITypographyVariant = 'h1' | 'h2' | 'h3' | 'h5' | 'info2' | 'info3' | 'info4'
+
+declare interface ErrorHandler {
+  response: {
+    data: {
+      message: string
+    }
+  }
+}

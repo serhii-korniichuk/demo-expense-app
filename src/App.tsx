@@ -5,7 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
-import { SnackbarProvider } from 'notistack'
+
+import SnackBar from 'src/components/snackBar'
 
 import { setupStore } from './redux/store'
 import Routes from './routes'
@@ -25,11 +26,10 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Provider store={store}>
         <CacheProvider value={muiCache}>
-          <SnackbarProvider maxSnack={1}>
-            <ThemeProvider theme={theme}>
-              <Routes />
-            </ThemeProvider>
-          </SnackbarProvider>
+          <SnackBar />
+          <ThemeProvider theme={theme}>
+            <Routes />
+          </ThemeProvider>
         </CacheProvider>
       </Provider>
     </BrowserRouter>

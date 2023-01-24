@@ -30,7 +30,7 @@ BASE_CONNECTION.interceptors.response.use(
   },
   async (err) => {
     const originalRequest = err.config
-    if (err.response?.status === 401) {
+    if (err.response?.status === 401 && err.config) {
       originalRequest._isRetry = true
       const refreshToken = localStorage.getItem('refreshToken')
 

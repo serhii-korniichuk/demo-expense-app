@@ -1,27 +1,25 @@
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit'
 
 import auth from 'src/redux/auth/reducer'
-
-import { DispatchHelper } from 'src/utils/helpers/actionCreator'
+import message from 'src/redux/message/reducer'
 
 const combinedReducer = combineReducers({
-  auth
+  auth,
+  message
 })
 
+
 const rootReducer = (state: any, action: any) => {
-  combinedReducer(state, action)
+  return combinedReducer(state, action)
 }
 
 export const setupStore = () => {
-  const store = configureStore({
+  return configureStore({
     reducer: rootReducer,
     middleware: getDefaultMiddleware({
       serializableCheck: false
     })
   })
-
-  DispatchHelper.dispatch = store.dispatch
-  return store
 }
 
 export type RootState = ReturnType<typeof rootReducer>
