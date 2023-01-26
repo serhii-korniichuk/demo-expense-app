@@ -13,6 +13,7 @@ export interface AppState {
   isLogin: boolean
   isRegisterSuccess: boolean
   serverError: string | null
+  loginError: string | null
   user: User | null
 }
 
@@ -20,6 +21,7 @@ const initialState: AppState = {
   isLogin: false,
   isRegisterSuccess: false,
   serverError: null,
+  loginError: null,
   user: null,
 }
 
@@ -35,7 +37,6 @@ export const singUpHandler = createAsyncThunk(
       .catch((e) => {
         dispatch(setLogin(false))
         dispatch(setServerError(e.response.data.message))
-        console.log(e)
       })
   },
 )
@@ -52,7 +53,7 @@ export const singInHandler = createAsyncThunk(
         }
       })
       .catch((e) => {
-        console.log(e)
+        dispatch(setLoginError(e.response.data.message))
       })
   },
 )
@@ -90,11 +91,13 @@ export const appSlice = createSlice({
     },
     setServerError: (state, action) => {
       state.serverError = action.payload
-      state.serverError = action.payload
+    },
+    setLoginError: (state, action) => {
+      state.loginError = action.payload
     },
   },
 })
 
-export const { setLogin, setUser, setIsRegisterSuccess, setServerError } = appSlice.actions
+export const { setLogin, setIsRegisterSuccess, setServerError, setLoginError } = appSlice.actions
 
 export default appSlice.reducer

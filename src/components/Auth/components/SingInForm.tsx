@@ -5,12 +5,13 @@ import * as Yup from "yup"
 import CustomInput from "./CustomInput"
 import CustomButton from "../../Button/Button"
 import { singInHandler } from "../../../store/reducers/appReducer"
-import { useAppDispatch } from "../../../store/hooks"
+import {useAppDispatch, useAppSelector} from "../../../store/hooks"
 
 const SignInForm: React.FC<{
   handleChange: () => void
 }> = ({ handleChange }) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const loginError = useAppSelector((state) => state.app.loginError);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -24,7 +25,7 @@ const SignInForm: React.FC<{
         .min(2, "Field mast be min 2 chars"),
       password: Yup.string()
         .required("Required field")
-        .max(10, "Field mast be max 10 chars")
+        .max(20, "Field mast be max 10 chars")
         .min(6, "Field mast be max min 6 chars"),
     }),
     onSubmit: async (values) => {
@@ -70,9 +71,12 @@ const SignInForm: React.FC<{
           value={formik.values.password}
           onChange={formik.handleChange}
         />
+
+        {loginError && <ErrorElem> {loginError} </ErrorElem>}
+
         <CustomButton label='Sign In' handler={handleSubmitForm} />
         <ChangeFormText>
-          I have an account. <span onClick={handleChange}>Go to Sign in</span>
+          Don’t have account yet? <span onClick={handleChange}>New Account</span>
         </ChangeFormText>
       </form>
     </Box>
@@ -87,6 +91,12 @@ const ChangeFormText = styled("p")({
   "& span": {
     color: "#7FAAF0",
   },
+})
+
+const ErrorElem = styled("p")({
+  color: "red",
+  fontSize: "12px",
+  fontFamily: "Montserrat",
 })
 
 export default SignInForm

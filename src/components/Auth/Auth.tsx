@@ -26,7 +26,6 @@ const Auth: React.FC = () => {
   }, [isRegisterSuccess])
 
   useEffect(() => {
-    console.log(isLogin)
     if (isLogin) {
       redirect("/home")
     }
@@ -35,12 +34,12 @@ const Auth: React.FC = () => {
   return (
     <Wrapper>
       <Logo />
-      <FormTitle>{isSignInForm ? "Sign Up".toUpperCase() : "Sign In".toUpperCase()}</FormTitle>
+      <FormTitle>{isSignInForm ? "Sign In".toUpperCase() : "Sign Up".toUpperCase()}</FormTitle>
 
       {isSignInForm ? (
-        <SignUpForm handleChange={handleChangeForm} />
-      ) : (
         <SignInForm handleChange={handleChangeForm} />
+      ) : (
+        <SignUpForm handleChange={handleChangeForm} />
       )}
     </Wrapper>
   )

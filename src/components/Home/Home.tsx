@@ -1,12 +1,12 @@
 import React from "react"
 import { Box, styled } from "@mui/material"
-import Logo from "../components/Logo/Logo"
-import CustomButton from "../components/Button/Button"
-import { useAppDispatch } from "../store/hooks"
-import { logout } from "../store/reducers/appReducer"
+import Logo from "../Logo/Logo"
+import CustomButton from "../Button/Button"
+import { useAppDispatch } from "../../store/hooks"
+import { logout } from "../../store/reducers/appReducer"
 import { useNavigate } from "react-router-dom"
 // @ts-ignore
-import img from "../assets/footer_img.svg"
+import img from "../../assets/footer_img.svg"
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch()

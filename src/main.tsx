@@ -5,7 +5,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import Auth from "./components/Auth/Auth"
 import { Provider } from "react-redux"
 import { store } from "./store/store"
-import Home from "./Home/Home"
+import Home from "./components/Home/Home"
 
 interface ProtectedRouteProps {
   children: React.ReactNode

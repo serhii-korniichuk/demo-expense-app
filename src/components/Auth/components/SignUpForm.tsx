@@ -4,14 +4,16 @@ import React from "react"
 import * as Yup from "yup"
 import CustomInput from "./CustomInput"
 import CustomButton from "../../Button/Button"
-import { setIsRegisterSuccess, singUpHandler } from "../../../store/reducers/appReducer"
+import { singUpHandler } from "../../../store/reducers/appReducer"
 import { useAppDispatch, useAppSelector } from "../../../store/hooks"
 
 const SignUpForm: React.FC<{
   handleChange: () => void
 }> = ({ handleChange }) => {
-  const dispatch = useAppDispatch()
-  const serverError = useAppSelector((state) => state.app.serverError)
+  const dispatch = useAppDispatch();
+
+  const serverError = useAppSelector((state) => state.app.serverError);
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -110,7 +112,7 @@ const SignUpForm: React.FC<{
 
         <CustomButton label='Sign In' handler={handleSubmitForm} />
         <ChangeFormText>
-          Don’t have account yet? <span onClick={handleChange}>New Account</span>
+          I have an account. <span onClick={handleChange}>Go to Sign in</span>
         </ChangeFormText>
       </form>
     </Box>
