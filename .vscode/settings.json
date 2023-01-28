@@ -1,0 +1,16 @@
+{
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": false,
+    "eslint.validate": [
+        "typescript",
+        "typescriptreact"
+    ],
+    "stylelint.validate": [
+      "scss"
+    ],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+    },
+    "files.eol": "\n",
+}

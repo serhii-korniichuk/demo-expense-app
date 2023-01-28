@@ -1,0 +1,14 @@
+@mixin font-import($fname, $fstyle, $fweight, $furl) {
+	@font-face {
+		font-family: $fname;
+		font-style: $fstyle;
+		font-weight: $fweight;
+		src: url($furl) format('woff2');
+	}
+}
+
+@mixin media-mobile() {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}
