@@ -1,0 +1,46 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+@use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
+.page-layout {
+	&__header {
+		padding: 48px 70px 0;
+		margin-bottom: 109px;
+
+		@include media-mobile {
+			margin-bottom: 72px;
+		}
+	}
+
+	&__logo {
+		color: $avocado;
+		font-weight: 600;
+		font-size: 16px;
+		margin: 0;
+	}
+
+	&__logo-emphazing {
+		color: $snow;
+		font-weight: 700;
+		font-size: 36px;
+		line-height: 54px;
+	}
+
+	&__content {
+		margin: 0 auto;
+		padding: 48px;
+		max-width: 600px;
+		width: 100%;
+	}
+
+	&__error-dialog {
+		:global(.MuiPaper-root) {
+			width: 50%;
+			max-width: 600px;
+			background-color: $yankees-blue;
+			color: $snow;
+		}
+	}
+}

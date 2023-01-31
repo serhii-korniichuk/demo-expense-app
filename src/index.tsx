@@ -7,6 +7,7 @@ import {
 	RouterProvider,
 	redirect,
 } from 'react-router-dom';
+import { StyledEngineProvider } from '@mui/material';
 import reportWebVitals from './reportWebVitals';
 import './index.scss';
 import { HomePage } from './components/HomePage';
@@ -16,17 +17,19 @@ import { PageLayout } from './components/PageLayout';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<StrictMode>
-		<RouterProvider
-			router={createBrowserRouter(
-				createRoutesFromElements(
-					<Route path="/" element={<PageLayout />}>
-						<Route index element={<HomePage />} />
-						<Route path="authorization" element={<AuthPage />} />
-						<Route path="*" loader={() => redirect('/')} />
-					</Route>
-				)
-			)}
-		/>
+		<StyledEngineProvider injectFirst>
+			<RouterProvider
+				router={createBrowserRouter(
+					createRoutesFromElements(
+						<Route path="/" element={<PageLayout />}>
+							<Route index element={<HomePage />} />
+							<Route path="authorization" element={<AuthPage />} />
+							<Route path="*" loader={() => redirect('/')} />
+						</Route>
+					)
+				)}
+			/>
+		</StyledEngineProvider>
 	</StrictMode>
 );
 

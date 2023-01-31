@@ -1,0 +1,27 @@
+.auth-form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 24px;
+
+	&__heading {
+		margin: 0;
+		margin-bottom: 24px;
+	}
+
+	&__submit {
+		margin-top: 8px;
+	}
+
+	&__redirect {
+		font-size: 14px;
+		font-weight: 400;
+		margin-bottom: 0;
+		margin-top: 8px;
+		line-height: 24.5px;
+	}
+
+	&__redirect-button {
+		padding: 0;
+		padding-left: 7px;
+	}
+}

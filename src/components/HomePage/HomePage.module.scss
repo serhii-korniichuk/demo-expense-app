@@ -1,0 +1,49 @@
+@use '../../styles/mixins' as *;
+
+.home-page {
+	display: flex;
+	flex-direction: column;
+	row-gap: 48px;
+	align-items: center;
+	text-align: center;
+
+	@include media-mobile {
+		row-gap: 32px;
+	}
+
+	&__heading {
+		position: relative;
+		font-size: 48px;
+
+		@include media-mobile {
+			font-size: 32px;
+		}
+
+		&::after {
+			display: block;
+			content: '';
+			width: 237px;
+			height: 188px;
+			background-image: url('../../assets/Decor.svg');
+			position: absolute;
+			right: -121px;
+			bottom: -6px;
+			@include media-mobile {
+				display: none;
+			}
+		}
+	}
+
+	&__description {
+		font-weight: 600;
+		width: 75%;
+
+		@include media-mobile {
+			width: 100%;
+		}
+	}
+
+	&__decoration-image {
+		margin-top: 24px;
+	}
+}
