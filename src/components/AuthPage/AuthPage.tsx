@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { string, ref } from 'yup';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { changeAuthType, register, login } from '../../store/auth';
 import { AuthForm } from './AuthForm';
 import { AuthType } from '../../shared/types';
+import type { LoginPayload, RegisterPayload } from '../../shared/types';
 
 const authFields = {
 	displayName: {
@@ -44,19 +47,36 @@ const authFields = {
 };
 
 export const AuthPage = () => {
-	const [authType, setAuthType] = useState<AuthType>(AuthType.SIGN_UP);
+	const authType = useAppSelector((state) => state.auth.authType);
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
-	const signUp = () => {
-		console.log('sign up');
+	const signUp = ({ displayName, username, password }: RegisterPayload) => {
+		dispatch(
+			register({
+				displayName,
+				username,
+				password,
+			})
+		);
 	};
 
-	const signIn = () => {
-		console.log('sign in');
+	const signIn = ({ username, password }: LoginPayload) => {
+		dispatch(
+			login({
+				username,
+				password,
+			})
+		)
+			.unwrap()
+			.then(() => navigate('/'), null);
 	};
 
 	const switchType = () => {
-		setAuthType((prevAuthType) =>
-			prevAuthType === AuthType.SIGN_IN ? AuthType.SIGN_UP : AuthType.SIGN_IN
+		dispatch(
+			changeAuthType({
+				type: authType === AuthType.SIGN_IN ? AuthType.SIGN_UP : AuthType.SIGN_IN,
+			})
 		);
 	};
 
