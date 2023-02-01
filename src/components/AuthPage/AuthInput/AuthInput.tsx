@@ -55,7 +55,7 @@ export const AuthInput = ({
 						? AuthInputType.PASSWORD
 						: AuthInputType.TEXT
 				}
-				value={value}
+				value={value ?? ''}
 				onChange={onChange}
 				endAdornment={
 					isValueProtected && (

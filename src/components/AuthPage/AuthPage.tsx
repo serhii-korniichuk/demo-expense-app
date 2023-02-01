@@ -69,7 +69,10 @@ export const AuthPage = () => {
 			})
 		)
 			.unwrap()
-			.then(() => navigate('/'), null);
+			.then(
+				() => navigate('/'),
+				() => {}
+			);
 	};
 
 	const switchType = () => {

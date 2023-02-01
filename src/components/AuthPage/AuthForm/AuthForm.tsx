@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { object } from 'yup';
 import { AuthInput } from '../AuthInput';
@@ -31,21 +30,19 @@ export const AuthForm = <T extends unknown>({
 	submitAction,
 	switchTypeMessage,
 }: AuthFormProps<T>) => {
-	/* 
-	Purpose to save initial values in state is correct updating of form when props are changed.
-	If initial values were saved in usual variable, re-render would be incorrect after 'authType' would have changed
-	(The Formik issue related to controlled-uncontrolled components).
-	*/
-
-	const [initialValues] = useState(
-		fields.reduce((obj, { name, defaultValue }) => ({ ...obj, [name]: defaultValue }), {})
+	const initialValues = fields.reduce(
+		(obj, { name, defaultValue }) => ({ ...obj, [name]: defaultValue }),
+		{}
 	);
 
 	type FieldName = keyof typeof initialValues;
 
 	return (
 		<Formik
-			initialValues={initialValues}
+			initialValues={fields.reduce(
+				(obj, { name, defaultValue }) => ({ ...obj, [name]: defaultValue }),
+				{}
+			)}
 			enableReinitialize
 			validationSchema={object(
 				fields.reduce((obj, { name, validator }) => ({ ...obj, [name]: validator }), {})
