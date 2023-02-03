@@ -86,7 +86,7 @@
 * Кнопка відправки данних форми
 * Текстове поле з кнопкою для переходу на форму ***Sign In***
 
->Запит для реєстрації аккаунту: [/auth/register](/auth/register)
+>Запит для реєстрації аккаунту: [/auth/register](https://expa.fly.dev/api#/auth/AuthController_register)
 
 <br>
 
@@ -99,7 +99,7 @@
 * Кнопка відправки данних форми
 * Текстове поле з кнопкою для переходу на форму ***Sign Up***
 
->Запит для входу в аккаунт: [/auth/login](https://incode-backend-dev.herokuapp.com/api/#/auth/AuthController_login)
+>Запит для входу в аккаунт: [/auth/login](https://expa.fly.dev/api#/auth/AuthController_login)
 
 <br>
 
@@ -109,7 +109,7 @@
 * Текстовий блок
 * Кнопка *Logout*
 
->Запит для виходу з аккаунту: [/auth/logout](https://incode-backend-dev.herokuapp.com/api/#/auth/AuthController_logout)
+>Запит для виходу з аккаунту: [/auth/logout](https://expa.fly.dev/api#/auth/AuthController_logout)
 
 <br>
 
