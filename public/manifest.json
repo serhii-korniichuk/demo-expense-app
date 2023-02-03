@@ -1,0 +1,8 @@
+{
+	"short_name": "Expense App",
+	"name": "Implementation of test task for Incode Group",
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}

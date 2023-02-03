@@ -1,0 +1,35 @@
+@use 'styles/colors' as *;
+@use 'styles/mixins' as *;
+
+$font-name: 'Montserrat';
+
+@include font-import($font-name, 'normal', 400, '../../public/Montserrat-Regular.woff2');
+@include font-import($font-name, 'normal', 600, '../../public/Montserrat-SemiBold.woff2');
+@include font-import($font-name, 'normal', 700, '../../public/Montserrat-Bold.woff2');
+
+html {
+	font-family: $font-name;
+	font-weight: 400;
+	font-size: 16px;
+	background-color: $yankees-blue;
+	color: $snow;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+::selection {
+	background-color: $avocado;
+}

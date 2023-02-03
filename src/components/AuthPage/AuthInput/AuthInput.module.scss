@@ -1,0 +1,24 @@
+@use '../../../styles/colors' as *;
+
+.auth-input {
+	&__label {
+		color: $snow;
+		font-family: inherit;
+		font-size: 14px;
+	}
+
+	&__input {
+		color: rgba($snow, 0.7);
+		font-family: inherit;
+		border-bottom-color: $snow;
+
+		&::before {
+			border-color: rgba($snow, 0.7);
+		}
+
+		/* stylelint-disable-next-line selector-class-pattern */
+		&:hover:not(.Mui-disabled, .Mui-error)::before {
+			border-bottom: 2px solid $snow;
+		}
+	}
+}
