@@ -1,0 +1,15 @@
+$accent-color: #539713;
+
+.page {
+  &__title {
+    font-size: 36px;
+    line-height: 150%;
+  }
+
+  &__underTitle {
+    color: $accent-color;
+    font-size: 16px;
+    line-height: 155%;
+    margin-bottom: 72px;
+  }
+}
