@@ -1,0 +1,17 @@
+@import 'styles/variables.scss';
+
+.wrapper {
+  min-height: 600px;
+  width: 424px;
+
+  margin: 0 auto;
+  padding: 48px;
+
+  background-color: $color-black;
+
+  overflow: hidden;
+
+  @media (max-width: 520px) {
+    min-height: 100vh;
+  }
+}
