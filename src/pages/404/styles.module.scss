@@ -1,0 +1,14 @@
+.page404 {
+  background-color: #1D283A;
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  min-height: 100vh;
+
+  .header {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}
