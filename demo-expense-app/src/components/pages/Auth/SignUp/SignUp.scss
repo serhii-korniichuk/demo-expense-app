@@ -1,0 +1,10 @@
+.signUp {
+  color: white;
+  .form {
+    display: flex;
+    flex-direction: column;
+    .buttonToSignIn {
+      background-color: red;
+    }
+  }
+}

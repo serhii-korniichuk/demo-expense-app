@@ -1,0 +1,23 @@
+$secondaryColor: #539713;
+.header {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3%;
+  padding-left: 3%;
+  .logo {
+    margin: 0;
+
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 150%;
+  }
+  .department {
+    margin: 0;
+
+    color: $secondaryColor;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 155%;
+  }
+}
