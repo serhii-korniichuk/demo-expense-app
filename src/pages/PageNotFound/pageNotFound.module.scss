@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1D283A;
+  position: relative;
+}
+
+.title {
+  font-size: 48px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 36px;
+  text-transform: uppercase;
+}
+
+.image {
+  height: 300px;
+  width: 520px;
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+
+  &::before {
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 0 2px 2px;
+    content: "";
+    display: block;
+    height: 6px;
+    left: -10px;
+    position: absolute;
+    width: 6px;
+    margin-top: -3px;
+    top: 50%;
+    transition: left 0.1s;
+    transform: rotate( 45deg );
+    -webkit-transform: rotate( 45deg );
+  }
+}

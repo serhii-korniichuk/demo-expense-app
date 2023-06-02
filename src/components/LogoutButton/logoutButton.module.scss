@@ -1,0 +1,24 @@
+.btn__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 100px;
+  color: #fff;
+  background-color: #539713;
+  border: none;
+  font-family: 'Montserrat';
+  margin-bottom: 40px;
+
+  &:active {
+    transform: scale(0.98)
+  }
+  &:hover {
+    background-color: #336603
+  }
+}

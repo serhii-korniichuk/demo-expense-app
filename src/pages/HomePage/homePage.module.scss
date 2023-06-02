@@ -1,0 +1,113 @@
+.container {
+  min-height: 100vh;
+  background-color: #1D283A;
+  font-family: 'Montserrat';
+  padding: 0 60px;
+}
+
+.logo {
+  padding-top: 48px;
+  margin-bottom: 10px;
+  font-size: 36px;
+  color: #fff;
+}
+
+.subLogo {
+  color: #539713;
+  font-size: 16px;
+  margin-bottom: 80px;
+}
+
+.congratulation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: #fff;
+  font-size: 48px;
+  padding: 100px 100px 0px;
+  margin-bottom: 48px;
+  text-transform: uppercase;
+  position: relative;
+  background-image: url('../../../public/images/Congrat.svg');
+  background-repeat: no-repeat;
+  background-position: bottom 20% right -3%;
+}
+
+.content {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  max-width: 40%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.btn__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 100px;
+  color: #fff;
+  background-color: #539713;
+  border: none;
+  font-family: 'Montserrat';
+  margin-bottom: 80px;
+
+  &:active {
+    transform: scale(0.98)
+  }
+}
+
+.footer__img_wrap {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 30px;
+  }
+  .title {
+    font-size: 28px;
+    margin-bottom: 16px;
+    background-position: bottom 20% right -10%;
+    padding: 80px 80px 0px;
+  }
+  .content {
+    max-width: 60%;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  .title {
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding: 50px 50px 0px;
+    background-size: contain;
+    background-position: bottom 20% right 10%;
+  }
+  .content {
+    max-width: 80%;
+    font-size: 10px;
+    margin-bottom: 24px;
+  }
+  .footer__img {
+    max-width: 200px;
+    max-height: 170px;
+  }
+}
