@@ -1,0 +1,33 @@
+.authPage {
+  padding-top: 72px;
+
+  &Title {
+    margin-bottom: 48px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 84px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  &Redirect {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 155%;
+
+    &Text {
+      color: #F1F2F1;
+    }
+
+    &Link {
+      cursor: pointer;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      color: #7FAAF0;
+    }
+  }
+};
