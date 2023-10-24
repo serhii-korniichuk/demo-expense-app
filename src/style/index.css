@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@media (min-width:1025px) { .container { width: 25% !important}}
+
+body{
+  font-family: "Montserrat" !important;
+}
+
+h1, h2, h3, h4{
+  color: snow;
+  font-weight: 700;
+}
+
+span{
+  font-weight: 600;
+}
+
+h1{
+  font-size: 4rem !important;
+  text-transform: uppercase;  
+}
+
+.form-styled{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.container{
+  background-color: #1d2538;
+}
+
+.margin-cont{
+  width: 90%;
+  height: 100vh;
+}
+
+.logo span{
+ color: #539713;
+ font-weight: 700;
+}
+
+.btn{
+  font-weight: 600;
+}
+
+.submit-btn{
+  background-color: #539713 !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+}
+
+.form-control{
+  border-radius: 0 !important;
+  background-color: #1d2538 !important;
+  border-color: rgb(245, 238, 238) !important;
+  outline: 0 !important;
+  border-width: 0 0 1px !important;
+  color: rgb(245, 238, 238) !important;
+  padding-left: 0 !important;
+}
+
+label { 
+  color: #FFFFFF;
+  font-size: 0.9rem;
+}
+
+.grey{
+  color: rgb(112, 112, 112) !important;
+}
+
+.redirect{
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.toggler{
+  color: #7FAAF0;
+  cursor: pointer;
+}
+
+.container-home{
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #1D283A;
+}
+
+header{
+  position: relative;
+}
+
+.decor{
+  position: absolute;
+  top: -115px;
+  right: -115px;
+}
+
+.ml-5{
+  margin-left: 5rem;
+}
+
+.content span{
+  color: snow;
+  font-size: 1.5rem;  
+}
+
+.content{
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 40%;
+}
+
+.cover-home{
+  display: flex;
+  justify-content: center;
+}
+
+.eye{ 
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+  color: #fff;
+}
+
+.logout{
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  font-size: 1.2rem !important;
+}
