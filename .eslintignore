@@ -1,0 +1,4 @@
+/coverage
+/build
+jest.config.ts
+src/setupTests.ts
