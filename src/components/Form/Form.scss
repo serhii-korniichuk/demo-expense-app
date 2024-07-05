@@ -1,0 +1,71 @@
+@import "../../styles/variables.scss";
+@import "../../styles/utils/extends.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/typography.scss";
+
+.form {
+  @extend %max-width-wrapper;
+  position: relative;
+
+  &__title {
+    @extend %desktop-h1;
+    max-width: $form-field-width;
+    margin-bottom: $padding-content-form;
+  }
+
+  &__fields {
+    max-width: $form-field-width;
+  }
+
+  &__toggle {
+    @extend %desktop-p4;
+    margin-top: calc($padding-content-form / 2);
+
+    text-align: center;
+    color: $backgroundLight;
+  }
+
+  &__link {
+    color: $blue;
+    text-decoration: none;
+  }
+
+  &__toggle-password-visibility {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 133px;
+
+    width: 22px;
+    height: 22px;
+
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+
+  &__field-password {
+    height: 80px;
+  }
+
+  &__service-message {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    margin: 0;
+
+    color: $warn;
+    text-align: center;
+  }
+
+  &__submit {
+    margin-top: 20px;
+  }
+}

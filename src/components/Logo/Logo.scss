@@ -1,0 +1,12 @@
+@import "../../styles/typography.scss";
+
+.logo {
+  &__primary-text {
+    @extend %desktop-h3;
+  }
+
+  &__secondary-text {
+    @extend %desktop-h5;
+    color: $greener;
+  }
+}

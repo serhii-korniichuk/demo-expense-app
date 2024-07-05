@@ -1,0 +1,18 @@
+@import "./styles/variables.scss";
+@import "./styles/colors.scss";
+
+.App {
+  width: fit-content;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: $padding-content-form;
+
+  color: $fontLight;
+  text-align: left;
+  background-color: $backgroundDark;
+
+  &--user-page {
+    width: 100%;
+  }
+}

@@ -1,0 +1,47 @@
+@import "../../styles/utils/extends.scss";
+@import "../../styles/typography.scss";
+@import "../../styles/variables.scss";
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $padding-content-form;
+
+  &__title {
+    position: relative;
+    @extend %desktop-h2;
+    text-transform: uppercase;
+
+    @include onMobile() {
+      font-size: 36px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: -100px;
+      top: -110px;
+
+      width: 237px;
+      height: 188px;
+
+      background-image: url(../../images/decor.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__paragraph {
+    @extend %desktop-h5;
+    max-width: 466px;
+  }
+
+  &__image {
+    align-content: flex-end;
+    margin-top: 72px;
+  }
+}
