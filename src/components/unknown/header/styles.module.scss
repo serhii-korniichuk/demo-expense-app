@@ -1,0 +1,14 @@
+@import '../../../styles/colors.scss';
+
+.heading{
+    font-size: 36px;
+    line-height: 54px;
+    font-weight: 700;
+    color: $white;
+}
+.subHeading{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: $green;
+}

@@ -1,0 +1,13 @@
+@import '../../../styles/colors.scss';
+
+.error{
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 12px;
+    color: $error;
+}
+
+.success{
+    @extend .error;
+    color: $green;
+}

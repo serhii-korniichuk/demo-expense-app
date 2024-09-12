@@ -1,0 +1,47 @@
+@import "../../styles/colors.scss";
+
+.container{
+    max-width: 424px;
+    margin: 0 auto;
+    padding: 48px;
+
+    @media screen and (max-width: 568px){
+        padding: 24px;
+    }
+
+    .header{
+        margin-bottom: 72px;
+    }
+
+    .heading{
+        font-size: 56px;
+        line-height: 84px;
+        font-weight: 700;
+        color: $white;
+        letter-spacing: 3%;
+        text-transform: uppercase;
+        margin-bottom: 48px;
+    }
+
+    .form{
+        margin-bottom: 24px;
+    }
+
+    .phrase{
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 400;
+        color: $grey;
+        width: fit-content;
+        margin: 0 auto;
+
+        .btn{
+            color: $blue;
+            cursor: pointer;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
