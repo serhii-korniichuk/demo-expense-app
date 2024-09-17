@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  .title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 150%;
+    color: #FFF;
+  }
+
+  .subTitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 155%;
+    color: #539713;
+  }
+}
