@@ -1,0 +1,46 @@
+.InputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.InputLabel {
+  margin-bottom: 5.5px;
+
+  color: var(--logo-title);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 155%;
+}
+
+.FormInput {
+  width: 100%;
+  padding-bottom: 6.5px;
+  padding-left: 0;
+
+  color: var(--logo-title);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 155%;
+
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--logo-title);
+  outline: none;
+
+  &::placeholder {
+    opacity: 0.7;
+  }
+}
+
+.PasswordWrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 30px var(--main-background) inset !important; /* можно изменить на любой вариант цвета */
+  -webkit-text-fill-color: var(--logo-title);
+}

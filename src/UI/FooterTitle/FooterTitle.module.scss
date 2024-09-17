@@ -1,0 +1,22 @@
+.FooterTitleWrapper {
+  padding-bottom: 142px;
+  margin-top: 24px;
+
+  text-align: center;
+}
+
+.FooterTitle {
+  color: var(--logo-title);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 155%;
+
+  opacity: 0.7;
+}
+
+.FooterLink {
+  padding-left: 5px;
+
+  color: var(--footer-link-color);
+  text-decoration: none;
+}
