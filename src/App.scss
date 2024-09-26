@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.sign {
+  width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+  
+  &__congratmainimg {
+    position: relative;
+    top: -40px;
+    left: 90px; 
+  }
+  &__congratpeopleimg {
+    position: relative;
+    bottom: -119px;
+    left: 31px;
+  }  
+
+  &__congrattext {
+    position: relative;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #fff;
+    width: 466px;
+    height: 50px;
+    text-align: center;
+    left: 31px;
+    top: 8px;
+  }
+  
+  &--congrat {
+    background-color: #1D283A;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1D283A;
+    margin: 0 auto;
+    height: 900px;
+    width: 440px;
+    
+    &--congrat {
+      position: absolute;
+      width: 100vw;
+    }
+  }
+
+  &__logobox {
+    position: absolute;
+    left:48px;
+    top:48px;
+    
+    &--congrat {
+      left:58px;
+    }
+  }
+  
+  &__logomain {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 54px;
+    color: #fff;
+  }
+
+  &__title {
+    position: absolute;
+    left: 48px;
+    top: 199px;
+    letter-spacing: 113%;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 84px;
+    color: #fff;
+    
+    &--congrat {
+      position: relative;
+      justify-content: center;
+      top:-100px;
+      left: 10px;
+    }
+  }
+
+  &__logounder {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #539713;
+  }
+
+  &__form {
+   position: absolute;
+   left: 45px;
+   top: 326px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+  }
+
+  [type="email"], [type="password"], [type="text"] {
+    position: relative;
+    line-height: 25px;
+    background-color: #1D283A;
+    outline: none;
+    border-style: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    top: -6px;
+  }
+  
+  &__inputpassword {
+    margin-bottom: 29px;
+  }
+  
+  &__labelemail {
+    position: relative;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #fff;
+    top: 6px;
+  }
+
+  &__labelpassword {
+    position: relative;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #fff;
+    top: 8px;
+  }
+
+  &__button {
+    width: 330px;
+    height: 44px;
+    background-color: #539713;
+    border-style: none;
+    margin-bottom: 8px;
+    &:hover {
+      cursor: pointer;
+      background-color: #B2D0AD;
+    }
+    &--congrat {
+      position: relative;
+      background-color: #539713;
+      width: 98px;
+      height: 44px;
+      left: 20px;
+      top: 56px;
+      &:hover {
+        cursor: pointer;
+        background-color: #B2D0AD;
+      }
+    }
+  }
+
+  &__buttonname {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  
+  &__undernotice {
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    color: #fff;
+    &--up {
+      position: relative;
+      left: -17px;
+    }
+  }
+
+  &__newaccount {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px;
+    color: #7FAAF0;
+    text-decoration: none ;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  
+  &__eye {
+   position: absolute;
+   right: 63px;
+   
+   &--up {
+    bottom: 270px;
+   }
+  }
+  
+  &__line {
+    position: absolute;
+    right: 62px;
+    bottom: 437px;
+    
+    &--up {
+      bottom: 267px;
+    }
+  }
+}
