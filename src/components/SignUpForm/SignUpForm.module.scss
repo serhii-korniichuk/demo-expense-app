@@ -1,0 +1,39 @@
+.register {
+    position: relative;
+    transform: translate(-50%);
+    left: 50%;
+    top: 72px;
+    width: 328px;
+    height: 350px;
+    background: #1d283a;
+    &__title {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 150%;
+        letter-spacing: 0.03em;
+        color: #ffffff;
+    }
+    &__redirect {
+        margin-top: 24px;
+        text-align: center;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 155%;
+        color: #f1f2f1;
+        &_link {
+            color: #7faaf0;
+            text-decoration: none;
+        }
+    }
+}
+
+.form {
+    width: 328px;
+    height: 380px;
+    margin-top: 48px;
+}
