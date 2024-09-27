@@ -1,0 +1,71 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:react/jsx-runtime"
+  ],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "import"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "no-console": 1,
+    "no-empty": 1,
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/interface-name-prefix": [0, "always"],
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-restricted-exports": ["error", { "restrictedNamedExports": ["default"] }],
+    "import/no-default-export": "error",
+    "@typescript-eslint/lines-between-class-members": ["error", "always"],
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "memberLike",
+        "format": ["camelCase"],
+        "leadingUnderscore": "forbid"
+      },
+      {
+        "selector": "enumMember",
+        "format": ["PascalCase"],
+        "leadingUnderscore": "forbid"
+      }
+    ],
+    "@typescript-eslint/member-ordering": ["error"],
+    "@typescript-eslint/array-type": ["error", { "default": "array" }],
+    "@typescript-eslint/no-explicit-any": ["error"],
+    "padding-line-between-statements": ["error", { "blankLine": "always", "prev": "*", "next": "return" }]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
+      }
+    }
+  ]
+}
